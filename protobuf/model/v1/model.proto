@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package model.v1;
+
+option go_package = "github.com/knightpp/alias-proto/pkg/model/v1";
+
+message Room {
+  string id = 1;
+  string name = 2;
+  string leader_id = 3;
+  bool is_public = 4;
+  string langugage = 5;
+  repeated Player lobby = 6;
+  repeated Team teams = 7;
+}
+
+message Player {
+  string id = 1;
+  string name = 2;
+  string gravatar_url = 3;
+}
+
+message Team {
+  string id = 1;
+  string name = 2;
+  Player player_a = 3;
+  Player player_b = 4;
+}

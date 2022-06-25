@@ -1,0 +1,7 @@
+version: v1
+plugins:
+  - name: go
+    out: ./go/pkg/
+    opt: paths=source_relative
+  - name: dart
+    out: ./dart/lib/src/

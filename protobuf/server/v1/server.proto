@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package server.v1;
+
+option go_package = "github.com/knightpp/alias-proto/pkg/server/v1";
+
+import "model/v1/model.proto";
+
+message CreateRoomRequest {
+  string name = 1;
+  bool is_public = 2;
+  string language = 3;
+  optional string password = 4;
+}
+
+message CreateRoomResponse { string team_id = 1; }
+
+message ListRoomsResponse { repeated model.v1.Room rooms = 1; }
+
+message UserSimpleLoginRequest {
+  string name = 1;
+  optional string email = 2;
+}
+
+message UserSimpleLoginResponse { model.v1.Player player = 1; }
+
+message JoinRoomRequest {
+  string room_id = 1;
+  string player_id = 2;
+}
