@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package model.v1;
 
-option go_package = "github.com/knightpp/alias-proto/pkg/model/v1";
+option go_package = "github.com/knightpp/alias-proto/go/pkg/model/v1";
 
 message Room {
   string id = 1;

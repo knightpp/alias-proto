@@ -1,4 +1,4 @@
-module github.com/knightpp/alias-proto
+module github.com/knightpp/alias-proto/go
 
 go 1.18
 
