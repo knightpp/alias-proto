@@ -102,17 +102,17 @@ class CreateRoomRequest extends $pb.GeneratedMessage {
 
 class CreateRoomResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CreateRoomResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.v1'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'teamId')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'roomId')
     ..hasRequiredFields = false
   ;
 
   CreateRoomResponse._() : super();
   factory CreateRoomResponse({
-    $core.String? teamId,
+    $core.String? roomId,
   }) {
     final _result = create();
-    if (teamId != null) {
-      _result.teamId = teamId;
+    if (roomId != null) {
+      _result.roomId = roomId;
     }
     return _result;
   }
@@ -138,13 +138,13 @@ class CreateRoomResponse extends $pb.GeneratedMessage {
   static CreateRoomResponse? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get teamId => $_getSZ(0);
+  $core.String get roomId => $_getSZ(0);
   @$pb.TagNumber(1)
-  set teamId($core.String v) { $_setString(0, v); }
+  set roomId($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasTeamId() => $_has(0);
+  $core.bool hasRoomId() => $_has(0);
   @$pb.TagNumber(1)
-  void clearTeamId() => clearField(1);
+  void clearRoomId() => clearField(1);
 }
 
 class ListRoomsResponse extends $pb.GeneratedMessage {

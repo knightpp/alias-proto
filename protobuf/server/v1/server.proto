@@ -13,7 +13,7 @@ message CreateRoomRequest {
   optional string password = 4;
 }
 
-message CreateRoomResponse { string team_id = 1; }
+message CreateRoomResponse { string room_id = 1; }
 
 message ListRoomsResponse { repeated model.v1.Room rooms = 1; }
 

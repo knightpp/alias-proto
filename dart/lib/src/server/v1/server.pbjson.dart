@@ -28,12 +28,12 @@ final $typed_data.Uint8List createRoomRequestDescriptor = $convert.base64Decode(
 const CreateRoomResponse$json = const {
   '1': 'CreateRoomResponse',
   '2': const [
-    const {'1': 'team_id', '3': 1, '4': 1, '5': 9, '10': 'teamId'},
+    const {'1': 'room_id', '3': 1, '4': 1, '5': 9, '10': 'roomId'},
   ],
 };
 
 /// Descriptor for `CreateRoomResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List createRoomResponseDescriptor = $convert.base64Decode('ChJDcmVhdGVSb29tUmVzcG9uc2USFwoHdGVhbV9pZBgBIAEoCVIGdGVhbUlk');
+final $typed_data.Uint8List createRoomResponseDescriptor = $convert.base64Decode('ChJDcmVhdGVSb29tUmVzcG9uc2USFwoHcm9vbV9pZBgBIAEoCVIGcm9vbUlk');
 @$core.Deprecated('Use listRoomsResponseDescriptor instead')
 const ListRoomsResponse$json = const {
   '1': 'ListRoomsResponse',
