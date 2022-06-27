@@ -28,3 +28,7 @@ message JoinRoomRequest {
   string room_id = 1;
   string player_id = 2;
 }
+
+message PlayerJoinedMessage { model.v1.Player player = 1; }
+
+message PlayerLeftMessage { string player_id = 1; }
