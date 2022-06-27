@@ -99,3 +99,28 @@ const PlayerLeftMessage$json = const {
 
 /// Descriptor for `PlayerLeftMessage`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List playerLeftMessageDescriptor = $convert.base64Decode('ChFQbGF5ZXJMZWZ0TWVzc2FnZRIbCglwbGF5ZXJfaWQYASABKAlSCHBsYXllcklk');
+@$core.Deprecated('Use wordsMessageDescriptor instead')
+const WordsMessage$json = const {
+  '1': 'WordsMessage',
+  '2': const [
+    const {'1': 'words', '3': 1, '4': 3, '5': 9, '10': 'words'},
+  ],
+};
+
+/// Descriptor for `WordsMessage`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List wordsMessageDescriptor = $convert.base64Decode('CgxXb3Jkc01lc3NhZ2USFAoFd29yZHMYASADKAlSBXdvcmRz');
+@$core.Deprecated('Use messageDescriptor instead')
+const Message$json = const {
+  '1': 'Message',
+  '2': const [
+    const {'1': 'joined', '3': 1, '4': 1, '5': 11, '6': '.server.v1.PlayerJoinedMessage', '9': 0, '10': 'joined'},
+    const {'1': 'left', '3': 2, '4': 1, '5': 11, '6': '.server.v1.PlayerLeftMessage', '9': 0, '10': 'left'},
+    const {'1': 'words', '3': 3, '4': 1, '5': 11, '6': '.server.v1.WordsMessage', '9': 0, '10': 'words'},
+  ],
+  '8': const [
+    const {'1': 'message'},
+  ],
+};
+
+/// Descriptor for `Message`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List messageDescriptor = $convert.base64Decode('CgdNZXNzYWdlEjgKBmpvaW5lZBgBIAEoCzIeLnNlcnZlci52MS5QbGF5ZXJKb2luZWRNZXNzYWdlSABSBmpvaW5lZBIyCgRsZWZ0GAIgASgLMhwuc2VydmVyLnYxLlBsYXllckxlZnRNZXNzYWdlSABSBGxlZnQSLwoFd29yZHMYAyABKAsyFy5zZXJ2ZXIudjEuV29yZHNNZXNzYWdlSABSBXdvcmRzQgkKB21lc3NhZ2U=');
