@@ -32,3 +32,13 @@ message JoinRoomRequest {
 message PlayerJoinedMessage { model.v1.Player player = 1; }
 
 message PlayerLeftMessage { string player_id = 1; }
+
+message WordsMessage { repeated string words = 1; }
+
+message Message {
+  oneof message {
+    PlayerJoinedMessage joined = 1;
+    PlayerLeftMessage left = 2;
+    WordsMessage words = 3;
+  }
+}

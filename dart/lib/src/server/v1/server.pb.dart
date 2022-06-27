@@ -455,3 +455,142 @@ class PlayerLeftMessage extends $pb.GeneratedMessage {
   void clearPlayerId() => clearField(1);
 }
 
+class WordsMessage extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'WordsMessage', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.v1'), createEmptyInstance: create)
+    ..pPS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'words')
+    ..hasRequiredFields = false
+  ;
+
+  WordsMessage._() : super();
+  factory WordsMessage({
+    $core.Iterable<$core.String>? words,
+  }) {
+    final _result = create();
+    if (words != null) {
+      _result.words.addAll(words);
+    }
+    return _result;
+  }
+  factory WordsMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory WordsMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  WordsMessage clone() => WordsMessage()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  WordsMessage copyWith(void Function(WordsMessage) updates) => super.copyWith((message) => updates(message as WordsMessage)) as WordsMessage; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static WordsMessage create() => WordsMessage._();
+  WordsMessage createEmptyInstance() => create();
+  static $pb.PbList<WordsMessage> createRepeated() => $pb.PbList<WordsMessage>();
+  @$core.pragma('dart2js:noInline')
+  static WordsMessage getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<WordsMessage>(create);
+  static WordsMessage? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<$core.String> get words => $_getList(0);
+}
+
+enum Message_Message {
+  joined, 
+  left, 
+  words, 
+  notSet
+}
+
+class Message extends $pb.GeneratedMessage {
+  static const $core.Map<$core.int, Message_Message> _Message_MessageByTag = {
+    1 : Message_Message.joined,
+    2 : Message_Message.left,
+    3 : Message_Message.words,
+    0 : Message_Message.notSet
+  };
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Message', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.v1'), createEmptyInstance: create)
+    ..oo(0, [1, 2, 3])
+    ..aOM<PlayerJoinedMessage>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'joined', subBuilder: PlayerJoinedMessage.create)
+    ..aOM<PlayerLeftMessage>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'left', subBuilder: PlayerLeftMessage.create)
+    ..aOM<WordsMessage>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'words', subBuilder: WordsMessage.create)
+    ..hasRequiredFields = false
+  ;
+
+  Message._() : super();
+  factory Message({
+    PlayerJoinedMessage? joined,
+    PlayerLeftMessage? left,
+    WordsMessage? words,
+  }) {
+    final _result = create();
+    if (joined != null) {
+      _result.joined = joined;
+    }
+    if (left != null) {
+      _result.left = left;
+    }
+    if (words != null) {
+      _result.words = words;
+    }
+    return _result;
+  }
+  factory Message.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory Message.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  Message clone() => Message()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  Message copyWith(void Function(Message) updates) => super.copyWith((message) => updates(message as Message)) as Message; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static Message create() => Message._();
+  Message createEmptyInstance() => create();
+  static $pb.PbList<Message> createRepeated() => $pb.PbList<Message>();
+  @$core.pragma('dart2js:noInline')
+  static Message getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Message>(create);
+  static Message? _defaultInstance;
+
+  Message_Message whichMessage() => _Message_MessageByTag[$_whichOneof(0)]!;
+  void clearMessage() => clearField($_whichOneof(0));
+
+  @$pb.TagNumber(1)
+  PlayerJoinedMessage get joined => $_getN(0);
+  @$pb.TagNumber(1)
+  set joined(PlayerJoinedMessage v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasJoined() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearJoined() => clearField(1);
+  @$pb.TagNumber(1)
+  PlayerJoinedMessage ensureJoined() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  PlayerLeftMessage get left => $_getN(1);
+  @$pb.TagNumber(2)
+  set left(PlayerLeftMessage v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasLeft() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearLeft() => clearField(2);
+  @$pb.TagNumber(2)
+  PlayerLeftMessage ensureLeft() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  WordsMessage get words => $_getN(2);
+  @$pb.TagNumber(3)
+  set words(WordsMessage v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasWords() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearWords() => clearField(3);
+  @$pb.TagNumber(3)
+  WordsMessage ensureWords() => $_ensure(2);
+}
+
