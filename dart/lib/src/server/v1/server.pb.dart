@@ -359,3 +359,99 @@ class JoinRoomRequest extends $pb.GeneratedMessage {
   void clearPlayerId() => clearField(2);
 }
 
+class PlayerJoinedMessage extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PlayerJoinedMessage', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.v1'), createEmptyInstance: create)
+    ..aOM<$0.Player>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'player', subBuilder: $0.Player.create)
+    ..hasRequiredFields = false
+  ;
+
+  PlayerJoinedMessage._() : super();
+  factory PlayerJoinedMessage({
+    $0.Player? player,
+  }) {
+    final _result = create();
+    if (player != null) {
+      _result.player = player;
+    }
+    return _result;
+  }
+  factory PlayerJoinedMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PlayerJoinedMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  PlayerJoinedMessage clone() => PlayerJoinedMessage()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  PlayerJoinedMessage copyWith(void Function(PlayerJoinedMessage) updates) => super.copyWith((message) => updates(message as PlayerJoinedMessage)) as PlayerJoinedMessage; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static PlayerJoinedMessage create() => PlayerJoinedMessage._();
+  PlayerJoinedMessage createEmptyInstance() => create();
+  static $pb.PbList<PlayerJoinedMessage> createRepeated() => $pb.PbList<PlayerJoinedMessage>();
+  @$core.pragma('dart2js:noInline')
+  static PlayerJoinedMessage getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PlayerJoinedMessage>(create);
+  static PlayerJoinedMessage? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.Player get player => $_getN(0);
+  @$pb.TagNumber(1)
+  set player($0.Player v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasPlayer() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearPlayer() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.Player ensurePlayer() => $_ensure(0);
+}
+
+class PlayerLeftMessage extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PlayerLeftMessage', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'playerId')
+    ..hasRequiredFields = false
+  ;
+
+  PlayerLeftMessage._() : super();
+  factory PlayerLeftMessage({
+    $core.String? playerId,
+  }) {
+    final _result = create();
+    if (playerId != null) {
+      _result.playerId = playerId;
+    }
+    return _result;
+  }
+  factory PlayerLeftMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PlayerLeftMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  PlayerLeftMessage clone() => PlayerLeftMessage()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  PlayerLeftMessage copyWith(void Function(PlayerLeftMessage) updates) => super.copyWith((message) => updates(message as PlayerLeftMessage)) as PlayerLeftMessage; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static PlayerLeftMessage create() => PlayerLeftMessage._();
+  PlayerLeftMessage createEmptyInstance() => create();
+  static $pb.PbList<PlayerLeftMessage> createRepeated() => $pb.PbList<PlayerLeftMessage>();
+  @$core.pragma('dart2js:noInline')
+  static PlayerLeftMessage getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PlayerLeftMessage>(create);
+  static PlayerLeftMessage? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get playerId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set playerId($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasPlayerId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearPlayerId() => clearField(1);
+}
+

@@ -79,3 +79,23 @@ const JoinRoomRequest$json = const {
 
 /// Descriptor for `JoinRoomRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List joinRoomRequestDescriptor = $convert.base64Decode('Cg9Kb2luUm9vbVJlcXVlc3QSFwoHcm9vbV9pZBgBIAEoCVIGcm9vbUlkEhsKCXBsYXllcl9pZBgCIAEoCVIIcGxheWVySWQ=');
+@$core.Deprecated('Use playerJoinedMessageDescriptor instead')
+const PlayerJoinedMessage$json = const {
+  '1': 'PlayerJoinedMessage',
+  '2': const [
+    const {'1': 'player', '3': 1, '4': 1, '5': 11, '6': '.model.v1.Player', '10': 'player'},
+  ],
+};
+
+/// Descriptor for `PlayerJoinedMessage`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List playerJoinedMessageDescriptor = $convert.base64Decode('ChNQbGF5ZXJKb2luZWRNZXNzYWdlEigKBnBsYXllchgBIAEoCzIQLm1vZGVsLnYxLlBsYXllclIGcGxheWVy');
+@$core.Deprecated('Use playerLeftMessageDescriptor instead')
+const PlayerLeftMessage$json = const {
+  '1': 'PlayerLeftMessage',
+  '2': const [
+    const {'1': 'player_id', '3': 1, '4': 1, '5': 9, '10': 'playerId'},
+  ],
+};
+
+/// Descriptor for `PlayerLeftMessage`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List playerLeftMessageDescriptor = $convert.base64Decode('ChFQbGF5ZXJMZWZ0TWVzc2FnZRIbCglwbGF5ZXJfaWQYASABKAlSCHBsYXllcklk');
