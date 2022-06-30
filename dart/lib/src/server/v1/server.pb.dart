@@ -543,11 +543,61 @@ class FatalMessage extends $pb.GeneratedMessage {
   void clearError() => clearField(1);
 }
 
+class InitRoomMessage extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InitRoomMessage', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.v1'), createEmptyInstance: create)
+    ..aOM<$0.Room>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'room', subBuilder: $0.Room.create)
+    ..hasRequiredFields = false
+  ;
+
+  InitRoomMessage._() : super();
+  factory InitRoomMessage({
+    $0.Room? room,
+  }) {
+    final _result = create();
+    if (room != null) {
+      _result.room = room;
+    }
+    return _result;
+  }
+  factory InitRoomMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory InitRoomMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  InitRoomMessage clone() => InitRoomMessage()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  InitRoomMessage copyWith(void Function(InitRoomMessage) updates) => super.copyWith((message) => updates(message as InitRoomMessage)) as InitRoomMessage; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static InitRoomMessage create() => InitRoomMessage._();
+  InitRoomMessage createEmptyInstance() => create();
+  static $pb.PbList<InitRoomMessage> createRepeated() => $pb.PbList<InitRoomMessage>();
+  @$core.pragma('dart2js:noInline')
+  static InitRoomMessage getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<InitRoomMessage>(create);
+  static InitRoomMessage? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.Room get room => $_getN(0);
+  @$pb.TagNumber(1)
+  set room($0.Room v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasRoom() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearRoom() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.Room ensureRoom() => $_ensure(0);
+}
+
 enum Message_Message {
   joined, 
   left, 
   words, 
   fatal, 
+  initRoom, 
   notSet
 }
 
@@ -557,14 +607,16 @@ class Message extends $pb.GeneratedMessage {
     2 : Message_Message.left,
     3 : Message_Message.words,
     4 : Message_Message.fatal,
+    5 : Message_Message.initRoom,
     0 : Message_Message.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Message', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.v1'), createEmptyInstance: create)
-    ..oo(0, [1, 2, 3, 4])
+    ..oo(0, [1, 2, 3, 4, 5])
     ..aOM<PlayerJoinedMessage>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'joined', subBuilder: PlayerJoinedMessage.create)
     ..aOM<PlayerLeftMessage>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'left', subBuilder: PlayerLeftMessage.create)
     ..aOM<WordsMessage>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'words', subBuilder: WordsMessage.create)
     ..aOM<FatalMessage>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'fatal', subBuilder: FatalMessage.create)
+    ..aOM<InitRoomMessage>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'initRoom', subBuilder: InitRoomMessage.create)
     ..hasRequiredFields = false
   ;
 
@@ -574,6 +626,7 @@ class Message extends $pb.GeneratedMessage {
     PlayerLeftMessage? left,
     WordsMessage? words,
     FatalMessage? fatal,
+    InitRoomMessage? initRoom,
   }) {
     final _result = create();
     if (joined != null) {
@@ -587,6 +640,9 @@ class Message extends $pb.GeneratedMessage {
     }
     if (fatal != null) {
       _result.fatal = fatal;
+    }
+    if (initRoom != null) {
+      _result.initRoom = initRoom;
     }
     return _result;
   }
@@ -657,5 +713,16 @@ class Message extends $pb.GeneratedMessage {
   void clearFatal() => clearField(4);
   @$pb.TagNumber(4)
   FatalMessage ensureFatal() => $_ensure(3);
+
+  @$pb.TagNumber(5)
+  InitRoomMessage get initRoom => $_getN(4);
+  @$pb.TagNumber(5)
+  set initRoom(InitRoomMessage v) { setField(5, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasInitRoom() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearInitRoom() => clearField(5);
+  @$pb.TagNumber(5)
+  InitRoomMessage ensureInitRoom() => $_ensure(4);
 }
 

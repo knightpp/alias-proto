@@ -119,6 +119,16 @@ const FatalMessage$json = const {
 
 /// Descriptor for `FatalMessage`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List fatalMessageDescriptor = $convert.base64Decode('CgxGYXRhbE1lc3NhZ2USFAoFZXJyb3IYASABKAlSBWVycm9y');
+@$core.Deprecated('Use initRoomMessageDescriptor instead')
+const InitRoomMessage$json = const {
+  '1': 'InitRoomMessage',
+  '2': const [
+    const {'1': 'room', '3': 1, '4': 1, '5': 11, '6': '.model.v1.Room', '10': 'room'},
+  ],
+};
+
+/// Descriptor for `InitRoomMessage`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List initRoomMessageDescriptor = $convert.base64Decode('Cg9Jbml0Um9vbU1lc3NhZ2USIgoEcm9vbRgBIAEoCzIOLm1vZGVsLnYxLlJvb21SBHJvb20=');
 @$core.Deprecated('Use messageDescriptor instead')
 const Message$json = const {
   '1': 'Message',
@@ -127,6 +137,7 @@ const Message$json = const {
     const {'1': 'left', '3': 2, '4': 1, '5': 11, '6': '.server.v1.PlayerLeftMessage', '9': 0, '10': 'left'},
     const {'1': 'words', '3': 3, '4': 1, '5': 11, '6': '.server.v1.WordsMessage', '9': 0, '10': 'words'},
     const {'1': 'fatal', '3': 4, '4': 1, '5': 11, '6': '.server.v1.FatalMessage', '9': 0, '10': 'fatal'},
+    const {'1': 'init_room', '3': 5, '4': 1, '5': 11, '6': '.server.v1.InitRoomMessage', '9': 0, '10': 'initRoom'},
   ],
   '8': const [
     const {'1': 'message'},
@@ -134,4 +145,4 @@ const Message$json = const {
 };
 
 /// Descriptor for `Message`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List messageDescriptor = $convert.base64Decode('CgdNZXNzYWdlEjgKBmpvaW5lZBgBIAEoCzIeLnNlcnZlci52MS5QbGF5ZXJKb2luZWRNZXNzYWdlSABSBmpvaW5lZBIyCgRsZWZ0GAIgASgLMhwuc2VydmVyLnYxLlBsYXllckxlZnRNZXNzYWdlSABSBGxlZnQSLwoFd29yZHMYAyABKAsyFy5zZXJ2ZXIudjEuV29yZHNNZXNzYWdlSABSBXdvcmRzEi8KBWZhdGFsGAQgASgLMhcuc2VydmVyLnYxLkZhdGFsTWVzc2FnZUgAUgVmYXRhbEIJCgdtZXNzYWdl');
+final $typed_data.Uint8List messageDescriptor = $convert.base64Decode('CgdNZXNzYWdlEjgKBmpvaW5lZBgBIAEoCzIeLnNlcnZlci52MS5QbGF5ZXJKb2luZWRNZXNzYWdlSABSBmpvaW5lZBIyCgRsZWZ0GAIgASgLMhwuc2VydmVyLnYxLlBsYXllckxlZnRNZXNzYWdlSABSBGxlZnQSLwoFd29yZHMYAyABKAsyFy5zZXJ2ZXIudjEuV29yZHNNZXNzYWdlSABSBXdvcmRzEi8KBWZhdGFsGAQgASgLMhcuc2VydmVyLnYxLkZhdGFsTWVzc2FnZUgAUgVmYXRhbBI5Cglpbml0X3Jvb20YBSABKAsyGi5zZXJ2ZXIudjEuSW5pdFJvb21NZXNzYWdlSABSCGluaXRSb29tQgkKB21lc3NhZ2U=');

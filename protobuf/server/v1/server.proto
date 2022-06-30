@@ -37,11 +37,14 @@ message WordsMessage { repeated string words = 1; }
 
 message FatalMessage { string error = 1; }
 
+message InitRoomMessage { model.v1.Room room = 1; }
+
 message Message {
   oneof message {
     PlayerJoinedMessage joined = 1;
     PlayerLeftMessage left = 2;
     WordsMessage words = 3;
     FatalMessage fatal = 4;
+    InitRoomMessage init_room = 5;
   }
 }
