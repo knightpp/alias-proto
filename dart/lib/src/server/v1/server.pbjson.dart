@@ -109,6 +109,16 @@ const WordsMessage$json = const {
 
 /// Descriptor for `WordsMessage`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List wordsMessageDescriptor = $convert.base64Decode('CgxXb3Jkc01lc3NhZ2USFAoFd29yZHMYASADKAlSBXdvcmRz');
+@$core.Deprecated('Use fatalMessageDescriptor instead')
+const FatalMessage$json = const {
+  '1': 'FatalMessage',
+  '2': const [
+    const {'1': 'error', '3': 1, '4': 1, '5': 9, '10': 'error'},
+  ],
+};
+
+/// Descriptor for `FatalMessage`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List fatalMessageDescriptor = $convert.base64Decode('CgxGYXRhbE1lc3NhZ2USFAoFZXJyb3IYASABKAlSBWVycm9y');
 @$core.Deprecated('Use messageDescriptor instead')
 const Message$json = const {
   '1': 'Message',
@@ -116,6 +126,7 @@ const Message$json = const {
     const {'1': 'joined', '3': 1, '4': 1, '5': 11, '6': '.server.v1.PlayerJoinedMessage', '9': 0, '10': 'joined'},
     const {'1': 'left', '3': 2, '4': 1, '5': 11, '6': '.server.v1.PlayerLeftMessage', '9': 0, '10': 'left'},
     const {'1': 'words', '3': 3, '4': 1, '5': 11, '6': '.server.v1.WordsMessage', '9': 0, '10': 'words'},
+    const {'1': 'fatal', '3': 4, '4': 1, '5': 11, '6': '.server.v1.FatalMessage', '9': 0, '10': 'fatal'},
   ],
   '8': const [
     const {'1': 'message'},
@@ -123,4 +134,4 @@ const Message$json = const {
 };
 
 /// Descriptor for `Message`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List messageDescriptor = $convert.base64Decode('CgdNZXNzYWdlEjgKBmpvaW5lZBgBIAEoCzIeLnNlcnZlci52MS5QbGF5ZXJKb2luZWRNZXNzYWdlSABSBmpvaW5lZBIyCgRsZWZ0GAIgASgLMhwuc2VydmVyLnYxLlBsYXllckxlZnRNZXNzYWdlSABSBGxlZnQSLwoFd29yZHMYAyABKAsyFy5zZXJ2ZXIudjEuV29yZHNNZXNzYWdlSABSBXdvcmRzQgkKB21lc3NhZ2U=');
+final $typed_data.Uint8List messageDescriptor = $convert.base64Decode('CgdNZXNzYWdlEjgKBmpvaW5lZBgBIAEoCzIeLnNlcnZlci52MS5QbGF5ZXJKb2luZWRNZXNzYWdlSABSBmpvaW5lZBIyCgRsZWZ0GAIgASgLMhwuc2VydmVyLnYxLlBsYXllckxlZnRNZXNzYWdlSABSBGxlZnQSLwoFd29yZHMYAyABKAsyFy5zZXJ2ZXIudjEuV29yZHNNZXNzYWdlSABSBXdvcmRzEi8KBWZhdGFsGAQgASgLMhcuc2VydmVyLnYxLkZhdGFsTWVzc2FnZUgAUgVmYXRhbEIJCgdtZXNzYWdl');

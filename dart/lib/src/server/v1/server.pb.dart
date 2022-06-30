@@ -496,10 +496,58 @@ class WordsMessage extends $pb.GeneratedMessage {
   $core.List<$core.String> get words => $_getList(0);
 }
 
+class FatalMessage extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'FatalMessage', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'error')
+    ..hasRequiredFields = false
+  ;
+
+  FatalMessage._() : super();
+  factory FatalMessage({
+    $core.String? error,
+  }) {
+    final _result = create();
+    if (error != null) {
+      _result.error = error;
+    }
+    return _result;
+  }
+  factory FatalMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory FatalMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  FatalMessage clone() => FatalMessage()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  FatalMessage copyWith(void Function(FatalMessage) updates) => super.copyWith((message) => updates(message as FatalMessage)) as FatalMessage; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static FatalMessage create() => FatalMessage._();
+  FatalMessage createEmptyInstance() => create();
+  static $pb.PbList<FatalMessage> createRepeated() => $pb.PbList<FatalMessage>();
+  @$core.pragma('dart2js:noInline')
+  static FatalMessage getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<FatalMessage>(create);
+  static FatalMessage? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get error => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set error($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasError() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearError() => clearField(1);
+}
+
 enum Message_Message {
   joined, 
   left, 
   words, 
+  fatal, 
   notSet
 }
 
@@ -508,13 +556,15 @@ class Message extends $pb.GeneratedMessage {
     1 : Message_Message.joined,
     2 : Message_Message.left,
     3 : Message_Message.words,
+    4 : Message_Message.fatal,
     0 : Message_Message.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Message', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.v1'), createEmptyInstance: create)
-    ..oo(0, [1, 2, 3])
+    ..oo(0, [1, 2, 3, 4])
     ..aOM<PlayerJoinedMessage>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'joined', subBuilder: PlayerJoinedMessage.create)
     ..aOM<PlayerLeftMessage>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'left', subBuilder: PlayerLeftMessage.create)
     ..aOM<WordsMessage>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'words', subBuilder: WordsMessage.create)
+    ..aOM<FatalMessage>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'fatal', subBuilder: FatalMessage.create)
     ..hasRequiredFields = false
   ;
 
@@ -523,6 +573,7 @@ class Message extends $pb.GeneratedMessage {
     PlayerJoinedMessage? joined,
     PlayerLeftMessage? left,
     WordsMessage? words,
+    FatalMessage? fatal,
   }) {
     final _result = create();
     if (joined != null) {
@@ -533,6 +584,9 @@ class Message extends $pb.GeneratedMessage {
     }
     if (words != null) {
       _result.words = words;
+    }
+    if (fatal != null) {
+      _result.fatal = fatal;
     }
     return _result;
   }
@@ -592,5 +646,16 @@ class Message extends $pb.GeneratedMessage {
   void clearWords() => clearField(3);
   @$pb.TagNumber(3)
   WordsMessage ensureWords() => $_ensure(2);
+
+  @$pb.TagNumber(4)
+  FatalMessage get fatal => $_getN(3);
+  @$pb.TagNumber(4)
+  set fatal(FatalMessage v) { setField(4, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasFatal() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearFatal() => clearField(4);
+  @$pb.TagNumber(4)
+  FatalMessage ensureFatal() => $_ensure(3);
 }
 
