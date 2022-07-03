@@ -5,24 +5,24 @@ package model.v1;
 option go_package = "github.com/knightpp/alias-proto/go/pkg/model/v1";
 
 message Room {
-  string id = 1;
-  string name = 2;
-  string leader_id = 3;
-  bool is_public = 4;
-  string langugage = 5;
-  repeated Player lobby = 6;
-  repeated Team teams = 7;
+  string id = 1;              //must be string (0 < x > 256 symbols)
+  string name = 2;            //must be string (0 < x > 256 symbols)
+  string leader_id = 3;       //must be string (0 < x > 256 symbols)
+  bool is_public = 4;         //must be bool (true or false)
+  string language = 5;        //must be string (eng or ukr)
+  repeated Player lobby = 6;  //must be string (0 < x > 256 symbols)
+  repeated Team teams = 7;    //must be string (0 < x > 256 symbols)
 }
 
 message Player {
-  string id = 1;
-  string name = 2;
-  string gravatar_url = 3;
+  string id = 1;            //must be string (0 < x > 256 symbols)
+  string name = 2;          //must be string (0 < x > 256 symbols)
+  string gravatar_url = 3;  //valid urlimport "validate/validate.proto";
 }
 
 message Team {
-  string id = 1;
-  string name = 2;
-  Player player_a = 3;
-  Player player_b = 4;
+  string id = 1;        //must be string (0 < x > 256 symbols)
+  string name = 2;      //must be string (0 < x > 256 symbols)
+  Player player_a = 3;  //must be string (0 < x > 256 symbols)
+  Player player_b = 4;  //must be string (0 < x > 256 symbols)
 }

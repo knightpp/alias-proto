@@ -16,14 +16,14 @@ const Room$json = const {
     const {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
     const {'1': 'leader_id', '3': 3, '4': 1, '5': 9, '10': 'leaderId'},
     const {'1': 'is_public', '3': 4, '4': 1, '5': 8, '10': 'isPublic'},
-    const {'1': 'langugage', '3': 5, '4': 1, '5': 9, '10': 'langugage'},
+    const {'1': 'language', '3': 5, '4': 1, '5': 9, '10': 'language'},
     const {'1': 'lobby', '3': 6, '4': 3, '5': 11, '6': '.model.v1.Player', '10': 'lobby'},
     const {'1': 'teams', '3': 7, '4': 3, '5': 11, '6': '.model.v1.Team', '10': 'teams'},
   ],
 };
 
 /// Descriptor for `Room`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List roomDescriptor = $convert.base64Decode('CgRSb29tEg4KAmlkGAEgASgJUgJpZBISCgRuYW1lGAIgASgJUgRuYW1lEhsKCWxlYWRlcl9pZBgDIAEoCVIIbGVhZGVySWQSGwoJaXNfcHVibGljGAQgASgIUghpc1B1YmxpYxIcCglsYW5ndWdhZ2UYBSABKAlSCWxhbmd1Z2FnZRImCgVsb2JieRgGIAMoCzIQLm1vZGVsLnYxLlBsYXllclIFbG9iYnkSJAoFdGVhbXMYByADKAsyDi5tb2RlbC52MS5UZWFtUgV0ZWFtcw==');
+final $typed_data.Uint8List roomDescriptor = $convert.base64Decode('CgRSb29tEg4KAmlkGAEgASgJUgJpZBISCgRuYW1lGAIgASgJUgRuYW1lEhsKCWxlYWRlcl9pZBgDIAEoCVIIbGVhZGVySWQSGwoJaXNfcHVibGljGAQgASgIUghpc1B1YmxpYxIaCghsYW5ndWFnZRgFIAEoCVIIbGFuZ3VhZ2USJgoFbG9iYnkYBiADKAsyEC5tb2RlbC52MS5QbGF5ZXJSBWxvYmJ5EiQKBXRlYW1zGAcgAygLMg4ubW9kZWwudjEuVGVhbVIFdGVhbXM=');
 @$core.Deprecated('Use playerDescriptor instead')
 const Player$json = const {
   '1': 'Player',
