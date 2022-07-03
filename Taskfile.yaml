@@ -1,0 +1,9 @@
+version: "3"
+
+tasks:
+  default: task --list-all
+
+  generate:
+    cmds:
+      - docker build -t alias-proto .
+      - docker run --rm -v "$PWD:/workspace" alias-proto bash -c "cd /workspace && buf generate"

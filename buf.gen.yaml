@@ -3,5 +3,11 @@ plugins:
   - name: go
     out: ./go/pkg/
     opt: paths=source_relative
+  - name: validate
+    out: ./go/pkg/
+    opt:
+      - lang=go
+      - paths=source_relative
+
   - name: dart
     out: ./dart/lib/src/

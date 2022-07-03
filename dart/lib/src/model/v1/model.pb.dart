@@ -15,7 +15,7 @@ class Room extends $pb.GeneratedMessage {
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'leaderId')
     ..aOB(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isPublic')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'langugage')
+    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'language')
     ..pc<Player>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lobby', $pb.PbFieldType.PM, subBuilder: Player.create)
     ..pc<Team>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'teams', $pb.PbFieldType.PM, subBuilder: Team.create)
     ..hasRequiredFields = false
@@ -27,7 +27,7 @@ class Room extends $pb.GeneratedMessage {
     $core.String? name,
     $core.String? leaderId,
     $core.bool? isPublic,
-    $core.String? langugage,
+    $core.String? language,
     $core.Iterable<Player>? lobby,
     $core.Iterable<Team>? teams,
   }) {
@@ -44,8 +44,8 @@ class Room extends $pb.GeneratedMessage {
     if (isPublic != null) {
       _result.isPublic = isPublic;
     }
-    if (langugage != null) {
-      _result.langugage = langugage;
+    if (language != null) {
+      _result.language = language;
     }
     if (lobby != null) {
       _result.lobby.addAll(lobby);
@@ -113,13 +113,13 @@ class Room extends $pb.GeneratedMessage {
   void clearIsPublic() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.String get langugage => $_getSZ(4);
+  $core.String get language => $_getSZ(4);
   @$pb.TagNumber(5)
-  set langugage($core.String v) { $_setString(4, v); }
+  set language($core.String v) { $_setString(4, v); }
   @$pb.TagNumber(5)
-  $core.bool hasLangugage() => $_has(4);
+  $core.bool hasLanguage() => $_has(4);
   @$pb.TagNumber(5)
-  void clearLangugage() => clearField(5);
+  void clearLanguage() => clearField(5);
 
   @$pb.TagNumber(6)
   $core.List<Player> get lobby => $_getList(5);
