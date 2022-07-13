@@ -79,6 +79,29 @@ const JoinRoomRequest$json = const {
 
 /// Descriptor for `JoinRoomRequest`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List joinRoomRequestDescriptor = $convert.base64Decode('Cg9Kb2luUm9vbVJlcXVlc3QSFwoHcm9vbV9pZBgBIAEoCVIGcm9vbUlkEhsKCXBsYXllcl9pZBgCIAEoCVIIcGxheWVySWQ=');
+@$core.Deprecated('Use createTeamRequestDescriptor instead')
+const CreateTeamRequest$json = const {
+  '1': 'CreateTeamRequest',
+  '2': const [
+    const {'1': 'name', '3': 1, '4': 1, '5': 9, '9': 0, '10': 'name', '17': true},
+  ],
+  '8': const [
+    const {'1': '_name'},
+  ],
+};
+
+/// Descriptor for `CreateTeamRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List createTeamRequestDescriptor = $convert.base64Decode('ChFDcmVhdGVUZWFtUmVxdWVzdBIXCgRuYW1lGAEgASgJSABSBG5hbWWIAQFCBwoFX25hbWU=');
+@$core.Deprecated('Use createTeamResponseDescriptor instead')
+const CreateTeamResponse$json = const {
+  '1': 'CreateTeamResponse',
+  '2': const [
+    const {'1': 'team', '3': 1, '4': 1, '5': 11, '6': '.model.v1.Team', '10': 'team'},
+  ],
+};
+
+/// Descriptor for `CreateTeamResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List createTeamResponseDescriptor = $convert.base64Decode('ChJDcmVhdGVUZWFtUmVzcG9uc2USIgoEdGVhbRgBIAEoCzIOLm1vZGVsLnYxLlRlYW1SBHRlYW0=');
 @$core.Deprecated('Use playerJoinedMessageDescriptor instead')
 const PlayerJoinedMessage$json = const {
   '1': 'PlayerJoinedMessage',
@@ -129,6 +152,26 @@ const InitRoomMessage$json = const {
 
 /// Descriptor for `InitRoomMessage`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List initRoomMessageDescriptor = $convert.base64Decode('Cg9Jbml0Um9vbU1lc3NhZ2USIgoEcm9vbRgBIAEoCzIOLm1vZGVsLnYxLlJvb21SBHJvb20=');
+@$core.Deprecated('Use teamMessageDescriptor instead')
+const TeamMessage$json = const {
+  '1': 'TeamMessage',
+  '2': const [
+    const {'1': 'team', '3': 1, '4': 1, '5': 11, '6': '.model.v1.Team', '10': 'team'},
+  ],
+};
+
+/// Descriptor for `TeamMessage`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List teamMessageDescriptor = $convert.base64Decode('CgtUZWFtTWVzc2FnZRIiCgR0ZWFtGAEgASgLMg4ubW9kZWwudjEuVGVhbVIEdGVhbQ==');
+@$core.Deprecated('Use errorMessageDescriptor instead')
+const ErrorMessage$json = const {
+  '1': 'ErrorMessage',
+  '2': const [
+    const {'1': 'error', '3': 1, '4': 1, '5': 9, '10': 'error'},
+  ],
+};
+
+/// Descriptor for `ErrorMessage`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List errorMessageDescriptor = $convert.base64Decode('CgxFcnJvck1lc3NhZ2USFAoFZXJyb3IYASABKAlSBWVycm9y');
 @$core.Deprecated('Use messageDescriptor instead')
 const Message$json = const {
   '1': 'Message',
@@ -138,6 +181,8 @@ const Message$json = const {
     const {'1': 'words', '3': 3, '4': 1, '5': 11, '6': '.server.v1.WordsMessage', '9': 0, '10': 'words'},
     const {'1': 'fatal', '3': 4, '4': 1, '5': 11, '6': '.server.v1.FatalMessage', '9': 0, '10': 'fatal'},
     const {'1': 'init_room', '3': 5, '4': 1, '5': 11, '6': '.server.v1.InitRoomMessage', '9': 0, '10': 'initRoom'},
+    const {'1': 'team', '3': 6, '4': 1, '5': 11, '6': '.server.v1.TeamMessage', '9': 0, '10': 'team'},
+    const {'1': 'error', '3': 7, '4': 1, '5': 11, '6': '.server.v1.ErrorMessage', '9': 0, '10': 'error'},
   ],
   '8': const [
     const {'1': 'message'},
@@ -145,4 +190,4 @@ const Message$json = const {
 };
 
 /// Descriptor for `Message`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List messageDescriptor = $convert.base64Decode('CgdNZXNzYWdlEjgKBmpvaW5lZBgBIAEoCzIeLnNlcnZlci52MS5QbGF5ZXJKb2luZWRNZXNzYWdlSABSBmpvaW5lZBIyCgRsZWZ0GAIgASgLMhwuc2VydmVyLnYxLlBsYXllckxlZnRNZXNzYWdlSABSBGxlZnQSLwoFd29yZHMYAyABKAsyFy5zZXJ2ZXIudjEuV29yZHNNZXNzYWdlSABSBXdvcmRzEi8KBWZhdGFsGAQgASgLMhcuc2VydmVyLnYxLkZhdGFsTWVzc2FnZUgAUgVmYXRhbBI5Cglpbml0X3Jvb20YBSABKAsyGi5zZXJ2ZXIudjEuSW5pdFJvb21NZXNzYWdlSABSCGluaXRSb29tQgkKB21lc3NhZ2U=');
+final $typed_data.Uint8List messageDescriptor = $convert.base64Decode('CgdNZXNzYWdlEjgKBmpvaW5lZBgBIAEoCzIeLnNlcnZlci52MS5QbGF5ZXJKb2luZWRNZXNzYWdlSABSBmpvaW5lZBIyCgRsZWZ0GAIgASgLMhwuc2VydmVyLnYxLlBsYXllckxlZnRNZXNzYWdlSABSBGxlZnQSLwoFd29yZHMYAyABKAsyFy5zZXJ2ZXIudjEuV29yZHNNZXNzYWdlSABSBXdvcmRzEi8KBWZhdGFsGAQgASgLMhcuc2VydmVyLnYxLkZhdGFsTWVzc2FnZUgAUgVmYXRhbBI5Cglpbml0X3Jvb20YBSABKAsyGi5zZXJ2ZXIudjEuSW5pdFJvb21NZXNzYWdlSABSCGluaXRSb29tEiwKBHRlYW0YBiABKAsyFi5zZXJ2ZXIudjEuVGVhbU1lc3NhZ2VIAFIEdGVhbRIvCgVlcnJvchgHIAEoCzIXLnNlcnZlci52MS5FcnJvck1lc3NhZ2VIAFIFZXJyb3JCCQoHbWVzc2FnZQ==');

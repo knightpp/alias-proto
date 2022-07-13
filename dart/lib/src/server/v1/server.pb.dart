@@ -359,6 +359,102 @@ class JoinRoomRequest extends $pb.GeneratedMessage {
   void clearPlayerId() => clearField(2);
 }
 
+class CreateTeamRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CreateTeamRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
+    ..hasRequiredFields = false
+  ;
+
+  CreateTeamRequest._() : super();
+  factory CreateTeamRequest({
+    $core.String? name,
+  }) {
+    final _result = create();
+    if (name != null) {
+      _result.name = name;
+    }
+    return _result;
+  }
+  factory CreateTeamRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory CreateTeamRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  CreateTeamRequest clone() => CreateTeamRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  CreateTeamRequest copyWith(void Function(CreateTeamRequest) updates) => super.copyWith((message) => updates(message as CreateTeamRequest)) as CreateTeamRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static CreateTeamRequest create() => CreateTeamRequest._();
+  CreateTeamRequest createEmptyInstance() => create();
+  static $pb.PbList<CreateTeamRequest> createRepeated() => $pb.PbList<CreateTeamRequest>();
+  @$core.pragma('dart2js:noInline')
+  static CreateTeamRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CreateTeamRequest>(create);
+  static CreateTeamRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get name => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set name($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasName() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearName() => clearField(1);
+}
+
+class CreateTeamResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CreateTeamResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.v1'), createEmptyInstance: create)
+    ..aOM<$0.Team>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'team', subBuilder: $0.Team.create)
+    ..hasRequiredFields = false
+  ;
+
+  CreateTeamResponse._() : super();
+  factory CreateTeamResponse({
+    $0.Team? team,
+  }) {
+    final _result = create();
+    if (team != null) {
+      _result.team = team;
+    }
+    return _result;
+  }
+  factory CreateTeamResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory CreateTeamResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  CreateTeamResponse clone() => CreateTeamResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  CreateTeamResponse copyWith(void Function(CreateTeamResponse) updates) => super.copyWith((message) => updates(message as CreateTeamResponse)) as CreateTeamResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static CreateTeamResponse create() => CreateTeamResponse._();
+  CreateTeamResponse createEmptyInstance() => create();
+  static $pb.PbList<CreateTeamResponse> createRepeated() => $pb.PbList<CreateTeamResponse>();
+  @$core.pragma('dart2js:noInline')
+  static CreateTeamResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CreateTeamResponse>(create);
+  static CreateTeamResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.Team get team => $_getN(0);
+  @$pb.TagNumber(1)
+  set team($0.Team v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasTeam() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearTeam() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.Team ensureTeam() => $_ensure(0);
+}
+
 class PlayerJoinedMessage extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PlayerJoinedMessage', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.v1'), createEmptyInstance: create)
     ..aOM<$0.Player>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'player', subBuilder: $0.Player.create)
@@ -592,12 +688,110 @@ class InitRoomMessage extends $pb.GeneratedMessage {
   $0.Room ensureRoom() => $_ensure(0);
 }
 
+class TeamMessage extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'TeamMessage', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.v1'), createEmptyInstance: create)
+    ..aOM<$0.Team>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'team', subBuilder: $0.Team.create)
+    ..hasRequiredFields = false
+  ;
+
+  TeamMessage._() : super();
+  factory TeamMessage({
+    $0.Team? team,
+  }) {
+    final _result = create();
+    if (team != null) {
+      _result.team = team;
+    }
+    return _result;
+  }
+  factory TeamMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory TeamMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  TeamMessage clone() => TeamMessage()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  TeamMessage copyWith(void Function(TeamMessage) updates) => super.copyWith((message) => updates(message as TeamMessage)) as TeamMessage; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static TeamMessage create() => TeamMessage._();
+  TeamMessage createEmptyInstance() => create();
+  static $pb.PbList<TeamMessage> createRepeated() => $pb.PbList<TeamMessage>();
+  @$core.pragma('dart2js:noInline')
+  static TeamMessage getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<TeamMessage>(create);
+  static TeamMessage? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $0.Team get team => $_getN(0);
+  @$pb.TagNumber(1)
+  set team($0.Team v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasTeam() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearTeam() => clearField(1);
+  @$pb.TagNumber(1)
+  $0.Team ensureTeam() => $_ensure(0);
+}
+
+class ErrorMessage extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ErrorMessage', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'error')
+    ..hasRequiredFields = false
+  ;
+
+  ErrorMessage._() : super();
+  factory ErrorMessage({
+    $core.String? error,
+  }) {
+    final _result = create();
+    if (error != null) {
+      _result.error = error;
+    }
+    return _result;
+  }
+  factory ErrorMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ErrorMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  ErrorMessage clone() => ErrorMessage()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  ErrorMessage copyWith(void Function(ErrorMessage) updates) => super.copyWith((message) => updates(message as ErrorMessage)) as ErrorMessage; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static ErrorMessage create() => ErrorMessage._();
+  ErrorMessage createEmptyInstance() => create();
+  static $pb.PbList<ErrorMessage> createRepeated() => $pb.PbList<ErrorMessage>();
+  @$core.pragma('dart2js:noInline')
+  static ErrorMessage getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ErrorMessage>(create);
+  static ErrorMessage? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get error => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set error($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasError() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearError() => clearField(1);
+}
+
 enum Message_Message {
   joined, 
   left, 
   words, 
   fatal, 
   initRoom, 
+  team, 
+  error, 
   notSet
 }
 
@@ -608,15 +802,19 @@ class Message extends $pb.GeneratedMessage {
     3 : Message_Message.words,
     4 : Message_Message.fatal,
     5 : Message_Message.initRoom,
+    6 : Message_Message.team,
+    7 : Message_Message.error,
     0 : Message_Message.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Message', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'server.v1'), createEmptyInstance: create)
-    ..oo(0, [1, 2, 3, 4, 5])
+    ..oo(0, [1, 2, 3, 4, 5, 6, 7])
     ..aOM<PlayerJoinedMessage>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'joined', subBuilder: PlayerJoinedMessage.create)
     ..aOM<PlayerLeftMessage>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'left', subBuilder: PlayerLeftMessage.create)
     ..aOM<WordsMessage>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'words', subBuilder: WordsMessage.create)
     ..aOM<FatalMessage>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'fatal', subBuilder: FatalMessage.create)
     ..aOM<InitRoomMessage>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'initRoom', subBuilder: InitRoomMessage.create)
+    ..aOM<TeamMessage>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'team', subBuilder: TeamMessage.create)
+    ..aOM<ErrorMessage>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'error', subBuilder: ErrorMessage.create)
     ..hasRequiredFields = false
   ;
 
@@ -627,6 +825,8 @@ class Message extends $pb.GeneratedMessage {
     WordsMessage? words,
     FatalMessage? fatal,
     InitRoomMessage? initRoom,
+    TeamMessage? team,
+    ErrorMessage? error,
   }) {
     final _result = create();
     if (joined != null) {
@@ -643,6 +843,12 @@ class Message extends $pb.GeneratedMessage {
     }
     if (initRoom != null) {
       _result.initRoom = initRoom;
+    }
+    if (team != null) {
+      _result.team = team;
+    }
+    if (error != null) {
+      _result.error = error;
     }
     return _result;
   }
@@ -724,5 +930,27 @@ class Message extends $pb.GeneratedMessage {
   void clearInitRoom() => clearField(5);
   @$pb.TagNumber(5)
   InitRoomMessage ensureInitRoom() => $_ensure(4);
+
+  @$pb.TagNumber(6)
+  TeamMessage get team => $_getN(5);
+  @$pb.TagNumber(6)
+  set team(TeamMessage v) { setField(6, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasTeam() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearTeam() => clearField(6);
+  @$pb.TagNumber(6)
+  TeamMessage ensureTeam() => $_ensure(5);
+
+  @$pb.TagNumber(7)
+  ErrorMessage get error => $_getN(6);
+  @$pb.TagNumber(7)
+  set error(ErrorMessage v) { setField(7, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasError() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearError() => clearField(7);
+  @$pb.TagNumber(7)
+  ErrorMessage ensureError() => $_ensure(6);
 }
 
