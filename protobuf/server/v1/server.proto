@@ -6,32 +6,36 @@ option go_package = "github.com/knightpp/alias-proto/go/pkg/server/v1";
 
 import "model/v1/model.proto";
 
+service GameService{
+  rpc CreateRoom (CreateRoomRequest) returns (CreateRoomResponse);
+  rpc ListRooms(ListRoomsRequest) returns (ListRoomsResponse);
+  rpc CreateTeam(CreateTeamRequest) returns (CreateTeamResponse);
+}
+
 message CreateRoomRequest {
   string name = 1;
   bool is_public = 2;
   string language = 3;
   optional string password = 4;
 }
-
 message CreateRoomResponse { string room_id = 1; }
 
+message ListRoomsRequest {}
 message ListRoomsResponse { repeated model.v1.Room rooms = 1; }
+
+message CreateTeamRequest { optional string name = 1; }
+message CreateTeamResponse { model.v1.Team team = 1; }
 
 message UserSimpleLoginRequest {
   string name = 1;
   optional string email = 2;
 }
-
 message UserSimpleLoginResponse { model.v1.Player player = 1; }
 
 message JoinRoomRequest {
   string room_id = 1;
   string player_id = 2;
 }
-
-message CreateTeamRequest { optional string name = 1; }
-
-message CreateTeamResponse { model.v1.Team team = 1; }
 
 // Socket messages
 
