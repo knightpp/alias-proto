@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+package game_service;
+
+option go_package = "github.com/knightpp/alias-proto/go/gamesvc/";
+
+service GameService {
+  rpc CreateRoom(CreateRoomRequest) returns (CreateRoomResponse);
+  rpc ListRooms(ListRoomsRequest) returns (ListRoomsResponse);
+  rpc CreateTeam(CreateTeamRequest) returns (CreateTeamResponse);
+  rpc Join(stream Message) returns (stream Message);
+}
+
+message Room {
+  string id = 1;
+  string name = 2;
+  string leader_id = 3;
+  bool is_public = 4;
+  string langugage = 5;
+  repeated Player lobby = 6;
+  repeated Team teams = 7;
+}
+
+message Player {
+  string id = 1;
+  string name = 2;
+  string gravatar_url = 3;
+}
+
+message Team {
+  string id = 1;
+  string name = 2;
+  Player player_a = 3;
+  Player player_b = 4;
+}
+
+message CreateRoomRequest {
+  string name = 1;
+  bool is_public = 2;
+  string language = 3;
+  optional string password = 4;
+}
+message CreateRoomResponse {
+  string room_id = 1;
+}
+
+message ListRoomsRequest {}
+message ListRoomsResponse {
+  repeated Room rooms = 1;
+}
+
+message CreateTeamRequest {
+  optional string name = 1;
+}
+message CreateTeamResponse {
+  Team team = 1;
+}
+
+message JoinRoomRequest {
+  string room_id = 1;
+  string player_id = 2;
+}
+
+// Socket messages
+
+message MsgFatal {
+  string error = 1;
+}
+
+message MsgError {
+  string error = 1;
+}
+
+message MsgUpdateRoom {
+  Room room = 1;
+}
+
+message Message {
+  oneof message {
+    MsgError error = 1;
+    MsgFatal fatal = 2;
+    MsgUpdateRoom update_room = 3;
+  }
+}
