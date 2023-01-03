@@ -8,6 +8,22 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
+@$core.Deprecated('Use accountDescriptor instead')
+const Account$json = const {
+  '1': 'Account',
+  '2': const [
+    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    const {'1': 'auth_token', '3': 2, '4': 1, '5': 9, '10': 'authToken'},
+    const {'1': 'name', '3': 3, '4': 1, '5': 9, '10': 'name'},
+    const {'1': 'email', '3': 4, '4': 1, '5': 9, '9': 0, '10': 'email', '17': true},
+  ],
+  '8': const [
+    const {'1': '_email'},
+  ],
+};
+
+/// Descriptor for `Account`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List accountDescriptor = $convert.base64Decode('CgdBY2NvdW50Eg4KAmlkGAEgASgJUgJpZBIdCgphdXRoX3Rva2VuGAIgASgJUglhdXRoVG9rZW4SEgoEbmFtZRgDIAEoCVIEbmFtZRIZCgVlbWFpbBgEIAEoCUgAUgVlbWFpbIgBAUIICgZfZW1haWw=');
 @$core.Deprecated('Use loginGuestRequestDescriptor instead')
 const LoginGuestRequest$json = const {
   '1': 'LoginGuestRequest',
@@ -26,12 +42,12 @@ final $typed_data.Uint8List loginGuestRequestDescriptor = $convert.base64Decode(
 const LoginGuestResponse$json = const {
   '1': 'LoginGuestResponse',
   '2': const [
-    const {'1': 'token', '3': 1, '4': 1, '5': 9, '10': 'token'},
+    const {'1': 'account', '3': 1, '4': 1, '5': 11, '6': '.login_service.Account', '10': 'account'},
   ],
 };
 
 /// Descriptor for `LoginGuestResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List loginGuestResponseDescriptor = $convert.base64Decode('ChJMb2dpbkd1ZXN0UmVzcG9uc2USFAoFdG9rZW4YASABKAlSBXRva2Vu');
+final $typed_data.Uint8List loginGuestResponseDescriptor = $convert.base64Decode('ChJMb2dpbkd1ZXN0UmVzcG9uc2USMAoHYWNjb3VudBgBIAEoCzIWLmxvZ2luX3NlcnZpY2UuQWNjb3VudFIHYWNjb3VudA==');
 const $core.Map<$core.String, $core.dynamic> LoginServiceBase$json = const {
   '1': 'LoginService',
   '2': const [
@@ -43,6 +59,7 @@ const $core.Map<$core.String, $core.dynamic> LoginServiceBase$json = const {
 const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> LoginServiceBase$messageJson = const {
   '.login_service.LoginGuestRequest': LoginGuestRequest$json,
   '.login_service.LoginGuestResponse': LoginGuestResponse$json,
+  '.login_service.Account': Account$json,
 };
 
 /// Descriptor for `LoginService`. Decode as a `google.protobuf.ServiceDescriptorProto`.

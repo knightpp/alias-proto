@@ -22,9 +22,8 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type GameServiceClient interface {
-	CreateRoom(ctx context.Context, in *CreateRoomRequest, opts ...grpc.CallOption) (*CreateRoomResponse, error)
 	ListRooms(ctx context.Context, in *ListRoomsRequest, opts ...grpc.CallOption) (*ListRoomsResponse, error)
-	CreateTeam(ctx context.Context, in *CreateTeamRequest, opts ...grpc.CallOption) (*CreateTeamResponse, error)
+	CreateRoom(ctx context.Context, in *CreateRoomRequest, opts ...grpc.CallOption) (*CreateRoomResponse, error)
 	Join(ctx context.Context, opts ...grpc.CallOption) (GameService_JoinClient, error)
 }
 
@@ -36,15 +35,6 @@ func NewGameServiceClient(cc grpc.ClientConnInterface) GameServiceClient {
 	return &gameServiceClient{cc}
 }
 
-func (c *gameServiceClient) CreateRoom(ctx context.Context, in *CreateRoomRequest, opts ...grpc.CallOption) (*CreateRoomResponse, error) {
-	out := new(CreateRoomResponse)
-	err := c.cc.Invoke(ctx, "/game_service.GameService/CreateRoom", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *gameServiceClient) ListRooms(ctx context.Context, in *ListRoomsRequest, opts ...grpc.CallOption) (*ListRoomsResponse, error) {
 	out := new(ListRoomsResponse)
 	err := c.cc.Invoke(ctx, "/game_service.GameService/ListRooms", in, out, opts...)
@@ -54,9 +44,9 @@ func (c *gameServiceClient) ListRooms(ctx context.Context, in *ListRoomsRequest,
 	return out, nil
 }
 
-func (c *gameServiceClient) CreateTeam(ctx context.Context, in *CreateTeamRequest, opts ...grpc.CallOption) (*CreateTeamResponse, error) {
-	out := new(CreateTeamResponse)
-	err := c.cc.Invoke(ctx, "/game_service.GameService/CreateTeam", in, out, opts...)
+func (c *gameServiceClient) CreateRoom(ctx context.Context, in *CreateRoomRequest, opts ...grpc.CallOption) (*CreateRoomResponse, error) {
+	out := new(CreateRoomResponse)
+	err := c.cc.Invoke(ctx, "/game_service.GameService/CreateRoom", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -98,9 +88,8 @@ func (x *gameServiceJoinClient) Recv() (*Message, error) {
 // All implementations must embed UnimplementedGameServiceServer
 // for forward compatibility
 type GameServiceServer interface {
-	CreateRoom(context.Context, *CreateRoomRequest) (*CreateRoomResponse, error)
 	ListRooms(context.Context, *ListRoomsRequest) (*ListRoomsResponse, error)
-	CreateTeam(context.Context, *CreateTeamRequest) (*CreateTeamResponse, error)
+	CreateRoom(context.Context, *CreateRoomRequest) (*CreateRoomResponse, error)
 	Join(GameService_JoinServer) error
 	mustEmbedUnimplementedGameServiceServer()
 }
@@ -109,14 +98,11 @@ type GameServiceServer interface {
 type UnimplementedGameServiceServer struct {
 }
 
-func (UnimplementedGameServiceServer) CreateRoom(context.Context, *CreateRoomRequest) (*CreateRoomResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateRoom not implemented")
-}
 func (UnimplementedGameServiceServer) ListRooms(context.Context, *ListRoomsRequest) (*ListRoomsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListRooms not implemented")
 }
-func (UnimplementedGameServiceServer) CreateTeam(context.Context, *CreateTeamRequest) (*CreateTeamResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateTeam not implemented")
+func (UnimplementedGameServiceServer) CreateRoom(context.Context, *CreateRoomRequest) (*CreateRoomResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateRoom not implemented")
 }
 func (UnimplementedGameServiceServer) Join(GameService_JoinServer) error {
 	return status.Errorf(codes.Unimplemented, "method Join not implemented")
@@ -132,24 +118,6 @@ type UnsafeGameServiceServer interface {
 
 func RegisterGameServiceServer(s grpc.ServiceRegistrar, srv GameServiceServer) {
 	s.RegisterService(&GameService_ServiceDesc, srv)
-}
-
-func _GameService_CreateRoom_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateRoomRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(GameServiceServer).CreateRoom(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/game_service.GameService/CreateRoom",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GameServiceServer).CreateRoom(ctx, req.(*CreateRoomRequest))
-	}
-	return interceptor(ctx, in, info, handler)
 }
 
 func _GameService_ListRooms_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -170,20 +138,20 @@ func _GameService_ListRooms_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
-func _GameService_CreateTeam_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateTeamRequest)
+func _GameService_CreateRoom_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateRoomRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(GameServiceServer).CreateTeam(ctx, in)
+		return srv.(GameServiceServer).CreateRoom(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/game_service.GameService/CreateTeam",
+		FullMethod: "/game_service.GameService/CreateRoom",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GameServiceServer).CreateTeam(ctx, req.(*CreateTeamRequest))
+		return srv.(GameServiceServer).CreateRoom(ctx, req.(*CreateRoomRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -222,16 +190,12 @@ var GameService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*GameServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CreateRoom",
-			Handler:    _GameService_CreateRoom_Handler,
-		},
-		{
 			MethodName: "ListRooms",
 			Handler:    _GameService_ListRooms_Handler,
 		},
 		{
-			MethodName: "CreateTeam",
-			Handler:    _GameService_CreateTeam_Handler,
+			MethodName: "CreateRoom",
+			Handler:    _GameService_CreateRoom_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{

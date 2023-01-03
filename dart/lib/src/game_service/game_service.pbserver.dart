@@ -16,16 +16,14 @@ import 'game_service.pbjson.dart';
 export 'game_service.pb.dart';
 
 abstract class GameServiceBase extends $pb.GeneratedService {
-  $async.Future<$0.CreateRoomResponse> createRoom($pb.ServerContext ctx, $0.CreateRoomRequest request);
   $async.Future<$0.ListRoomsResponse> listRooms($pb.ServerContext ctx, $0.ListRoomsRequest request);
-  $async.Future<$0.CreateTeamResponse> createTeam($pb.ServerContext ctx, $0.CreateTeamRequest request);
+  $async.Future<$0.CreateRoomResponse> createRoom($pb.ServerContext ctx, $0.CreateRoomRequest request);
   $async.Future<$0.Message> join($pb.ServerContext ctx, $0.Message request);
 
   $pb.GeneratedMessage createRequest($core.String method) {
     switch (method) {
-      case 'CreateRoom': return $0.CreateRoomRequest();
       case 'ListRooms': return $0.ListRoomsRequest();
-      case 'CreateTeam': return $0.CreateTeamRequest();
+      case 'CreateRoom': return $0.CreateRoomRequest();
       case 'Join': return $0.Message();
       default: throw $core.ArgumentError('Unknown method: $method');
     }
@@ -33,9 +31,8 @@ abstract class GameServiceBase extends $pb.GeneratedService {
 
   $async.Future<$pb.GeneratedMessage> handleCall($pb.ServerContext ctx, $core.String method, $pb.GeneratedMessage request) {
     switch (method) {
-      case 'CreateRoom': return this.createRoom(ctx, request as $0.CreateRoomRequest);
       case 'ListRooms': return this.listRooms(ctx, request as $0.ListRoomsRequest);
-      case 'CreateTeam': return this.createTeam(ctx, request as $0.CreateTeamRequest);
+      case 'CreateRoom': return this.createRoom(ctx, request as $0.CreateRoomRequest);
       case 'Join': return this.join(ctx, request as $0.Message);
       default: throw $core.ArgumentError('Unknown method: $method');
     }

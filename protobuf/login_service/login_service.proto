@@ -8,10 +8,17 @@ service LoginService {
   rpc LoginGuest(LoginGuestRequest) returns (LoginGuestResponse);
 }
 
+message Account {
+  string id = 1;
+  string auth_token = 2;
+  string name = 3;
+  optional string email = 4;
+}
+
 message LoginGuestRequest {
   string name = 1;
   optional string email = 2;
 }
 message LoginGuestResponse {
-  string token = 1;
+  Account account = 1;
 }
