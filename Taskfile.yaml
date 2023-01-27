@@ -3,3 +3,4 @@ version: 3
 tasks:
   build: "buf generate"
   fmt: "buf format -w"
+  mocks: "mockery --with-expecter --recursive --inpackage --all"

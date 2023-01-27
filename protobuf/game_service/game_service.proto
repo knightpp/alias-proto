@@ -78,6 +78,8 @@ message MsgJoinTeam {
   string team_id = 1;
 }
 
+message MsgStart {}
+
 message Message {
   oneof message {
     MsgError error = 1;
@@ -88,5 +90,7 @@ message Message {
 
     MsgCreateTeam create_team = 5;
     MsgJoinTeam join_team = 6;
+
+    MsgStart start = 7;
   }
 }
