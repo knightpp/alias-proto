@@ -844,6 +844,53 @@ class MsgStart extends $pb.GeneratedMessage {
   static MsgStart? _defaultInstance;
 }
 
+class MsgTransferLeadership extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgTransferLeadership', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game_service'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'playerId')
+    ..hasRequiredFields = false
+  ;
+
+  MsgTransferLeadership._() : super();
+  factory MsgTransferLeadership({
+    $core.String? playerId,
+  }) {
+    final _result = create();
+    if (playerId != null) {
+      _result.playerId = playerId;
+    }
+    return _result;
+  }
+  factory MsgTransferLeadership.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MsgTransferLeadership.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MsgTransferLeadership clone() => MsgTransferLeadership()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MsgTransferLeadership copyWith(void Function(MsgTransferLeadership) updates) => super.copyWith((message) => updates(message as MsgTransferLeadership)) as MsgTransferLeadership; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MsgTransferLeadership create() => MsgTransferLeadership._();
+  MsgTransferLeadership createEmptyInstance() => create();
+  static $pb.PbList<MsgTransferLeadership> createRepeated() => $pb.PbList<MsgTransferLeadership>();
+  @$core.pragma('dart2js:noInline')
+  static MsgTransferLeadership getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgTransferLeadership>(create);
+  static MsgTransferLeadership? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get playerId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set playerId($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasPlayerId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearPlayerId() => clearField(1);
+}
+
 enum Message_Message {
   error, 
   fatal, 
@@ -852,6 +899,7 @@ enum Message_Message {
   createTeam, 
   joinTeam, 
   start, 
+  transferLeadership, 
   notSet
 }
 
@@ -864,10 +912,11 @@ class Message extends $pb.GeneratedMessage {
     5 : Message_Message.createTeam,
     6 : Message_Message.joinTeam,
     7 : Message_Message.start,
+    8 : Message_Message.transferLeadership,
     0 : Message_Message.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Message', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game_service'), createEmptyInstance: create)
-    ..oo(0, [1, 2, 3, 4, 5, 6, 7])
+    ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8])
     ..aOM<MsgError>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'error', subBuilder: MsgError.create)
     ..aOM<MsgFatal>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'fatal', subBuilder: MsgFatal.create)
     ..aOM<JoinRoom>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'joinRoom', subBuilder: JoinRoom.create)
@@ -875,6 +924,7 @@ class Message extends $pb.GeneratedMessage {
     ..aOM<MsgCreateTeam>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createTeam', subBuilder: MsgCreateTeam.create)
     ..aOM<MsgJoinTeam>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'joinTeam', subBuilder: MsgJoinTeam.create)
     ..aOM<MsgStart>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'start', subBuilder: MsgStart.create)
+    ..aOM<MsgTransferLeadership>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'transferLeadership', subBuilder: MsgTransferLeadership.create)
     ..hasRequiredFields = false
   ;
 
@@ -887,6 +937,7 @@ class Message extends $pb.GeneratedMessage {
     MsgCreateTeam? createTeam,
     MsgJoinTeam? joinTeam,
     MsgStart? start,
+    MsgTransferLeadership? transferLeadership,
   }) {
     final _result = create();
     if (error != null) {
@@ -909,6 +960,9 @@ class Message extends $pb.GeneratedMessage {
     }
     if (start != null) {
       _result.start = start;
+    }
+    if (transferLeadership != null) {
+      _result.transferLeadership = transferLeadership;
     }
     return _result;
   }
@@ -1012,6 +1066,17 @@ class Message extends $pb.GeneratedMessage {
   void clearStart() => clearField(7);
   @$pb.TagNumber(7)
   MsgStart ensureStart() => $_ensure(6);
+
+  @$pb.TagNumber(8)
+  MsgTransferLeadership get transferLeadership => $_getN(7);
+  @$pb.TagNumber(8)
+  set transferLeadership(MsgTransferLeadership v) { setField(8, v); }
+  @$pb.TagNumber(8)
+  $core.bool hasTransferLeadership() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearTransferLeadership() => clearField(8);
+  @$pb.TagNumber(8)
+  MsgTransferLeadership ensureTransferLeadership() => $_ensure(7);
 }
 
 class GameServiceApi {

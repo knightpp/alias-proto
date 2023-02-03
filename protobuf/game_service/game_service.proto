@@ -80,6 +80,10 @@ message MsgJoinTeam {
 
 message MsgStart {}
 
+message MsgTransferLeadership {
+  string player_id = 1;
+}
+
 message Message {
   oneof message {
     MsgError error = 1;
@@ -92,5 +96,7 @@ message Message {
     MsgJoinTeam join_team = 6;
 
     MsgStart start = 7;
+    
+    MsgTransferLeadership transfer_leadership = 8;
   }
 }

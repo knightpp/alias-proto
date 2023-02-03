@@ -167,6 +167,16 @@ const MsgStart$json = const {
 
 /// Descriptor for `MsgStart`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List msgStartDescriptor = $convert.base64Decode('CghNc2dTdGFydA==');
+@$core.Deprecated('Use msgTransferLeadershipDescriptor instead')
+const MsgTransferLeadership$json = const {
+  '1': 'MsgTransferLeadership',
+  '2': const [
+    const {'1': 'player_id', '3': 1, '4': 1, '5': 9, '10': 'playerId'},
+  ],
+};
+
+/// Descriptor for `MsgTransferLeadership`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List msgTransferLeadershipDescriptor = $convert.base64Decode('ChVNc2dUcmFuc2ZlckxlYWRlcnNoaXASGwoJcGxheWVyX2lkGAEgASgJUghwbGF5ZXJJZA==');
 @$core.Deprecated('Use messageDescriptor instead')
 const Message$json = const {
   '1': 'Message',
@@ -178,6 +188,7 @@ const Message$json = const {
     const {'1': 'create_team', '3': 5, '4': 1, '5': 11, '6': '.game_service.MsgCreateTeam', '9': 0, '10': 'createTeam'},
     const {'1': 'join_team', '3': 6, '4': 1, '5': 11, '6': '.game_service.MsgJoinTeam', '9': 0, '10': 'joinTeam'},
     const {'1': 'start', '3': 7, '4': 1, '5': 11, '6': '.game_service.MsgStart', '9': 0, '10': 'start'},
+    const {'1': 'transfer_leadership', '3': 8, '4': 1, '5': 11, '6': '.game_service.MsgTransferLeadership', '9': 0, '10': 'transferLeadership'},
   ],
   '8': const [
     const {'1': 'message'},
@@ -185,7 +196,7 @@ const Message$json = const {
 };
 
 /// Descriptor for `Message`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List messageDescriptor = $convert.base64Decode('CgdNZXNzYWdlEi4KBWVycm9yGAEgASgLMhYuZ2FtZV9zZXJ2aWNlLk1zZ0Vycm9ySABSBWVycm9yEi4KBWZhdGFsGAIgASgLMhYuZ2FtZV9zZXJ2aWNlLk1zZ0ZhdGFsSABSBWZhdGFsEjUKCWpvaW5fcm9vbRgDIAEoCzIWLmdhbWVfc2VydmljZS5Kb2luUm9vbUgAUghqb2luUm9vbRI7Cgt1cGRhdGVfcm9vbRgEIAEoCzIYLmdhbWVfc2VydmljZS5VcGRhdGVSb29tSABSCnVwZGF0ZVJvb20SPgoLY3JlYXRlX3RlYW0YBSABKAsyGy5nYW1lX3NlcnZpY2UuTXNnQ3JlYXRlVGVhbUgAUgpjcmVhdGVUZWFtEjgKCWpvaW5fdGVhbRgGIAEoCzIZLmdhbWVfc2VydmljZS5Nc2dKb2luVGVhbUgAUghqb2luVGVhbRIuCgVzdGFydBgHIAEoCzIWLmdhbWVfc2VydmljZS5Nc2dTdGFydEgAUgVzdGFydEIJCgdtZXNzYWdl');
+final $typed_data.Uint8List messageDescriptor = $convert.base64Decode('CgdNZXNzYWdlEi4KBWVycm9yGAEgASgLMhYuZ2FtZV9zZXJ2aWNlLk1zZ0Vycm9ySABSBWVycm9yEi4KBWZhdGFsGAIgASgLMhYuZ2FtZV9zZXJ2aWNlLk1zZ0ZhdGFsSABSBWZhdGFsEjUKCWpvaW5fcm9vbRgDIAEoCzIWLmdhbWVfc2VydmljZS5Kb2luUm9vbUgAUghqb2luUm9vbRI7Cgt1cGRhdGVfcm9vbRgEIAEoCzIYLmdhbWVfc2VydmljZS5VcGRhdGVSb29tSABSCnVwZGF0ZVJvb20SPgoLY3JlYXRlX3RlYW0YBSABKAsyGy5nYW1lX3NlcnZpY2UuTXNnQ3JlYXRlVGVhbUgAUgpjcmVhdGVUZWFtEjgKCWpvaW5fdGVhbRgGIAEoCzIZLmdhbWVfc2VydmljZS5Nc2dKb2luVGVhbUgAUghqb2luVGVhbRIuCgVzdGFydBgHIAEoCzIWLmdhbWVfc2VydmljZS5Nc2dTdGFydEgAUgVzdGFydBJWChN0cmFuc2Zlcl9sZWFkZXJzaGlwGAggASgLMiMuZ2FtZV9zZXJ2aWNlLk1zZ1RyYW5zZmVyTGVhZGVyc2hpcEgAUhJ0cmFuc2ZlckxlYWRlcnNoaXBCCQoHbWVzc2FnZQ==');
 const $core.Map<$core.String, $core.dynamic> GameServiceBase$json = const {
   '1': 'GameService',
   '2': const [
@@ -212,6 +223,7 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> GameServic
   '.game_service.MsgCreateTeam': MsgCreateTeam$json,
   '.game_service.MsgJoinTeam': MsgJoinTeam$json,
   '.game_service.MsgStart': MsgStart$json,
+  '.game_service.MsgTransferLeadership': MsgTransferLeadership$json,
 };
 
 /// Descriptor for `GameService`. Decode as a `google.protobuf.ServiceDescriptorProto`.
