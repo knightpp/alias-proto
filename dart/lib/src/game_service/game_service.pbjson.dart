@@ -62,11 +62,13 @@ const Room$json = const {
     const {'1': 'langugage', '3': 5, '4': 1, '5': 9, '10': 'langugage'},
     const {'1': 'lobby', '3': 6, '4': 3, '5': 11, '6': '.game_service.Player', '10': 'lobby'},
     const {'1': 'teams', '3': 7, '4': 3, '5': 11, '6': '.game_service.Team', '10': 'teams'},
+    const {'1': 'is_playing', '3': 8, '4': 1, '5': 8, '10': 'isPlaying'},
+    const {'1': 'player_id_turn', '3': 9, '4': 1, '5': 9, '10': 'playerIdTurn'},
   ],
 };
 
 /// Descriptor for `Room`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List roomDescriptor = $convert.base64Decode('CgRSb29tEg4KAmlkGAEgASgJUgJpZBISCgRuYW1lGAIgASgJUgRuYW1lEhsKCWxlYWRlcl9pZBgDIAEoCVIIbGVhZGVySWQSGwoJaXNfcHVibGljGAQgASgIUghpc1B1YmxpYxIcCglsYW5ndWdhZ2UYBSABKAlSCWxhbmd1Z2FnZRIqCgVsb2JieRgGIAMoCzIULmdhbWVfc2VydmljZS5QbGF5ZXJSBWxvYmJ5EigKBXRlYW1zGAcgAygLMhIuZ2FtZV9zZXJ2aWNlLlRlYW1SBXRlYW1z');
+final $typed_data.Uint8List roomDescriptor = $convert.base64Decode('CgRSb29tEg4KAmlkGAEgASgJUgJpZBISCgRuYW1lGAIgASgJUgRuYW1lEhsKCWxlYWRlcl9pZBgDIAEoCVIIbGVhZGVySWQSGwoJaXNfcHVibGljGAQgASgIUghpc1B1YmxpYxIcCglsYW5ndWdhZ2UYBSABKAlSCWxhbmd1Z2FnZRIqCgVsb2JieRgGIAMoCzIULmdhbWVfc2VydmljZS5QbGF5ZXJSBWxvYmJ5EigKBXRlYW1zGAcgAygLMhIuZ2FtZV9zZXJ2aWNlLlRlYW1SBXRlYW1zEh0KCmlzX3BsYXlpbmcYCCABKAhSCWlzUGxheWluZxIkCg5wbGF5ZXJfaWRfdHVybhgJIAEoCVIMcGxheWVySWRUdXJu');
 @$core.Deprecated('Use playerDescriptor instead')
 const Player$json = const {
   '1': 'Player',
@@ -160,13 +162,20 @@ const MsgJoinTeam$json = const {
 
 /// Descriptor for `MsgJoinTeam`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List msgJoinTeamDescriptor = $convert.base64Decode('CgtNc2dKb2luVGVhbRIXCgd0ZWFtX2lkGAEgASgJUgZ0ZWFtSWQ=');
-@$core.Deprecated('Use msgStartDescriptor instead')
-const MsgStart$json = const {
-  '1': 'MsgStart',
+@$core.Deprecated('Use msgStartGameDescriptor instead')
+const MsgStartGame$json = const {
+  '1': 'MsgStartGame',
 };
 
-/// Descriptor for `MsgStart`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List msgStartDescriptor = $convert.base64Decode('CghNc2dTdGFydA==');
+/// Descriptor for `MsgStartGame`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List msgStartGameDescriptor = $convert.base64Decode('CgxNc2dTdGFydEdhbWU=');
+@$core.Deprecated('Use msgStartTurnDescriptor instead')
+const MsgStartTurn$json = const {
+  '1': 'MsgStartTurn',
+};
+
+/// Descriptor for `MsgStartTurn`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List msgStartTurnDescriptor = $convert.base64Decode('CgxNc2dTdGFydFR1cm4=');
 @$core.Deprecated('Use msgTransferLeadershipDescriptor instead')
 const MsgTransferLeadership$json = const {
   '1': 'MsgTransferLeadership',
@@ -187,8 +196,9 @@ const Message$json = const {
     const {'1': 'update_room', '3': 4, '4': 1, '5': 11, '6': '.game_service.UpdateRoom', '9': 0, '10': 'updateRoom'},
     const {'1': 'create_team', '3': 5, '4': 1, '5': 11, '6': '.game_service.MsgCreateTeam', '9': 0, '10': 'createTeam'},
     const {'1': 'join_team', '3': 6, '4': 1, '5': 11, '6': '.game_service.MsgJoinTeam', '9': 0, '10': 'joinTeam'},
-    const {'1': 'start', '3': 7, '4': 1, '5': 11, '6': '.game_service.MsgStart', '9': 0, '10': 'start'},
-    const {'1': 'transfer_leadership', '3': 8, '4': 1, '5': 11, '6': '.game_service.MsgTransferLeadership', '9': 0, '10': 'transferLeadership'},
+    const {'1': 'start_game', '3': 7, '4': 1, '5': 11, '6': '.game_service.MsgStartGame', '9': 0, '10': 'startGame'},
+    const {'1': 'start_turn', '3': 8, '4': 1, '5': 11, '6': '.game_service.MsgStartTurn', '9': 0, '10': 'startTurn'},
+    const {'1': 'transfer_leadership', '3': 9, '4': 1, '5': 11, '6': '.game_service.MsgTransferLeadership', '9': 0, '10': 'transferLeadership'},
   ],
   '8': const [
     const {'1': 'message'},
@@ -196,7 +206,7 @@ const Message$json = const {
 };
 
 /// Descriptor for `Message`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List messageDescriptor = $convert.base64Decode('CgdNZXNzYWdlEi4KBWVycm9yGAEgASgLMhYuZ2FtZV9zZXJ2aWNlLk1zZ0Vycm9ySABSBWVycm9yEi4KBWZhdGFsGAIgASgLMhYuZ2FtZV9zZXJ2aWNlLk1zZ0ZhdGFsSABSBWZhdGFsEjUKCWpvaW5fcm9vbRgDIAEoCzIWLmdhbWVfc2VydmljZS5Kb2luUm9vbUgAUghqb2luUm9vbRI7Cgt1cGRhdGVfcm9vbRgEIAEoCzIYLmdhbWVfc2VydmljZS5VcGRhdGVSb29tSABSCnVwZGF0ZVJvb20SPgoLY3JlYXRlX3RlYW0YBSABKAsyGy5nYW1lX3NlcnZpY2UuTXNnQ3JlYXRlVGVhbUgAUgpjcmVhdGVUZWFtEjgKCWpvaW5fdGVhbRgGIAEoCzIZLmdhbWVfc2VydmljZS5Nc2dKb2luVGVhbUgAUghqb2luVGVhbRIuCgVzdGFydBgHIAEoCzIWLmdhbWVfc2VydmljZS5Nc2dTdGFydEgAUgVzdGFydBJWChN0cmFuc2Zlcl9sZWFkZXJzaGlwGAggASgLMiMuZ2FtZV9zZXJ2aWNlLk1zZ1RyYW5zZmVyTGVhZGVyc2hpcEgAUhJ0cmFuc2ZlckxlYWRlcnNoaXBCCQoHbWVzc2FnZQ==');
+final $typed_data.Uint8List messageDescriptor = $convert.base64Decode('CgdNZXNzYWdlEi4KBWVycm9yGAEgASgLMhYuZ2FtZV9zZXJ2aWNlLk1zZ0Vycm9ySABSBWVycm9yEi4KBWZhdGFsGAIgASgLMhYuZ2FtZV9zZXJ2aWNlLk1zZ0ZhdGFsSABSBWZhdGFsEjUKCWpvaW5fcm9vbRgDIAEoCzIWLmdhbWVfc2VydmljZS5Kb2luUm9vbUgAUghqb2luUm9vbRI7Cgt1cGRhdGVfcm9vbRgEIAEoCzIYLmdhbWVfc2VydmljZS5VcGRhdGVSb29tSABSCnVwZGF0ZVJvb20SPgoLY3JlYXRlX3RlYW0YBSABKAsyGy5nYW1lX3NlcnZpY2UuTXNnQ3JlYXRlVGVhbUgAUgpjcmVhdGVUZWFtEjgKCWpvaW5fdGVhbRgGIAEoCzIZLmdhbWVfc2VydmljZS5Nc2dKb2luVGVhbUgAUghqb2luVGVhbRI7CgpzdGFydF9nYW1lGAcgASgLMhouZ2FtZV9zZXJ2aWNlLk1zZ1N0YXJ0R2FtZUgAUglzdGFydEdhbWUSOwoKc3RhcnRfdHVybhgIIAEoCzIaLmdhbWVfc2VydmljZS5Nc2dTdGFydFR1cm5IAFIJc3RhcnRUdXJuElYKE3RyYW5zZmVyX2xlYWRlcnNoaXAYCSABKAsyIy5nYW1lX3NlcnZpY2UuTXNnVHJhbnNmZXJMZWFkZXJzaGlwSABSEnRyYW5zZmVyTGVhZGVyc2hpcEIJCgdtZXNzYWdl');
 const $core.Map<$core.String, $core.dynamic> GameServiceBase$json = const {
   '1': 'GameService',
   '2': const [
@@ -222,7 +232,8 @@ const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>> GameServic
   '.game_service.UpdateRoom': UpdateRoom$json,
   '.game_service.MsgCreateTeam': MsgCreateTeam$json,
   '.game_service.MsgJoinTeam': MsgJoinTeam$json,
-  '.game_service.MsgStart': MsgStart$json,
+  '.game_service.MsgStartGame': MsgStartGame$json,
+  '.game_service.MsgStartTurn': MsgStartTurn$json,
   '.game_service.MsgTransferLeadership': MsgTransferLeadership$json,
 };
 

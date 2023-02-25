@@ -37,6 +37,9 @@ message Room {
   string langugage = 5;
   repeated Player lobby = 6;
   repeated Team teams = 7;
+
+  bool is_playing = 8;
+  string player_id_turn = 9;
 }
 
 message Player {
@@ -78,7 +81,9 @@ message MsgJoinTeam {
   string team_id = 1;
 }
 
-message MsgStart {}
+message MsgStartGame {}
+
+message MsgStartTurn {}
 
 message MsgTransferLeadership {
   string player_id = 1;
@@ -95,8 +100,9 @@ message Message {
     MsgCreateTeam create_team = 5;
     MsgJoinTeam join_team = 6;
 
-    MsgStart start = 7;
+    MsgStartGame start_game = 7;
+    MsgStartTurn start_turn = 8;
     
-    MsgTransferLeadership transfer_leadership = 8;
+    MsgTransferLeadership transfer_leadership = 9;
   }
 }
