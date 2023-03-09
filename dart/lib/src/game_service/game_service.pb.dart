@@ -8,6 +8,7 @@
 import 'dart:async' as $async;
 import 'dart:core' as $core;
 
+import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class ListRoomsRequest extends $pb.GeneratedMessage {
@@ -226,7 +227,8 @@ class Room extends $pb.GeneratedMessage {
     ..pc<Player>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lobby', $pb.PbFieldType.PM, subBuilder: Player.create)
     ..pc<Team>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'teams', $pb.PbFieldType.PM, subBuilder: Team.create)
     ..aOB(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isPlaying')
-    ..aOS(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'playerIdTurn')
+    ..aOB(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isGameStarted')
+    ..aOS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'playerIdTurn')
     ..hasRequiredFields = false
   ;
 
@@ -240,6 +242,7 @@ class Room extends $pb.GeneratedMessage {
     $core.Iterable<Player>? lobby,
     $core.Iterable<Team>? teams,
     $core.bool? isPlaying,
+    $core.bool? isGameStarted,
     $core.String? playerIdTurn,
   }) {
     final _result = create();
@@ -266,6 +269,9 @@ class Room extends $pb.GeneratedMessage {
     }
     if (isPlaying != null) {
       _result.isPlaying = isPlaying;
+    }
+    if (isGameStarted != null) {
+      _result.isGameStarted = isGameStarted;
     }
     if (playerIdTurn != null) {
       _result.playerIdTurn = playerIdTurn;
@@ -354,13 +360,22 @@ class Room extends $pb.GeneratedMessage {
   void clearIsPlaying() => clearField(8);
 
   @$pb.TagNumber(9)
-  $core.String get playerIdTurn => $_getSZ(8);
+  $core.bool get isGameStarted => $_getBF(8);
   @$pb.TagNumber(9)
-  set playerIdTurn($core.String v) { $_setString(8, v); }
+  set isGameStarted($core.bool v) { $_setBool(8, v); }
   @$pb.TagNumber(9)
-  $core.bool hasPlayerIdTurn() => $_has(8);
+  $core.bool hasIsGameStarted() => $_has(8);
   @$pb.TagNumber(9)
-  void clearPlayerIdTurn() => clearField(9);
+  void clearIsGameStarted() => clearField(9);
+
+  @$pb.TagNumber(10)
+  $core.String get playerIdTurn => $_getSZ(9);
+  @$pb.TagNumber(10)
+  set playerIdTurn($core.String v) { $_setString(9, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasPlayerIdTurn() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearPlayerIdTurn() => clearField(10);
 }
 
 class Player extends $pb.GeneratedMessage {
@@ -531,53 +546,6 @@ class Team extends $pb.GeneratedMessage {
   Player ensurePlayerB() => $_ensure(3);
 }
 
-class MsgFatal extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgFatal', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game_service'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'error')
-    ..hasRequiredFields = false
-  ;
-
-  MsgFatal._() : super();
-  factory MsgFatal({
-    $core.String? error,
-  }) {
-    final _result = create();
-    if (error != null) {
-      _result.error = error;
-    }
-    return _result;
-  }
-  factory MsgFatal.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory MsgFatal.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  MsgFatal clone() => MsgFatal()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  MsgFatal copyWith(void Function(MsgFatal) updates) => super.copyWith((message) => updates(message as MsgFatal)) as MsgFatal; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static MsgFatal create() => MsgFatal._();
-  MsgFatal createEmptyInstance() => create();
-  static $pb.PbList<MsgFatal> createRepeated() => $pb.PbList<MsgFatal>();
-  @$core.pragma('dart2js:noInline')
-  static MsgFatal getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgFatal>(create);
-  static MsgFatal? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get error => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set error($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasError() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearError() => clearField(1);
-}
-
 class MsgError extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgError', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game_service'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'error')
@@ -688,67 +656,6 @@ class UpdateRoom extends $pb.GeneratedMessage {
   void clearPassword() => clearField(2);
 }
 
-class JoinRoom extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'JoinRoom', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game_service'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'password')
-    ..hasRequiredFields = false
-  ;
-
-  JoinRoom._() : super();
-  factory JoinRoom({
-    $core.String? id,
-    $core.String? password,
-  }) {
-    final _result = create();
-    if (id != null) {
-      _result.id = id;
-    }
-    if (password != null) {
-      _result.password = password;
-    }
-    return _result;
-  }
-  factory JoinRoom.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory JoinRoom.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  JoinRoom clone() => JoinRoom()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  JoinRoom copyWith(void Function(JoinRoom) updates) => super.copyWith((message) => updates(message as JoinRoom)) as JoinRoom; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static JoinRoom create() => JoinRoom._();
-  JoinRoom createEmptyInstance() => create();
-  static $pb.PbList<JoinRoom> createRepeated() => $pb.PbList<JoinRoom>();
-  @$core.pragma('dart2js:noInline')
-  static JoinRoom getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<JoinRoom>(create);
-  static JoinRoom? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get id => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set id($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasId() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearId() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get password => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set password($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasPassword() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearPassword() => clearField(2);
-}
-
 class MsgCreateTeam extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgCreateTeam', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game_service'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
@@ -845,11 +752,20 @@ class MsgJoinTeam extends $pb.GeneratedMessage {
 
 class MsgStartGame extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgStartGame', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game_service'), createEmptyInstance: create)
+    ..pPS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'turns')
     ..hasRequiredFields = false
   ;
 
   MsgStartGame._() : super();
-  factory MsgStartGame() => create();
+  factory MsgStartGame({
+    $core.Iterable<$core.String>? turns,
+  }) {
+    final _result = create();
+    if (turns != null) {
+      _result.turns.addAll(turns);
+    }
+    return _result;
+  }
   factory MsgStartGame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory MsgStartGame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
@@ -870,15 +786,27 @@ class MsgStartGame extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgStartGame getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgStartGame>(create);
   static MsgStartGame? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.List<$core.String> get turns => $_getList(0);
 }
 
 class MsgStartTurn extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgStartTurn', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game_service'), createEmptyInstance: create)
+    ..a<$fixnum.Int64>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'durationMs', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
     ..hasRequiredFields = false
   ;
 
   MsgStartTurn._() : super();
-  factory MsgStartTurn() => create();
+  factory MsgStartTurn({
+    $fixnum.Int64? durationMs,
+  }) {
+    final _result = create();
+    if (durationMs != null) {
+      _result.durationMs = durationMs;
+    }
+    return _result;
+  }
   factory MsgStartTurn.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory MsgStartTurn.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
@@ -899,6 +827,76 @@ class MsgStartTurn extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static MsgStartTurn getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgStartTurn>(create);
   static MsgStartTurn? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $fixnum.Int64 get durationMs => $_getI64(0);
+  @$pb.TagNumber(1)
+  set durationMs($fixnum.Int64 v) { $_setInt64(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasDurationMs() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearDurationMs() => clearField(1);
+}
+
+class MsgEndTurn extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgEndTurn', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game_service'), createEmptyInstance: create)
+    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'rights', $pb.PbFieldType.OU3)
+    ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'wrongs', $pb.PbFieldType.OU3)
+    ..hasRequiredFields = false
+  ;
+
+  MsgEndTurn._() : super();
+  factory MsgEndTurn({
+    $core.int? rights,
+    $core.int? wrongs,
+  }) {
+    final _result = create();
+    if (rights != null) {
+      _result.rights = rights;
+    }
+    if (wrongs != null) {
+      _result.wrongs = wrongs;
+    }
+    return _result;
+  }
+  factory MsgEndTurn.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MsgEndTurn.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MsgEndTurn clone() => MsgEndTurn()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MsgEndTurn copyWith(void Function(MsgEndTurn) updates) => super.copyWith((message) => updates(message as MsgEndTurn)) as MsgEndTurn; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MsgEndTurn create() => MsgEndTurn._();
+  MsgEndTurn createEmptyInstance() => create();
+  static $pb.PbList<MsgEndTurn> createRepeated() => $pb.PbList<MsgEndTurn>();
+  @$core.pragma('dart2js:noInline')
+  static MsgEndTurn getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgEndTurn>(create);
+  static MsgEndTurn? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.int get rights => $_getIZ(0);
+  @$pb.TagNumber(1)
+  set rights($core.int v) { $_setUnsignedInt32(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasRights() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearRights() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.int get wrongs => $_getIZ(1);
+  @$pb.TagNumber(2)
+  set wrongs($core.int v) { $_setUnsignedInt32(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasWrongs() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearWrongs() => clearField(2);
 }
 
 class MsgTransferLeadership extends $pb.GeneratedMessage {
@@ -948,15 +946,62 @@ class MsgTransferLeadership extends $pb.GeneratedMessage {
   void clearPlayerId() => clearField(1);
 }
 
+class MsgWord extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgWord', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game_service'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'word')
+    ..hasRequiredFields = false
+  ;
+
+  MsgWord._() : super();
+  factory MsgWord({
+    $core.String? word,
+  }) {
+    final _result = create();
+    if (word != null) {
+      _result.word = word;
+    }
+    return _result;
+  }
+  factory MsgWord.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MsgWord.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MsgWord clone() => MsgWord()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MsgWord copyWith(void Function(MsgWord) updates) => super.copyWith((message) => updates(message as MsgWord)) as MsgWord; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MsgWord create() => MsgWord._();
+  MsgWord createEmptyInstance() => create();
+  static $pb.PbList<MsgWord> createRepeated() => $pb.PbList<MsgWord>();
+  @$core.pragma('dart2js:noInline')
+  static MsgWord getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgWord>(create);
+  static MsgWord? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get word => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set word($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasWord() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearWord() => clearField(1);
+}
+
 enum Message_Message {
   error, 
-  fatal, 
-  joinRoom, 
   updateRoom, 
   createTeam, 
   joinTeam, 
   startGame, 
   startTurn, 
+  endTurn, 
+  word, 
   transferLeadership, 
   notSet
 }
@@ -964,26 +1009,26 @@ enum Message_Message {
 class Message extends $pb.GeneratedMessage {
   static const $core.Map<$core.int, Message_Message> _Message_MessageByTag = {
     1 : Message_Message.error,
-    2 : Message_Message.fatal,
-    3 : Message_Message.joinRoom,
-    4 : Message_Message.updateRoom,
-    5 : Message_Message.createTeam,
-    6 : Message_Message.joinTeam,
-    7 : Message_Message.startGame,
-    8 : Message_Message.startTurn,
+    2 : Message_Message.updateRoom,
+    3 : Message_Message.createTeam,
+    4 : Message_Message.joinTeam,
+    5 : Message_Message.startGame,
+    6 : Message_Message.startTurn,
+    7 : Message_Message.endTurn,
+    8 : Message_Message.word,
     9 : Message_Message.transferLeadership,
     0 : Message_Message.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Message', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game_service'), createEmptyInstance: create)
     ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8, 9])
     ..aOM<MsgError>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'error', subBuilder: MsgError.create)
-    ..aOM<MsgFatal>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'fatal', subBuilder: MsgFatal.create)
-    ..aOM<JoinRoom>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'joinRoom', subBuilder: JoinRoom.create)
-    ..aOM<UpdateRoom>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'updateRoom', subBuilder: UpdateRoom.create)
-    ..aOM<MsgCreateTeam>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createTeam', subBuilder: MsgCreateTeam.create)
-    ..aOM<MsgJoinTeam>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'joinTeam', subBuilder: MsgJoinTeam.create)
-    ..aOM<MsgStartGame>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'startGame', subBuilder: MsgStartGame.create)
-    ..aOM<MsgStartTurn>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'startTurn', subBuilder: MsgStartTurn.create)
+    ..aOM<UpdateRoom>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'updateRoom', subBuilder: UpdateRoom.create)
+    ..aOM<MsgCreateTeam>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createTeam', subBuilder: MsgCreateTeam.create)
+    ..aOM<MsgJoinTeam>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'joinTeam', subBuilder: MsgJoinTeam.create)
+    ..aOM<MsgStartGame>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'startGame', subBuilder: MsgStartGame.create)
+    ..aOM<MsgStartTurn>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'startTurn', subBuilder: MsgStartTurn.create)
+    ..aOM<MsgEndTurn>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'endTurn', subBuilder: MsgEndTurn.create)
+    ..aOM<MsgWord>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'word', subBuilder: MsgWord.create)
     ..aOM<MsgTransferLeadership>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'transferLeadership', subBuilder: MsgTransferLeadership.create)
     ..hasRequiredFields = false
   ;
@@ -991,24 +1036,18 @@ class Message extends $pb.GeneratedMessage {
   Message._() : super();
   factory Message({
     MsgError? error,
-    MsgFatal? fatal,
-    JoinRoom? joinRoom,
     UpdateRoom? updateRoom,
     MsgCreateTeam? createTeam,
     MsgJoinTeam? joinTeam,
     MsgStartGame? startGame,
     MsgStartTurn? startTurn,
+    MsgEndTurn? endTurn,
+    MsgWord? word,
     MsgTransferLeadership? transferLeadership,
   }) {
     final _result = create();
     if (error != null) {
       _result.error = error;
-    }
-    if (fatal != null) {
-      _result.fatal = fatal;
-    }
-    if (joinRoom != null) {
-      _result.joinRoom = joinRoom;
     }
     if (updateRoom != null) {
       _result.updateRoom = updateRoom;
@@ -1024,6 +1063,12 @@ class Message extends $pb.GeneratedMessage {
     }
     if (startTurn != null) {
       _result.startTurn = startTurn;
+    }
+    if (endTurn != null) {
+      _result.endTurn = endTurn;
+    }
+    if (word != null) {
+      _result.word = word;
     }
     if (transferLeadership != null) {
       _result.transferLeadership = transferLeadership;
@@ -1066,81 +1111,81 @@ class Message extends $pb.GeneratedMessage {
   MsgError ensureError() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  MsgFatal get fatal => $_getN(1);
+  UpdateRoom get updateRoom => $_getN(1);
   @$pb.TagNumber(2)
-  set fatal(MsgFatal v) { setField(2, v); }
+  set updateRoom(UpdateRoom v) { setField(2, v); }
   @$pb.TagNumber(2)
-  $core.bool hasFatal() => $_has(1);
+  $core.bool hasUpdateRoom() => $_has(1);
   @$pb.TagNumber(2)
-  void clearFatal() => clearField(2);
+  void clearUpdateRoom() => clearField(2);
   @$pb.TagNumber(2)
-  MsgFatal ensureFatal() => $_ensure(1);
+  UpdateRoom ensureUpdateRoom() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  JoinRoom get joinRoom => $_getN(2);
+  MsgCreateTeam get createTeam => $_getN(2);
   @$pb.TagNumber(3)
-  set joinRoom(JoinRoom v) { setField(3, v); }
+  set createTeam(MsgCreateTeam v) { setField(3, v); }
   @$pb.TagNumber(3)
-  $core.bool hasJoinRoom() => $_has(2);
+  $core.bool hasCreateTeam() => $_has(2);
   @$pb.TagNumber(3)
-  void clearJoinRoom() => clearField(3);
+  void clearCreateTeam() => clearField(3);
   @$pb.TagNumber(3)
-  JoinRoom ensureJoinRoom() => $_ensure(2);
+  MsgCreateTeam ensureCreateTeam() => $_ensure(2);
 
   @$pb.TagNumber(4)
-  UpdateRoom get updateRoom => $_getN(3);
+  MsgJoinTeam get joinTeam => $_getN(3);
   @$pb.TagNumber(4)
-  set updateRoom(UpdateRoom v) { setField(4, v); }
+  set joinTeam(MsgJoinTeam v) { setField(4, v); }
   @$pb.TagNumber(4)
-  $core.bool hasUpdateRoom() => $_has(3);
+  $core.bool hasJoinTeam() => $_has(3);
   @$pb.TagNumber(4)
-  void clearUpdateRoom() => clearField(4);
+  void clearJoinTeam() => clearField(4);
   @$pb.TagNumber(4)
-  UpdateRoom ensureUpdateRoom() => $_ensure(3);
+  MsgJoinTeam ensureJoinTeam() => $_ensure(3);
 
   @$pb.TagNumber(5)
-  MsgCreateTeam get createTeam => $_getN(4);
+  MsgStartGame get startGame => $_getN(4);
   @$pb.TagNumber(5)
-  set createTeam(MsgCreateTeam v) { setField(5, v); }
+  set startGame(MsgStartGame v) { setField(5, v); }
   @$pb.TagNumber(5)
-  $core.bool hasCreateTeam() => $_has(4);
+  $core.bool hasStartGame() => $_has(4);
   @$pb.TagNumber(5)
-  void clearCreateTeam() => clearField(5);
+  void clearStartGame() => clearField(5);
   @$pb.TagNumber(5)
-  MsgCreateTeam ensureCreateTeam() => $_ensure(4);
+  MsgStartGame ensureStartGame() => $_ensure(4);
 
   @$pb.TagNumber(6)
-  MsgJoinTeam get joinTeam => $_getN(5);
+  MsgStartTurn get startTurn => $_getN(5);
   @$pb.TagNumber(6)
-  set joinTeam(MsgJoinTeam v) { setField(6, v); }
+  set startTurn(MsgStartTurn v) { setField(6, v); }
   @$pb.TagNumber(6)
-  $core.bool hasJoinTeam() => $_has(5);
+  $core.bool hasStartTurn() => $_has(5);
   @$pb.TagNumber(6)
-  void clearJoinTeam() => clearField(6);
+  void clearStartTurn() => clearField(6);
   @$pb.TagNumber(6)
-  MsgJoinTeam ensureJoinTeam() => $_ensure(5);
+  MsgStartTurn ensureStartTurn() => $_ensure(5);
 
   @$pb.TagNumber(7)
-  MsgStartGame get startGame => $_getN(6);
+  MsgEndTurn get endTurn => $_getN(6);
   @$pb.TagNumber(7)
-  set startGame(MsgStartGame v) { setField(7, v); }
+  set endTurn(MsgEndTurn v) { setField(7, v); }
   @$pb.TagNumber(7)
-  $core.bool hasStartGame() => $_has(6);
+  $core.bool hasEndTurn() => $_has(6);
   @$pb.TagNumber(7)
-  void clearStartGame() => clearField(7);
+  void clearEndTurn() => clearField(7);
   @$pb.TagNumber(7)
-  MsgStartGame ensureStartGame() => $_ensure(6);
+  MsgEndTurn ensureEndTurn() => $_ensure(6);
 
   @$pb.TagNumber(8)
-  MsgStartTurn get startTurn => $_getN(7);
+  MsgWord get word => $_getN(7);
   @$pb.TagNumber(8)
-  set startTurn(MsgStartTurn v) { setField(8, v); }
+  set word(MsgWord v) { setField(8, v); }
   @$pb.TagNumber(8)
-  $core.bool hasStartTurn() => $_has(7);
+  $core.bool hasWord() => $_has(7);
   @$pb.TagNumber(8)
-  void clearStartTurn() => clearField(8);
+  void clearWord() => clearField(8);
   @$pb.TagNumber(8)
-  MsgStartTurn ensureStartTurn() => $_ensure(7);
+  MsgWord ensureWord() => $_ensure(7);
 
   @$pb.TagNumber(9)
   MsgTransferLeadership get transferLeadership => $_getN(8);
