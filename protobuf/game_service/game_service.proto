@@ -34,10 +34,7 @@ message Room {
   repeated Player lobby = 6;
   repeated Team teams = 7;
 
-  bool is_playing = 8;
-  bool is_game_started = 9;
-
-  string player_id_turn = 10;
+  string player_id_turn = 8;
 }
 
 message Player {

@@ -226,9 +226,7 @@ class Room extends $pb.GeneratedMessage {
     ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'langugage')
     ..pc<Player>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lobby', $pb.PbFieldType.PM, subBuilder: Player.create)
     ..pc<Team>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'teams', $pb.PbFieldType.PM, subBuilder: Team.create)
-    ..aOB(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isPlaying')
-    ..aOB(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isGameStarted')
-    ..aOS(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'playerIdTurn')
+    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'playerIdTurn')
     ..hasRequiredFields = false
   ;
 
@@ -241,8 +239,6 @@ class Room extends $pb.GeneratedMessage {
     $core.String? langugage,
     $core.Iterable<Player>? lobby,
     $core.Iterable<Team>? teams,
-    $core.bool? isPlaying,
-    $core.bool? isGameStarted,
     $core.String? playerIdTurn,
   }) {
     final _result = create();
@@ -266,12 +262,6 @@ class Room extends $pb.GeneratedMessage {
     }
     if (teams != null) {
       _result.teams.addAll(teams);
-    }
-    if (isPlaying != null) {
-      _result.isPlaying = isPlaying;
-    }
-    if (isGameStarted != null) {
-      _result.isGameStarted = isGameStarted;
     }
     if (playerIdTurn != null) {
       _result.playerIdTurn = playerIdTurn;
@@ -351,31 +341,13 @@ class Room extends $pb.GeneratedMessage {
   $core.List<Team> get teams => $_getList(6);
 
   @$pb.TagNumber(8)
-  $core.bool get isPlaying => $_getBF(7);
+  $core.String get playerIdTurn => $_getSZ(7);
   @$pb.TagNumber(8)
-  set isPlaying($core.bool v) { $_setBool(7, v); }
+  set playerIdTurn($core.String v) { $_setString(7, v); }
   @$pb.TagNumber(8)
-  $core.bool hasIsPlaying() => $_has(7);
+  $core.bool hasPlayerIdTurn() => $_has(7);
   @$pb.TagNumber(8)
-  void clearIsPlaying() => clearField(8);
-
-  @$pb.TagNumber(9)
-  $core.bool get isGameStarted => $_getBF(8);
-  @$pb.TagNumber(9)
-  set isGameStarted($core.bool v) { $_setBool(8, v); }
-  @$pb.TagNumber(9)
-  $core.bool hasIsGameStarted() => $_has(8);
-  @$pb.TagNumber(9)
-  void clearIsGameStarted() => clearField(9);
-
-  @$pb.TagNumber(10)
-  $core.String get playerIdTurn => $_getSZ(9);
-  @$pb.TagNumber(10)
-  set playerIdTurn($core.String v) { $_setString(9, v); }
-  @$pb.TagNumber(10)
-  $core.bool hasPlayerIdTurn() => $_has(9);
-  @$pb.TagNumber(10)
-  void clearPlayerIdTurn() => clearField(10);
+  void clearPlayerIdTurn() => clearField(8);
 }
 
 class Player extends $pb.GeneratedMessage {
