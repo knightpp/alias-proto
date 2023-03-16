@@ -226,7 +226,6 @@ class Room extends $pb.GeneratedMessage {
     ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'langugage')
     ..pc<Player>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lobby', $pb.PbFieldType.PM, subBuilder: Player.create)
     ..pc<Team>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'teams', $pb.PbFieldType.PM, subBuilder: Team.create)
-    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'playerIdTurn')
     ..hasRequiredFields = false
   ;
 
@@ -239,7 +238,6 @@ class Room extends $pb.GeneratedMessage {
     $core.String? langugage,
     $core.Iterable<Player>? lobby,
     $core.Iterable<Team>? teams,
-    $core.String? playerIdTurn,
   }) {
     final _result = create();
     if (id != null) {
@@ -262,9 +260,6 @@ class Room extends $pb.GeneratedMessage {
     }
     if (teams != null) {
       _result.teams.addAll(teams);
-    }
-    if (playerIdTurn != null) {
-      _result.playerIdTurn = playerIdTurn;
     }
     return _result;
   }
@@ -339,15 +334,6 @@ class Room extends $pb.GeneratedMessage {
 
   @$pb.TagNumber(7)
   $core.List<Team> get teams => $_getList(6);
-
-  @$pb.TagNumber(8)
-  $core.String get playerIdTurn => $_getSZ(7);
-  @$pb.TagNumber(8)
-  set playerIdTurn($core.String v) { $_setString(7, v); }
-  @$pb.TagNumber(8)
-  $core.bool hasPlayerIdTurn() => $_has(7);
-  @$pb.TagNumber(8)
-  void clearPlayerIdTurn() => clearField(8);
 }
 
 class Player extends $pb.GeneratedMessage {
@@ -834,17 +820,17 @@ class MsgJoinTeam extends $pb.GeneratedMessage {
 
 class MsgStartGame extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgStartGame', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game_service'), createEmptyInstance: create)
-    ..pPS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'turns')
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'nextPlayerTurn')
     ..hasRequiredFields = false
   ;
 
   MsgStartGame._() : super();
   factory MsgStartGame({
-    $core.Iterable<$core.String>? turns,
+    $core.String? nextPlayerTurn,
   }) {
     final _result = create();
-    if (turns != null) {
-      _result.turns.addAll(turns);
+    if (nextPlayerTurn != null) {
+      _result.nextPlayerTurn = nextPlayerTurn;
     }
     return _result;
   }
@@ -870,7 +856,13 @@ class MsgStartGame extends $pb.GeneratedMessage {
   static MsgStartGame? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<$core.String> get turns => $_getList(0);
+  $core.String get nextPlayerTurn => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set nextPlayerTurn($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasNextPlayerTurn() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearNextPlayerTurn() => clearField(1);
 }
 
 class MsgEndGame extends $pb.GeneratedMessage {
@@ -993,16 +985,21 @@ class MsgStartTurn extends $pb.GeneratedMessage {
 class MsgEndTurn extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgEndTurn', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game_service'), createEmptyInstance: create)
     ..aOM<Statistics>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'stats', subBuilder: Statistics.create)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'nextPlayerTurn')
     ..hasRequiredFields = false
   ;
 
   MsgEndTurn._() : super();
   factory MsgEndTurn({
     Statistics? stats,
+    $core.String? nextPlayerTurn,
   }) {
     final _result = create();
     if (stats != null) {
       _result.stats = stats;
+    }
+    if (nextPlayerTurn != null) {
+      _result.nextPlayerTurn = nextPlayerTurn;
     }
     return _result;
   }
@@ -1037,6 +1034,15 @@ class MsgEndTurn extends $pb.GeneratedMessage {
   void clearStats() => clearField(1);
   @$pb.TagNumber(1)
   Statistics ensureStats() => $_ensure(0);
+
+  @$pb.TagNumber(2)
+  $core.String get nextPlayerTurn => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set nextPlayerTurn($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasNextPlayerTurn() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearNextPlayerTurn() => clearField(2);
 }
 
 class MsgTransferLeadership extends $pb.GeneratedMessage {

@@ -33,8 +33,6 @@ message Room {
   string langugage = 5;
   repeated Player lobby = 6;
   repeated Team teams = 7;
-
-  string player_id_turn = 8;
 }
 
 message Player {
@@ -63,18 +61,19 @@ message UpdateRoom {
 }
 
 message MsgCreateTeam { string name = 1; }
-
 message MsgTeamCreated { Team team = 1; }
 
 message MsgJoinTeam { string team_id = 1; }
 
-message MsgStartGame { repeated string turns = 1; }
+message MsgStartGame { string next_player_turn = 1; }
 message MsgEndGame {}
 message MsgResults { map<string, Statistics> team_id_to_stats = 1; }
 
 message MsgStartTurn { uint64 duration_ms = 1; }
-
-message MsgEndTurn { Statistics stats = 1; }
+message MsgEndTurn {
+  Statistics stats = 1;
+  string next_player_turn = 2;
+}
 
 message MsgTransferLeadership { string player_id = 1; }
 
