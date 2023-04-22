@@ -19,7 +19,8 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	LoginService_LoginGuest_FullMethodName = "/login_service.LoginService/LoginGuest"
+	LoginService_LoginGuest_FullMethodName  = "/login_service.LoginService/LoginGuest"
+	LoginService_VerifyToken_FullMethodName = "/login_service.LoginService/VerifyToken"
 )
 
 // LoginServiceClient is the client API for LoginService service.
@@ -27,6 +28,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type LoginServiceClient interface {
 	LoginGuest(ctx context.Context, in *LoginGuestRequest, opts ...grpc.CallOption) (*LoginGuestResponse, error)
+	VerifyToken(ctx context.Context, in *VerifyTokenRequest, opts ...grpc.CallOption) (*VerifyTokenResponse, error)
 }
 
 type loginServiceClient struct {
@@ -46,11 +48,21 @@ func (c *loginServiceClient) LoginGuest(ctx context.Context, in *LoginGuestReque
 	return out, nil
 }
 
+func (c *loginServiceClient) VerifyToken(ctx context.Context, in *VerifyTokenRequest, opts ...grpc.CallOption) (*VerifyTokenResponse, error) {
+	out := new(VerifyTokenResponse)
+	err := c.cc.Invoke(ctx, LoginService_VerifyToken_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // LoginServiceServer is the server API for LoginService service.
 // All implementations must embed UnimplementedLoginServiceServer
 // for forward compatibility
 type LoginServiceServer interface {
 	LoginGuest(context.Context, *LoginGuestRequest) (*LoginGuestResponse, error)
+	VerifyToken(context.Context, *VerifyTokenRequest) (*VerifyTokenResponse, error)
 	mustEmbedUnimplementedLoginServiceServer()
 }
 
@@ -60,6 +72,9 @@ type UnimplementedLoginServiceServer struct {
 
 func (UnimplementedLoginServiceServer) LoginGuest(context.Context, *LoginGuestRequest) (*LoginGuestResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LoginGuest not implemented")
+}
+func (UnimplementedLoginServiceServer) VerifyToken(context.Context, *VerifyTokenRequest) (*VerifyTokenResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method VerifyToken not implemented")
 }
 func (UnimplementedLoginServiceServer) mustEmbedUnimplementedLoginServiceServer() {}
 
@@ -92,6 +107,24 @@ func _LoginService_LoginGuest_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _LoginService_VerifyToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(VerifyTokenRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LoginServiceServer).VerifyToken(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: LoginService_VerifyToken_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LoginServiceServer).VerifyToken(ctx, req.(*VerifyTokenRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // LoginService_ServiceDesc is the grpc.ServiceDesc for LoginService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -102,6 +135,10 @@ var LoginService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "LoginGuest",
 			Handler:    _LoginService_LoginGuest_Handler,
+		},
+		{
+			MethodName: "VerifyToken",
+			Handler:    _LoginService_VerifyToken_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

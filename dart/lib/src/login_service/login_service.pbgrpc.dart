@@ -20,6 +20,12 @@ class LoginServiceClient extends $grpc.Client {
           ($1.LoginGuestRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $1.LoginGuestResponse.fromBuffer(value));
+  static final _$verifyToken =
+      $grpc.ClientMethod<$1.VerifyTokenRequest, $1.VerifyTokenResponse>(
+          '/login_service.LoginService/VerifyToken',
+          ($1.VerifyTokenRequest value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) =>
+              $1.VerifyTokenResponse.fromBuffer(value));
 
   LoginServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -30,6 +36,12 @@ class LoginServiceClient extends $grpc.Client {
       $1.LoginGuestRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$loginGuest, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$1.VerifyTokenResponse> verifyToken(
+      $1.VerifyTokenRequest request,
+      {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$verifyToken, request, options: options);
   }
 }
 
@@ -44,6 +56,15 @@ abstract class LoginServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $1.LoginGuestRequest.fromBuffer(value),
         ($1.LoginGuestResponse value) => value.writeToBuffer()));
+    $addMethod(
+        $grpc.ServiceMethod<$1.VerifyTokenRequest, $1.VerifyTokenResponse>(
+            'VerifyToken',
+            verifyToken_Pre,
+            false,
+            false,
+            ($core.List<$core.int> value) =>
+                $1.VerifyTokenRequest.fromBuffer(value),
+            ($1.VerifyTokenResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$1.LoginGuestResponse> loginGuest_Pre($grpc.ServiceCall call,
@@ -51,6 +72,13 @@ abstract class LoginServiceBase extends $grpc.Service {
     return loginGuest(call, await request);
   }
 
+  $async.Future<$1.VerifyTokenResponse> verifyToken_Pre($grpc.ServiceCall call,
+      $async.Future<$1.VerifyTokenRequest> request) async {
+    return verifyToken(call, await request);
+  }
+
   $async.Future<$1.LoginGuestResponse> loginGuest(
       $grpc.ServiceCall call, $1.LoginGuestRequest request);
+  $async.Future<$1.VerifyTokenResponse> verifyToken(
+      $grpc.ServiceCall call, $1.VerifyTokenRequest request);
 }

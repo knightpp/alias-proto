@@ -208,3 +208,79 @@ class LoginGuestResponse extends $pb.GeneratedMessage {
   Account ensureAccount() => $_ensure(0);
 }
 
+class VerifyTokenRequest extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'VerifyTokenRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'login_service'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'token')
+    ..hasRequiredFields = false
+  ;
+
+  VerifyTokenRequest._() : super();
+  factory VerifyTokenRequest({
+    $core.String? token,
+  }) {
+    final _result = create();
+    if (token != null) {
+      _result.token = token;
+    }
+    return _result;
+  }
+  factory VerifyTokenRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory VerifyTokenRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  VerifyTokenRequest clone() => VerifyTokenRequest()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  VerifyTokenRequest copyWith(void Function(VerifyTokenRequest) updates) => super.copyWith((message) => updates(message as VerifyTokenRequest)) as VerifyTokenRequest; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static VerifyTokenRequest create() => VerifyTokenRequest._();
+  VerifyTokenRequest createEmptyInstance() => create();
+  static $pb.PbList<VerifyTokenRequest> createRepeated() => $pb.PbList<VerifyTokenRequest>();
+  @$core.pragma('dart2js:noInline')
+  static VerifyTokenRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<VerifyTokenRequest>(create);
+  static VerifyTokenRequest? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get token => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set token($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasToken() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearToken() => clearField(1);
+}
+
+class VerifyTokenResponse extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'VerifyTokenResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'login_service'), createEmptyInstance: create)
+    ..hasRequiredFields = false
+  ;
+
+  VerifyTokenResponse._() : super();
+  factory VerifyTokenResponse() => create();
+  factory VerifyTokenResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory VerifyTokenResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  VerifyTokenResponse clone() => VerifyTokenResponse()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  VerifyTokenResponse copyWith(void Function(VerifyTokenResponse) updates) => super.copyWith((message) => updates(message as VerifyTokenResponse)) as VerifyTokenResponse; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static VerifyTokenResponse create() => VerifyTokenResponse._();
+  VerifyTokenResponse createEmptyInstance() => create();
+  static $pb.PbList<VerifyTokenResponse> createRepeated() => $pb.PbList<VerifyTokenResponse>();
+  @$core.pragma('dart2js:noInline')
+  static VerifyTokenResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<VerifyTokenResponse>(create);
+  static VerifyTokenResponse? _defaultInstance;
+}
+

@@ -48,3 +48,20 @@ const LoginGuestResponse$json = const {
 
 /// Descriptor for `LoginGuestResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List loginGuestResponseDescriptor = $convert.base64Decode('ChJMb2dpbkd1ZXN0UmVzcG9uc2USMAoHYWNjb3VudBgBIAEoCzIWLmxvZ2luX3NlcnZpY2UuQWNjb3VudFIHYWNjb3VudA==');
+@$core.Deprecated('Use verifyTokenRequestDescriptor instead')
+const VerifyTokenRequest$json = const {
+  '1': 'VerifyTokenRequest',
+  '2': const [
+    const {'1': 'token', '3': 1, '4': 1, '5': 9, '10': 'token'},
+  ],
+};
+
+/// Descriptor for `VerifyTokenRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List verifyTokenRequestDescriptor = $convert.base64Decode('ChJWZXJpZnlUb2tlblJlcXVlc3QSFAoFdG9rZW4YASABKAlSBXRva2Vu');
+@$core.Deprecated('Use verifyTokenResponseDescriptor instead')
+const VerifyTokenResponse$json = const {
+  '1': 'VerifyTokenResponse',
+};
+
+/// Descriptor for `VerifyTokenResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List verifyTokenResponseDescriptor = $convert.base64Decode('ChNWZXJpZnlUb2tlblJlc3BvbnNl');
