@@ -5,7 +5,6 @@
 // @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
-import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:fixnum/fixnum.dart' as $fixnum;
@@ -1397,23 +1396,5 @@ class Message extends $pb.GeneratedMessage {
   void clearWord() => clearField(12);
   @$pb.TagNumber(12)
   MsgWord ensureWord() => $_ensure(11);
-}
-
-class GameServiceApi {
-  $pb.RpcClient _client;
-  GameServiceApi(this._client);
-
-  $async.Future<ListRoomsResponse> listRooms($pb.ClientContext? ctx, ListRoomsRequest request) {
-    var emptyResponse = ListRoomsResponse();
-    return _client.invoke<ListRoomsResponse>(ctx, 'GameService', 'ListRooms', request, emptyResponse);
-  }
-  $async.Future<CreateRoomResponse> createRoom($pb.ClientContext? ctx, CreateRoomRequest request) {
-    var emptyResponse = CreateRoomResponse();
-    return _client.invoke<CreateRoomResponse>(ctx, 'GameService', 'CreateRoom', request, emptyResponse);
-  }
-  $async.Future<Message> join($pb.ClientContext? ctx, Message request) {
-    var emptyResponse = Message();
-    return _client.invoke<Message>(ctx, 'GameService', 'Join', request, emptyResponse);
-  }
 }
 

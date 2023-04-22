@@ -5,7 +5,6 @@
 // @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
-import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
@@ -207,15 +206,5 @@ class LoginGuestResponse extends $pb.GeneratedMessage {
   void clearAccount() => clearField(1);
   @$pb.TagNumber(1)
   Account ensureAccount() => $_ensure(0);
-}
-
-class LoginServiceApi {
-  $pb.RpcClient _client;
-  LoginServiceApi(this._client);
-
-  $async.Future<LoginGuestResponse> loginGuest($pb.ClientContext? ctx, LoginGuestRequest request) {
-    var emptyResponse = LoginGuestResponse();
-    return _client.invoke<LoginGuestResponse>(ctx, 'LoginService', 'LoginGuest', request, emptyResponse);
-  }
 }
 
