@@ -14,7 +14,9 @@ service GameService {
 }
 
 message ListRoomsRequest {}
-message ListRoomsResponse { repeated Room rooms = 1; }
+message ListRoomsResponse {
+  repeated Room rooms = 1;
+}
 
 message CreateRoomRequest {
   string name = 1;
@@ -23,7 +25,9 @@ message CreateRoomRequest {
   optional string password = 4;
 }
 
-message CreateRoomResponse { string id = 1; }
+message CreateRoomResponse {
+  string id = 1;
+}
 
 message Room {
   string id = 1;
@@ -53,31 +57,49 @@ message Statistics {
   uint32 wrongs = 2;
 }
 
-message MsgError { string error = 1; }
+message MsgError {
+  string error = 1;
+}
 
 message UpdateRoom {
   Room room = 1;
   optional string password = 2;
 }
 
-message MsgCreateTeam { string name = 1; }
-message MsgTeamCreated { Team team = 1; }
+message MsgCreateTeam {
+  string name = 1;
+}
+message MsgTeamCreated {
+  Team team = 1;
+}
 
-message MsgJoinTeam { string team_id = 1; }
+message MsgJoinTeam {
+  string team_id = 1;
+}
 
-message MsgStartGame { string next_player_turn = 1; }
+message MsgStartGame {
+  string next_player_turn = 1;
+}
 message MsgEndGame {}
-message MsgResults { map<string, Statistics> team_id_to_stats = 1; }
+message MsgResults {
+  map<string, Statistics> team_id_to_stats = 1;
+}
 
-message MsgStartTurn { uint64 duration_ms = 1; }
+message MsgStartTurn {
+  uint64 duration_ms = 1;
+}
 message MsgEndTurn {
   Statistics stats = 1;
   string next_player_turn = 2;
 }
 
-message MsgTransferLeadership { string player_id = 1; }
+message MsgTransferLeadership {
+  string player_id = 1;
+}
 
-message MsgWord { string word = 1; }
+message MsgWord {
+  string word = 1;
+}
 
 message Message {
   oneof message {
