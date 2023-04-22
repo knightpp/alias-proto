@@ -6,6 +6,7 @@ option go_package = "github.com/knightpp/alias-proto/go/loginsvc/";
 
 service LoginService {
   rpc LoginGuest(LoginGuestRequest) returns (LoginGuestResponse);
+  rpc VerifyToken(VerifyTokenRequest) returns (VerifyTokenResponse);
 }
 
 message Account {
@@ -22,3 +23,8 @@ message LoginGuestRequest {
 message LoginGuestResponse {
   Account account = 1;
 }
+
+message VerifyTokenRequest {
+  string token = 1;
+}
+message VerifyTokenResponse {}
