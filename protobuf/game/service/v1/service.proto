@@ -1,0 +1,155 @@
+syntax = "proto3";
+
+package game.service.v1;
+
+option go_package = "github.com/knightpp/alias-proto/go/game/service/v1;gamesvc";
+
+service GameService {
+  rpc ListRooms(ListRoomsRequest) returns (ListRoomsResponse);
+  rpc CreateRoom(CreateRoomRequest) returns (CreateRoomResponse);
+  rpc UpdateRoom(UpdateRoomRequest) returns (UpdateRoomResponse);
+  rpc JoinRoom(JoinRoomRequest) returns (JoinRoomResponse);
+
+  rpc TransferLeadership(TransferLeadershipRequest) returns (TransferLeadershipResponse);
+
+  rpc CreateTeam(CreateTeamRequest) returns (CreateTeamResponse);
+  rpc UpdateTeam(UpdateTeamRequest) returns (UpdateTeamResponse);
+  rpc JoinTeam(JoinTeamRequest) returns (JoinTeamResponse);
+  rpc StartGame(StartGameRequest) returns (StartGameResponse);
+  rpc StopGame(StopGameRequest) returns (StopGameResponse);
+
+  rpc StartTurn(StartTurnRequest) returns (StartTurnResponse);
+  rpc StopTurn(StopTurnRequest) returns (StopTurnResponse);
+
+  rpc Score(ScoreRequest) returns (ScoreResponse);
+
+  rpc Subscribe(SubscribeRequest) returns (stream SubscribeResponse);
+}
+
+message Room {
+  string id = 1;
+  string name = 2;
+  string leader_id = 3;
+  bool is_public = 4;
+  string langugage = 5;
+  repeated Player lobby = 6;
+  repeated Team teams = 7;
+}
+
+message Player {
+  string id = 1;
+  string name = 2;
+  string gravatar_url = 3;
+}
+
+message Team {
+  string id = 1;
+  string name = 2;
+  Player player_a = 3;
+  Player player_b = 4;
+}
+
+message ListRoomsRequest {}
+message ListRoomsResponse {
+  repeated Room rooms = 1;
+}
+
+message CreateRoomRequest {
+  string name = 1;
+  bool is_public = 2;
+  string langugage = 3;
+  optional string password = 4;
+}
+message CreateRoomResponse {
+  string id = 1;
+}
+
+message UpdateRoomRequest {
+  Room room = 1;
+  optional string password = 2;
+}
+message UpdateRoomResponse {}
+
+message CreateTeamRequest {
+  string name = 1;
+}
+message CreateTeamResponse {}
+
+message UpdateTeamRequest {
+  Team team = 1;
+}
+message UpdateTeamResponse {}
+
+message JoinTeamRequest {
+  string team_id = 1;
+}
+message JoinTeamResponse {}
+
+message StartGameRequest {
+  string next_player_turn = 1;
+}
+message StartGameResponse {}
+
+message StopGameRequest {}
+message StopGameResponse {}
+
+message TransferLeadershipRequest {
+  string player_id = 1;
+}
+message TransferLeadershipResponse {}
+
+message StartTurnRequest {
+  uint64 duration_ms = 1;
+  string next_player_turn = 2;
+}
+message StartTurnResponse {}
+message StopTurnRequest {}
+message StopTurnResponse {}
+
+message Statistics {
+  uint32 rights = 1;
+  uint32 wrongs = 2;
+}
+
+message MsgNewTeam {
+  Team team = 1;
+}
+
+message MsgEndGame {
+  map<string, Statistics> team_id_to_stats = 1;
+}
+
+message MsgEndTurn {
+  Statistics stats = 1;
+}
+
+message MsgWord {
+  string word = 1;
+}
+
+message JoinRoomRequest {
+  string room_id = 1;
+  optional string password = 2;
+}
+message JoinRoomResponse {}
+
+message Announcement {
+  oneof announce {
+    MsgNewTeam new_team = 1;
+    MsgEndTurn end_turn = 2;
+    MsgEndGame end_game = 3;
+    MsgWord word = 4;
+  }
+}
+
+message SubscribeRequest {
+  string room_id = 1;
+}
+message SubscribeResponse {
+  Announcement announcement = 1;
+}
+
+message ScoreRequest {
+  int32 change = 1;
+}
+message ScoreResponse {}

@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package account.service.v1;
+
+option go_package = "github.com/knightpp/alias-proto/go/account/service/v1;accountsvc";
+
+service AccountService {
+  rpc VerifyToken(VerifyTokenRequest) returns (VerifyTokenResponse);
+
+  rpc RegisterGuest(RegisterGuestRequest) returns (RegisterGuestResponse);
+
+  rpc UpdateAccount(UpdateAccountRequest) returns (UpdateAccountResponse);
+}
+
+message Account {
+  string id = 1;
+  string auth_token = 2;
+  string name = 3;
+  optional string email = 4;
+}
+
+message VerifyTokenRequest {
+  string token = 1;
+}
+message VerifyTokenResponse {}
+
+message RegisterGuestRequest {
+  string name = 1;
+  optional string email = 2;
+}
+message RegisterGuestResponse {
+  Account account = 1;
+}
+
+message UpdateAccountRequest {
+  Account account = 1;
+}
+message UpdateAccountResponse {}
