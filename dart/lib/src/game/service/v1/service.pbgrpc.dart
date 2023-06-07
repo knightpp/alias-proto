@@ -90,12 +90,6 @@ class GameServiceClient extends $grpc.Client {
       '/game.service.v1.GameService/Score',
       ($1.ScoreRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $1.ScoreResponse.fromBuffer(value));
-  static final _$subscribe =
-      $grpc.ClientMethod<$1.SubscribeRequest, $1.SubscribeResponse>(
-          '/game.service.v1.GameService/Subscribe',
-          ($1.SubscribeRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) =>
-              $1.SubscribeResponse.fromBuffer(value));
 
   GameServiceClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -120,9 +114,11 @@ class GameServiceClient extends $grpc.Client {
     return $createUnaryCall(_$updateRoom, request, options: options);
   }
 
-  $grpc.ResponseFuture<$1.JoinRoomResponse> joinRoom($1.JoinRoomRequest request,
+  $grpc.ResponseStream<$1.JoinRoomResponse> joinRoom($1.JoinRoomRequest request,
       {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$joinRoom, request, options: options);
+    return $createStreamingCall(
+        _$joinRoom, $async.Stream.fromIterable([request]),
+        options: options);
   }
 
   $grpc.ResponseFuture<$1.TransferLeadershipResponse> transferLeadership(
@@ -174,14 +170,6 @@ class GameServiceClient extends $grpc.Client {
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$score, request, options: options);
   }
-
-  $grpc.ResponseStream<$1.SubscribeResponse> subscribe(
-      $1.SubscribeRequest request,
-      {$grpc.CallOptions? options}) {
-    return $createStreamingCall(
-        _$subscribe, $async.Stream.fromIterable([request]),
-        options: options);
-  }
 }
 
 abstract class GameServiceBase extends $grpc.Service {
@@ -213,7 +201,7 @@ abstract class GameServiceBase extends $grpc.Service {
         'JoinRoom',
         joinRoom_Pre,
         false,
-        false,
+        true,
         ($core.List<$core.int> value) => $1.JoinRoomRequest.fromBuffer(value),
         ($1.JoinRoomResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$1.TransferLeadershipRequest,
@@ -281,13 +269,6 @@ abstract class GameServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $1.ScoreRequest.fromBuffer(value),
         ($1.ScoreResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.SubscribeRequest, $1.SubscribeResponse>(
-        'Subscribe',
-        subscribe_Pre,
-        false,
-        true,
-        ($core.List<$core.int> value) => $1.SubscribeRequest.fromBuffer(value),
-        ($1.SubscribeResponse value) => value.writeToBuffer()));
   }
 
   $async.Future<$1.ListRoomsResponse> listRooms_Pre($grpc.ServiceCall call,
@@ -305,9 +286,9 @@ abstract class GameServiceBase extends $grpc.Service {
     return updateRoom(call, await request);
   }
 
-  $async.Future<$1.JoinRoomResponse> joinRoom_Pre(
-      $grpc.ServiceCall call, $async.Future<$1.JoinRoomRequest> request) async {
-    return joinRoom(call, await request);
+  $async.Stream<$1.JoinRoomResponse> joinRoom_Pre($grpc.ServiceCall call,
+      $async.Future<$1.JoinRoomRequest> request) async* {
+    yield* joinRoom(call, await request);
   }
 
   $async.Future<$1.TransferLeadershipResponse> transferLeadership_Pre(
@@ -356,18 +337,13 @@ abstract class GameServiceBase extends $grpc.Service {
     return score(call, await request);
   }
 
-  $async.Stream<$1.SubscribeResponse> subscribe_Pre($grpc.ServiceCall call,
-      $async.Future<$1.SubscribeRequest> request) async* {
-    yield* subscribe(call, await request);
-  }
-
   $async.Future<$1.ListRoomsResponse> listRooms(
       $grpc.ServiceCall call, $1.ListRoomsRequest request);
   $async.Future<$1.CreateRoomResponse> createRoom(
       $grpc.ServiceCall call, $1.CreateRoomRequest request);
   $async.Future<$1.UpdateRoomResponse> updateRoom(
       $grpc.ServiceCall call, $1.UpdateRoomRequest request);
-  $async.Future<$1.JoinRoomResponse> joinRoom(
+  $async.Stream<$1.JoinRoomResponse> joinRoom(
       $grpc.ServiceCall call, $1.JoinRoomRequest request);
   $async.Future<$1.TransferLeadershipResponse> transferLeadership(
       $grpc.ServiceCall call, $1.TransferLeadershipRequest request);
@@ -387,6 +363,4 @@ abstract class GameServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $1.StopTurnRequest request);
   $async.Future<$1.ScoreResponse> score(
       $grpc.ServiceCall call, $1.ScoreRequest request);
-  $async.Stream<$1.SubscribeResponse> subscribe(
-      $grpc.ServiceCall call, $1.SubscribeRequest request);
 }

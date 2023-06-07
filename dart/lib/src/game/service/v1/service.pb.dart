@@ -10,6 +10,10 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
+import 'service.pbenum.dart';
+
+export 'service.pbenum.dart';
+
 class Room extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Room', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game.service.v1'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
@@ -1244,192 +1248,6 @@ class Statistics extends $pb.GeneratedMessage {
   void clearWrongs() => clearField(2);
 }
 
-class MsgNewTeam extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgNewTeam', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game.service.v1'), createEmptyInstance: create)
-    ..aOM<Team>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'team', subBuilder: Team.create)
-    ..hasRequiredFields = false
-  ;
-
-  MsgNewTeam._() : super();
-  factory MsgNewTeam({
-    Team? team,
-  }) {
-    final _result = create();
-    if (team != null) {
-      _result.team = team;
-    }
-    return _result;
-  }
-  factory MsgNewTeam.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory MsgNewTeam.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  MsgNewTeam clone() => MsgNewTeam()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  MsgNewTeam copyWith(void Function(MsgNewTeam) updates) => super.copyWith((message) => updates(message as MsgNewTeam)) as MsgNewTeam; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static MsgNewTeam create() => MsgNewTeam._();
-  MsgNewTeam createEmptyInstance() => create();
-  static $pb.PbList<MsgNewTeam> createRepeated() => $pb.PbList<MsgNewTeam>();
-  @$core.pragma('dart2js:noInline')
-  static MsgNewTeam getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgNewTeam>(create);
-  static MsgNewTeam? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  Team get team => $_getN(0);
-  @$pb.TagNumber(1)
-  set team(Team v) { setField(1, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasTeam() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearTeam() => clearField(1);
-  @$pb.TagNumber(1)
-  Team ensureTeam() => $_ensure(0);
-}
-
-class MsgEndGame extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgEndGame', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game.service.v1'), createEmptyInstance: create)
-    ..m<$core.String, Statistics>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'teamIdToStats', entryClassName: 'MsgEndGame.TeamIdToStatsEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: Statistics.create, packageName: const $pb.PackageName('game.service.v1'))
-    ..hasRequiredFields = false
-  ;
-
-  MsgEndGame._() : super();
-  factory MsgEndGame({
-    $core.Map<$core.String, Statistics>? teamIdToStats,
-  }) {
-    final _result = create();
-    if (teamIdToStats != null) {
-      _result.teamIdToStats.addAll(teamIdToStats);
-    }
-    return _result;
-  }
-  factory MsgEndGame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory MsgEndGame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  MsgEndGame clone() => MsgEndGame()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  MsgEndGame copyWith(void Function(MsgEndGame) updates) => super.copyWith((message) => updates(message as MsgEndGame)) as MsgEndGame; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static MsgEndGame create() => MsgEndGame._();
-  MsgEndGame createEmptyInstance() => create();
-  static $pb.PbList<MsgEndGame> createRepeated() => $pb.PbList<MsgEndGame>();
-  @$core.pragma('dart2js:noInline')
-  static MsgEndGame getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgEndGame>(create);
-  static MsgEndGame? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.Map<$core.String, Statistics> get teamIdToStats => $_getMap(0);
-}
-
-class MsgEndTurn extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgEndTurn', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game.service.v1'), createEmptyInstance: create)
-    ..aOM<Statistics>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'stats', subBuilder: Statistics.create)
-    ..hasRequiredFields = false
-  ;
-
-  MsgEndTurn._() : super();
-  factory MsgEndTurn({
-    Statistics? stats,
-  }) {
-    final _result = create();
-    if (stats != null) {
-      _result.stats = stats;
-    }
-    return _result;
-  }
-  factory MsgEndTurn.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory MsgEndTurn.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  MsgEndTurn clone() => MsgEndTurn()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  MsgEndTurn copyWith(void Function(MsgEndTurn) updates) => super.copyWith((message) => updates(message as MsgEndTurn)) as MsgEndTurn; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static MsgEndTurn create() => MsgEndTurn._();
-  MsgEndTurn createEmptyInstance() => create();
-  static $pb.PbList<MsgEndTurn> createRepeated() => $pb.PbList<MsgEndTurn>();
-  @$core.pragma('dart2js:noInline')
-  static MsgEndTurn getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgEndTurn>(create);
-  static MsgEndTurn? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  Statistics get stats => $_getN(0);
-  @$pb.TagNumber(1)
-  set stats(Statistics v) { setField(1, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasStats() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearStats() => clearField(1);
-  @$pb.TagNumber(1)
-  Statistics ensureStats() => $_ensure(0);
-}
-
-class MsgWord extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MsgWord', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game.service.v1'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'word')
-    ..hasRequiredFields = false
-  ;
-
-  MsgWord._() : super();
-  factory MsgWord({
-    $core.String? word,
-  }) {
-    final _result = create();
-    if (word != null) {
-      _result.word = word;
-    }
-    return _result;
-  }
-  factory MsgWord.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory MsgWord.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  MsgWord clone() => MsgWord()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  MsgWord copyWith(void Function(MsgWord) updates) => super.copyWith((message) => updates(message as MsgWord)) as MsgWord; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static MsgWord create() => MsgWord._();
-  MsgWord createEmptyInstance() => create();
-  static $pb.PbList<MsgWord> createRepeated() => $pb.PbList<MsgWord>();
-  @$core.pragma('dart2js:noInline')
-  static MsgWord getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MsgWord>(create);
-  static MsgWord? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get word => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set word($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasWord() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearWord() => clearField(1);
-}
-
 class JoinRoomRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'JoinRoomRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game.service.v1'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'roomId')
@@ -1493,11 +1311,20 @@ class JoinRoomRequest extends $pb.GeneratedMessage {
 
 class JoinRoomResponse extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'JoinRoomResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game.service.v1'), createEmptyInstance: create)
+    ..aOM<Announcement>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'announcement', subBuilder: Announcement.create)
     ..hasRequiredFields = false
   ;
 
   JoinRoomResponse._() : super();
-  factory JoinRoomResponse() => create();
+  factory JoinRoomResponse({
+    Announcement? announcement,
+  }) {
+    final _result = create();
+    if (announcement != null) {
+      _result.announcement = announcement;
+    }
+    return _result;
+  }
   factory JoinRoomResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory JoinRoomResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
@@ -1518,52 +1345,699 @@ class JoinRoomResponse extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static JoinRoomResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<JoinRoomResponse>(create);
   static JoinRoomResponse? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  Announcement get announcement => $_getN(0);
+  @$pb.TagNumber(1)
+  set announcement(Announcement v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasAnnouncement() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearAnnouncement() => clearField(1);
+  @$pb.TagNumber(1)
+  Announcement ensureAnnouncement() => $_ensure(0);
+}
+
+class AnnNewTeam extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AnnNewTeam', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game.service.v1'), createEmptyInstance: create)
+    ..aOM<Team>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'team', subBuilder: Team.create)
+    ..hasRequiredFields = false
+  ;
+
+  AnnNewTeam._() : super();
+  factory AnnNewTeam({
+    Team? team,
+  }) {
+    final _result = create();
+    if (team != null) {
+      _result.team = team;
+    }
+    return _result;
+  }
+  factory AnnNewTeam.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory AnnNewTeam.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  AnnNewTeam clone() => AnnNewTeam()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  AnnNewTeam copyWith(void Function(AnnNewTeam) updates) => super.copyWith((message) => updates(message as AnnNewTeam)) as AnnNewTeam; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AnnNewTeam create() => AnnNewTeam._();
+  AnnNewTeam createEmptyInstance() => create();
+  static $pb.PbList<AnnNewTeam> createRepeated() => $pb.PbList<AnnNewTeam>();
+  @$core.pragma('dart2js:noInline')
+  static AnnNewTeam getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AnnNewTeam>(create);
+  static AnnNewTeam? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  Team get team => $_getN(0);
+  @$pb.TagNumber(1)
+  set team(Team v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasTeam() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearTeam() => clearField(1);
+  @$pb.TagNumber(1)
+  Team ensureTeam() => $_ensure(0);
+}
+
+class AnnEndGame extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AnnEndGame', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game.service.v1'), createEmptyInstance: create)
+    ..m<$core.String, Statistics>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'teamIdToStats', entryClassName: 'AnnEndGame.TeamIdToStatsEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: Statistics.create, packageName: const $pb.PackageName('game.service.v1'))
+    ..hasRequiredFields = false
+  ;
+
+  AnnEndGame._() : super();
+  factory AnnEndGame({
+    $core.Map<$core.String, Statistics>? teamIdToStats,
+  }) {
+    final _result = create();
+    if (teamIdToStats != null) {
+      _result.teamIdToStats.addAll(teamIdToStats);
+    }
+    return _result;
+  }
+  factory AnnEndGame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory AnnEndGame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  AnnEndGame clone() => AnnEndGame()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  AnnEndGame copyWith(void Function(AnnEndGame) updates) => super.copyWith((message) => updates(message as AnnEndGame)) as AnnEndGame; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AnnEndGame create() => AnnEndGame._();
+  AnnEndGame createEmptyInstance() => create();
+  static $pb.PbList<AnnEndGame> createRepeated() => $pb.PbList<AnnEndGame>();
+  @$core.pragma('dart2js:noInline')
+  static AnnEndGame getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AnnEndGame>(create);
+  static AnnEndGame? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.Map<$core.String, Statistics> get teamIdToStats => $_getMap(0);
+}
+
+class AnnEndTurn extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AnnEndTurn', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game.service.v1'), createEmptyInstance: create)
+    ..aOM<Statistics>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'stats', subBuilder: Statistics.create)
+    ..hasRequiredFields = false
+  ;
+
+  AnnEndTurn._() : super();
+  factory AnnEndTurn({
+    Statistics? stats,
+  }) {
+    final _result = create();
+    if (stats != null) {
+      _result.stats = stats;
+    }
+    return _result;
+  }
+  factory AnnEndTurn.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory AnnEndTurn.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  AnnEndTurn clone() => AnnEndTurn()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  AnnEndTurn copyWith(void Function(AnnEndTurn) updates) => super.copyWith((message) => updates(message as AnnEndTurn)) as AnnEndTurn; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AnnEndTurn create() => AnnEndTurn._();
+  AnnEndTurn createEmptyInstance() => create();
+  static $pb.PbList<AnnEndTurn> createRepeated() => $pb.PbList<AnnEndTurn>();
+  @$core.pragma('dart2js:noInline')
+  static AnnEndTurn getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AnnEndTurn>(create);
+  static AnnEndTurn? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  Statistics get stats => $_getN(0);
+  @$pb.TagNumber(1)
+  set stats(Statistics v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasStats() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearStats() => clearField(1);
+  @$pb.TagNumber(1)
+  Statistics ensureStats() => $_ensure(0);
+}
+
+class AnnWord extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AnnWord', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game.service.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'word')
+    ..hasRequiredFields = false
+  ;
+
+  AnnWord._() : super();
+  factory AnnWord({
+    $core.String? word,
+  }) {
+    final _result = create();
+    if (word != null) {
+      _result.word = word;
+    }
+    return _result;
+  }
+  factory AnnWord.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory AnnWord.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  AnnWord clone() => AnnWord()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  AnnWord copyWith(void Function(AnnWord) updates) => super.copyWith((message) => updates(message as AnnWord)) as AnnWord; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AnnWord create() => AnnWord._();
+  AnnWord createEmptyInstance() => create();
+  static $pb.PbList<AnnWord> createRepeated() => $pb.PbList<AnnWord>();
+  @$core.pragma('dart2js:noInline')
+  static AnnWord getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AnnWord>(create);
+  static AnnWord? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get word => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set word($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasWord() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearWord() => clearField(1);
+}
+
+class AnnTransferLeadership extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AnnTransferLeadership', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game.service.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'newLeader')
+    ..hasRequiredFields = false
+  ;
+
+  AnnTransferLeadership._() : super();
+  factory AnnTransferLeadership({
+    $core.String? newLeader,
+  }) {
+    final _result = create();
+    if (newLeader != null) {
+      _result.newLeader = newLeader;
+    }
+    return _result;
+  }
+  factory AnnTransferLeadership.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory AnnTransferLeadership.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  AnnTransferLeadership clone() => AnnTransferLeadership()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  AnnTransferLeadership copyWith(void Function(AnnTransferLeadership) updates) => super.copyWith((message) => updates(message as AnnTransferLeadership)) as AnnTransferLeadership; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AnnTransferLeadership create() => AnnTransferLeadership._();
+  AnnTransferLeadership createEmptyInstance() => create();
+  static $pb.PbList<AnnTransferLeadership> createRepeated() => $pb.PbList<AnnTransferLeadership>();
+  @$core.pragma('dart2js:noInline')
+  static AnnTransferLeadership getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AnnTransferLeadership>(create);
+  static AnnTransferLeadership? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get newLeader => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set newLeader($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasNewLeader() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearNewLeader() => clearField(1);
+}
+
+class AnnJoinTeam extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AnnJoinTeam', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game.service.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'playerId')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'teamId')
+    ..e<Slot>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'slot', $pb.PbFieldType.OE, defaultOrMaker: Slot.SLOT_UNSPECIFIED, valueOf: Slot.valueOf, enumValues: Slot.values)
+    ..hasRequiredFields = false
+  ;
+
+  AnnJoinTeam._() : super();
+  factory AnnJoinTeam({
+    $core.String? playerId,
+    $core.String? teamId,
+    Slot? slot,
+  }) {
+    final _result = create();
+    if (playerId != null) {
+      _result.playerId = playerId;
+    }
+    if (teamId != null) {
+      _result.teamId = teamId;
+    }
+    if (slot != null) {
+      _result.slot = slot;
+    }
+    return _result;
+  }
+  factory AnnJoinTeam.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory AnnJoinTeam.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  AnnJoinTeam clone() => AnnJoinTeam()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  AnnJoinTeam copyWith(void Function(AnnJoinTeam) updates) => super.copyWith((message) => updates(message as AnnJoinTeam)) as AnnJoinTeam; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AnnJoinTeam create() => AnnJoinTeam._();
+  AnnJoinTeam createEmptyInstance() => create();
+  static $pb.PbList<AnnJoinTeam> createRepeated() => $pb.PbList<AnnJoinTeam>();
+  @$core.pragma('dart2js:noInline')
+  static AnnJoinTeam getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AnnJoinTeam>(create);
+  static AnnJoinTeam? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get playerId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set playerId($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasPlayerId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearPlayerId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get teamId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set teamId($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasTeamId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearTeamId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  Slot get slot => $_getN(2);
+  @$pb.TagNumber(3)
+  set slot(Slot v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasSlot() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearSlot() => clearField(3);
+}
+
+class AnnStartGame extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AnnStartGame', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game.service.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'playerTurn')
+    ..hasRequiredFields = false
+  ;
+
+  AnnStartGame._() : super();
+  factory AnnStartGame({
+    $core.String? playerTurn,
+  }) {
+    final _result = create();
+    if (playerTurn != null) {
+      _result.playerTurn = playerTurn;
+    }
+    return _result;
+  }
+  factory AnnStartGame.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory AnnStartGame.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  AnnStartGame clone() => AnnStartGame()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  AnnStartGame copyWith(void Function(AnnStartGame) updates) => super.copyWith((message) => updates(message as AnnStartGame)) as AnnStartGame; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AnnStartGame create() => AnnStartGame._();
+  AnnStartGame createEmptyInstance() => create();
+  static $pb.PbList<AnnStartGame> createRepeated() => $pb.PbList<AnnStartGame>();
+  @$core.pragma('dart2js:noInline')
+  static AnnStartGame getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AnnStartGame>(create);
+  static AnnStartGame? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get playerTurn => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set playerTurn($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasPlayerTurn() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearPlayerTurn() => clearField(1);
+}
+
+class AnnStartTurn extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AnnStartTurn', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game.service.v1'), createEmptyInstance: create)
+    ..a<$fixnum.Int64>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'durationMs', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
+    ..hasRequiredFields = false
+  ;
+
+  AnnStartTurn._() : super();
+  factory AnnStartTurn({
+    $fixnum.Int64? durationMs,
+  }) {
+    final _result = create();
+    if (durationMs != null) {
+      _result.durationMs = durationMs;
+    }
+    return _result;
+  }
+  factory AnnStartTurn.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory AnnStartTurn.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  AnnStartTurn clone() => AnnStartTurn()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  AnnStartTurn copyWith(void Function(AnnStartTurn) updates) => super.copyWith((message) => updates(message as AnnStartTurn)) as AnnStartTurn; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AnnStartTurn create() => AnnStartTurn._();
+  AnnStartTurn createEmptyInstance() => create();
+  static $pb.PbList<AnnStartTurn> createRepeated() => $pb.PbList<AnnStartTurn>();
+  @$core.pragma('dart2js:noInline')
+  static AnnStartTurn getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AnnStartTurn>(create);
+  static AnnStartTurn? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $fixnum.Int64 get durationMs => $_getI64(0);
+  @$pb.TagNumber(1)
+  set durationMs($fixnum.Int64 v) { $_setInt64(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasDurationMs() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearDurationMs() => clearField(1);
+}
+
+class AnnUpdateRoomInfo extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AnnUpdateRoomInfo', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game.service.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'leaderId')
+    ..aOB(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isPublic')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'langugage')
+    ..hasRequiredFields = false
+  ;
+
+  AnnUpdateRoomInfo._() : super();
+  factory AnnUpdateRoomInfo({
+    $core.String? name,
+    $core.String? leaderId,
+    $core.bool? isPublic,
+    $core.String? langugage,
+  }) {
+    final _result = create();
+    if (name != null) {
+      _result.name = name;
+    }
+    if (leaderId != null) {
+      _result.leaderId = leaderId;
+    }
+    if (isPublic != null) {
+      _result.isPublic = isPublic;
+    }
+    if (langugage != null) {
+      _result.langugage = langugage;
+    }
+    return _result;
+  }
+  factory AnnUpdateRoomInfo.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory AnnUpdateRoomInfo.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  AnnUpdateRoomInfo clone() => AnnUpdateRoomInfo()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  AnnUpdateRoomInfo copyWith(void Function(AnnUpdateRoomInfo) updates) => super.copyWith((message) => updates(message as AnnUpdateRoomInfo)) as AnnUpdateRoomInfo; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AnnUpdateRoomInfo create() => AnnUpdateRoomInfo._();
+  AnnUpdateRoomInfo createEmptyInstance() => create();
+  static $pb.PbList<AnnUpdateRoomInfo> createRepeated() => $pb.PbList<AnnUpdateRoomInfo>();
+  @$core.pragma('dart2js:noInline')
+  static AnnUpdateRoomInfo getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AnnUpdateRoomInfo>(create);
+  static AnnUpdateRoomInfo? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get name => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set name($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasName() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearName() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get leaderId => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set leaderId($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasLeaderId() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearLeaderId() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.bool get isPublic => $_getBF(2);
+  @$pb.TagNumber(3)
+  set isPublic($core.bool v) { $_setBool(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasIsPublic() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearIsPublic() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get langugage => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set langugage($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasLangugage() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearLangugage() => clearField(4);
+}
+
+class AnnAddPlayer extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AnnAddPlayer', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game.service.v1'), createEmptyInstance: create)
+    ..aOM<Player>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'player', subBuilder: Player.create)
+    ..hasRequiredFields = false
+  ;
+
+  AnnAddPlayer._() : super();
+  factory AnnAddPlayer({
+    Player? player,
+  }) {
+    final _result = create();
+    if (player != null) {
+      _result.player = player;
+    }
+    return _result;
+  }
+  factory AnnAddPlayer.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory AnnAddPlayer.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  AnnAddPlayer clone() => AnnAddPlayer()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  AnnAddPlayer copyWith(void Function(AnnAddPlayer) updates) => super.copyWith((message) => updates(message as AnnAddPlayer)) as AnnAddPlayer; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AnnAddPlayer create() => AnnAddPlayer._();
+  AnnAddPlayer createEmptyInstance() => create();
+  static $pb.PbList<AnnAddPlayer> createRepeated() => $pb.PbList<AnnAddPlayer>();
+  @$core.pragma('dart2js:noInline')
+  static AnnAddPlayer getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AnnAddPlayer>(create);
+  static AnnAddPlayer? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  Player get player => $_getN(0);
+  @$pb.TagNumber(1)
+  set player(Player v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasPlayer() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearPlayer() => clearField(1);
+  @$pb.TagNumber(1)
+  Player ensurePlayer() => $_ensure(0);
+}
+
+class AnnRemovePlayer extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AnnRemovePlayer', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game.service.v1'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'playerId')
+    ..hasRequiredFields = false
+  ;
+
+  AnnRemovePlayer._() : super();
+  factory AnnRemovePlayer({
+    $core.String? playerId,
+  }) {
+    final _result = create();
+    if (playerId != null) {
+      _result.playerId = playerId;
+    }
+    return _result;
+  }
+  factory AnnRemovePlayer.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory AnnRemovePlayer.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  AnnRemovePlayer clone() => AnnRemovePlayer()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  AnnRemovePlayer copyWith(void Function(AnnRemovePlayer) updates) => super.copyWith((message) => updates(message as AnnRemovePlayer)) as AnnRemovePlayer; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static AnnRemovePlayer create() => AnnRemovePlayer._();
+  AnnRemovePlayer createEmptyInstance() => create();
+  static $pb.PbList<AnnRemovePlayer> createRepeated() => $pb.PbList<AnnRemovePlayer>();
+  @$core.pragma('dart2js:noInline')
+  static AnnRemovePlayer getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<AnnRemovePlayer>(create);
+  static AnnRemovePlayer? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get playerId => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set playerId($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasPlayerId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearPlayerId() => clearField(1);
 }
 
 enum Announcement_Announce {
   newTeam, 
+  joinTeam, 
+  startTurn, 
   endTurn, 
+  startGame, 
   endGame, 
   word, 
+  transferLeadership, 
+  updateRoom, 
+  addPlayer, 
+  removePlayer, 
   notSet
 }
 
 class Announcement extends $pb.GeneratedMessage {
   static const $core.Map<$core.int, Announcement_Announce> _Announcement_AnnounceByTag = {
     1 : Announcement_Announce.newTeam,
-    2 : Announcement_Announce.endTurn,
-    3 : Announcement_Announce.endGame,
-    4 : Announcement_Announce.word,
+    2 : Announcement_Announce.joinTeam,
+    3 : Announcement_Announce.startTurn,
+    4 : Announcement_Announce.endTurn,
+    5 : Announcement_Announce.startGame,
+    6 : Announcement_Announce.endGame,
+    7 : Announcement_Announce.word,
+    8 : Announcement_Announce.transferLeadership,
+    9 : Announcement_Announce.updateRoom,
+    10 : Announcement_Announce.addPlayer,
+    11 : Announcement_Announce.removePlayer,
     0 : Announcement_Announce.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Announcement', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game.service.v1'), createEmptyInstance: create)
-    ..oo(0, [1, 2, 3, 4])
-    ..aOM<MsgNewTeam>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'newTeam', subBuilder: MsgNewTeam.create)
-    ..aOM<MsgEndTurn>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'endTurn', subBuilder: MsgEndTurn.create)
-    ..aOM<MsgEndGame>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'endGame', subBuilder: MsgEndGame.create)
-    ..aOM<MsgWord>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'word', subBuilder: MsgWord.create)
+    ..oo(0, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
+    ..aOM<AnnNewTeam>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'newTeam', subBuilder: AnnNewTeam.create)
+    ..aOM<AnnJoinTeam>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'joinTeam', subBuilder: AnnJoinTeam.create)
+    ..aOM<AnnStartTurn>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'startTurn', subBuilder: AnnStartTurn.create)
+    ..aOM<AnnEndTurn>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'endTurn', subBuilder: AnnEndTurn.create)
+    ..aOM<AnnStartGame>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'startGame', subBuilder: AnnStartGame.create)
+    ..aOM<AnnEndGame>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'endGame', subBuilder: AnnEndGame.create)
+    ..aOM<AnnWord>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'word', subBuilder: AnnWord.create)
+    ..aOM<AnnTransferLeadership>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'transferLeadership', subBuilder: AnnTransferLeadership.create)
+    ..aOM<AnnUpdateRoomInfo>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'updateRoom', subBuilder: AnnUpdateRoomInfo.create)
+    ..aOM<AnnAddPlayer>(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'addPlayer', subBuilder: AnnAddPlayer.create)
+    ..aOM<AnnRemovePlayer>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'removePlayer', subBuilder: AnnRemovePlayer.create)
     ..hasRequiredFields = false
   ;
 
   Announcement._() : super();
   factory Announcement({
-    MsgNewTeam? newTeam,
-    MsgEndTurn? endTurn,
-    MsgEndGame? endGame,
-    MsgWord? word,
+    AnnNewTeam? newTeam,
+    AnnJoinTeam? joinTeam,
+    AnnStartTurn? startTurn,
+    AnnEndTurn? endTurn,
+    AnnStartGame? startGame,
+    AnnEndGame? endGame,
+    AnnWord? word,
+    AnnTransferLeadership? transferLeadership,
+    AnnUpdateRoomInfo? updateRoom,
+    AnnAddPlayer? addPlayer,
+    AnnRemovePlayer? removePlayer,
   }) {
     final _result = create();
     if (newTeam != null) {
       _result.newTeam = newTeam;
     }
+    if (joinTeam != null) {
+      _result.joinTeam = joinTeam;
+    }
+    if (startTurn != null) {
+      _result.startTurn = startTurn;
+    }
     if (endTurn != null) {
       _result.endTurn = endTurn;
+    }
+    if (startGame != null) {
+      _result.startGame = startGame;
     }
     if (endGame != null) {
       _result.endGame = endGame;
     }
     if (word != null) {
       _result.word = word;
+    }
+    if (transferLeadership != null) {
+      _result.transferLeadership = transferLeadership;
+    }
+    if (updateRoom != null) {
+      _result.updateRoom = updateRoom;
+    }
+    if (addPlayer != null) {
+      _result.addPlayer = addPlayer;
+    }
+    if (removePlayer != null) {
+      _result.removePlayer = removePlayer;
     }
     return _result;
   }
@@ -1592,144 +2066,125 @@ class Announcement extends $pb.GeneratedMessage {
   void clearAnnounce() => clearField($_whichOneof(0));
 
   @$pb.TagNumber(1)
-  MsgNewTeam get newTeam => $_getN(0);
+  AnnNewTeam get newTeam => $_getN(0);
   @$pb.TagNumber(1)
-  set newTeam(MsgNewTeam v) { setField(1, v); }
+  set newTeam(AnnNewTeam v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasNewTeam() => $_has(0);
   @$pb.TagNumber(1)
   void clearNewTeam() => clearField(1);
   @$pb.TagNumber(1)
-  MsgNewTeam ensureNewTeam() => $_ensure(0);
+  AnnNewTeam ensureNewTeam() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  MsgEndTurn get endTurn => $_getN(1);
+  AnnJoinTeam get joinTeam => $_getN(1);
   @$pb.TagNumber(2)
-  set endTurn(MsgEndTurn v) { setField(2, v); }
+  set joinTeam(AnnJoinTeam v) { setField(2, v); }
   @$pb.TagNumber(2)
-  $core.bool hasEndTurn() => $_has(1);
+  $core.bool hasJoinTeam() => $_has(1);
   @$pb.TagNumber(2)
-  void clearEndTurn() => clearField(2);
+  void clearJoinTeam() => clearField(2);
   @$pb.TagNumber(2)
-  MsgEndTurn ensureEndTurn() => $_ensure(1);
+  AnnJoinTeam ensureJoinTeam() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  MsgEndGame get endGame => $_getN(2);
+  AnnStartTurn get startTurn => $_getN(2);
   @$pb.TagNumber(3)
-  set endGame(MsgEndGame v) { setField(3, v); }
+  set startTurn(AnnStartTurn v) { setField(3, v); }
   @$pb.TagNumber(3)
-  $core.bool hasEndGame() => $_has(2);
+  $core.bool hasStartTurn() => $_has(2);
   @$pb.TagNumber(3)
-  void clearEndGame() => clearField(3);
+  void clearStartTurn() => clearField(3);
   @$pb.TagNumber(3)
-  MsgEndGame ensureEndGame() => $_ensure(2);
+  AnnStartTurn ensureStartTurn() => $_ensure(2);
 
   @$pb.TagNumber(4)
-  MsgWord get word => $_getN(3);
+  AnnEndTurn get endTurn => $_getN(3);
   @$pb.TagNumber(4)
-  set word(MsgWord v) { setField(4, v); }
+  set endTurn(AnnEndTurn v) { setField(4, v); }
   @$pb.TagNumber(4)
-  $core.bool hasWord() => $_has(3);
+  $core.bool hasEndTurn() => $_has(3);
   @$pb.TagNumber(4)
-  void clearWord() => clearField(4);
+  void clearEndTurn() => clearField(4);
   @$pb.TagNumber(4)
-  MsgWord ensureWord() => $_ensure(3);
-}
+  AnnEndTurn ensureEndTurn() => $_ensure(3);
 
-class SubscribeRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SubscribeRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game.service.v1'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'roomId')
-    ..hasRequiredFields = false
-  ;
+  @$pb.TagNumber(5)
+  AnnStartGame get startGame => $_getN(4);
+  @$pb.TagNumber(5)
+  set startGame(AnnStartGame v) { setField(5, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasStartGame() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearStartGame() => clearField(5);
+  @$pb.TagNumber(5)
+  AnnStartGame ensureStartGame() => $_ensure(4);
 
-  SubscribeRequest._() : super();
-  factory SubscribeRequest({
-    $core.String? roomId,
-  }) {
-    final _result = create();
-    if (roomId != null) {
-      _result.roomId = roomId;
-    }
-    return _result;
-  }
-  factory SubscribeRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory SubscribeRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  SubscribeRequest clone() => SubscribeRequest()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  SubscribeRequest copyWith(void Function(SubscribeRequest) updates) => super.copyWith((message) => updates(message as SubscribeRequest)) as SubscribeRequest; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static SubscribeRequest create() => SubscribeRequest._();
-  SubscribeRequest createEmptyInstance() => create();
-  static $pb.PbList<SubscribeRequest> createRepeated() => $pb.PbList<SubscribeRequest>();
-  @$core.pragma('dart2js:noInline')
-  static SubscribeRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SubscribeRequest>(create);
-  static SubscribeRequest? _defaultInstance;
+  @$pb.TagNumber(6)
+  AnnEndGame get endGame => $_getN(5);
+  @$pb.TagNumber(6)
+  set endGame(AnnEndGame v) { setField(6, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasEndGame() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearEndGame() => clearField(6);
+  @$pb.TagNumber(6)
+  AnnEndGame ensureEndGame() => $_ensure(5);
 
-  @$pb.TagNumber(1)
-  $core.String get roomId => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set roomId($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasRoomId() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearRoomId() => clearField(1);
-}
+  @$pb.TagNumber(7)
+  AnnWord get word => $_getN(6);
+  @$pb.TagNumber(7)
+  set word(AnnWord v) { setField(7, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasWord() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearWord() => clearField(7);
+  @$pb.TagNumber(7)
+  AnnWord ensureWord() => $_ensure(6);
 
-class SubscribeResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SubscribeResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'game.service.v1'), createEmptyInstance: create)
-    ..aOM<Announcement>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'announcement', subBuilder: Announcement.create)
-    ..hasRequiredFields = false
-  ;
+  @$pb.TagNumber(8)
+  AnnTransferLeadership get transferLeadership => $_getN(7);
+  @$pb.TagNumber(8)
+  set transferLeadership(AnnTransferLeadership v) { setField(8, v); }
+  @$pb.TagNumber(8)
+  $core.bool hasTransferLeadership() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearTransferLeadership() => clearField(8);
+  @$pb.TagNumber(8)
+  AnnTransferLeadership ensureTransferLeadership() => $_ensure(7);
 
-  SubscribeResponse._() : super();
-  factory SubscribeResponse({
-    Announcement? announcement,
-  }) {
-    final _result = create();
-    if (announcement != null) {
-      _result.announcement = announcement;
-    }
-    return _result;
-  }
-  factory SubscribeResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory SubscribeResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  SubscribeResponse clone() => SubscribeResponse()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  SubscribeResponse copyWith(void Function(SubscribeResponse) updates) => super.copyWith((message) => updates(message as SubscribeResponse)) as SubscribeResponse; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static SubscribeResponse create() => SubscribeResponse._();
-  SubscribeResponse createEmptyInstance() => create();
-  static $pb.PbList<SubscribeResponse> createRepeated() => $pb.PbList<SubscribeResponse>();
-  @$core.pragma('dart2js:noInline')
-  static SubscribeResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SubscribeResponse>(create);
-  static SubscribeResponse? _defaultInstance;
+  @$pb.TagNumber(9)
+  AnnUpdateRoomInfo get updateRoom => $_getN(8);
+  @$pb.TagNumber(9)
+  set updateRoom(AnnUpdateRoomInfo v) { setField(9, v); }
+  @$pb.TagNumber(9)
+  $core.bool hasUpdateRoom() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearUpdateRoom() => clearField(9);
+  @$pb.TagNumber(9)
+  AnnUpdateRoomInfo ensureUpdateRoom() => $_ensure(8);
 
-  @$pb.TagNumber(1)
-  Announcement get announcement => $_getN(0);
-  @$pb.TagNumber(1)
-  set announcement(Announcement v) { setField(1, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasAnnouncement() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearAnnouncement() => clearField(1);
-  @$pb.TagNumber(1)
-  Announcement ensureAnnouncement() => $_ensure(0);
+  @$pb.TagNumber(10)
+  AnnAddPlayer get addPlayer => $_getN(9);
+  @$pb.TagNumber(10)
+  set addPlayer(AnnAddPlayer v) { setField(10, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasAddPlayer() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearAddPlayer() => clearField(10);
+  @$pb.TagNumber(10)
+  AnnAddPlayer ensureAddPlayer() => $_ensure(9);
+
+  @$pb.TagNumber(11)
+  AnnRemovePlayer get removePlayer => $_getN(10);
+  @$pb.TagNumber(11)
+  set removePlayer(AnnRemovePlayer v) { setField(11, v); }
+  @$pb.TagNumber(11)
+  $core.bool hasRemovePlayer() => $_has(10);
+  @$pb.TagNumber(11)
+  void clearRemovePlayer() => clearField(11);
+  @$pb.TagNumber(11)
+  AnnRemovePlayer ensureRemovePlayer() => $_ensure(10);
 }
 
 class ScoreRequest extends $pb.GeneratedMessage {

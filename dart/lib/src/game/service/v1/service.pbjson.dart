@@ -8,6 +8,18 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
+@$core.Deprecated('Use slotDescriptor instead')
+const Slot$json = const {
+  '1': 'Slot',
+  '2': const [
+    const {'1': 'SLOT_UNSPECIFIED', '2': 0},
+    const {'1': 'SLOT_A', '2': 1},
+    const {'1': 'SLOT_B', '2': 2},
+  ],
+};
+
+/// Descriptor for `Slot`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List slotDescriptor = $convert.base64Decode('CgRTbG90EhQKEFNMT1RfVU5TUEVDSUZJRUQQABIKCgZTTE9UX0EQARIKCgZTTE9UX0IQAg==');
 @$core.Deprecated('Use roomDescriptor instead')
 const Room$json = const {
   '1': 'Room',
@@ -255,57 +267,6 @@ const Statistics$json = const {
 
 /// Descriptor for `Statistics`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List statisticsDescriptor = $convert.base64Decode('CgpTdGF0aXN0aWNzEhYKBnJpZ2h0cxgBIAEoDVIGcmlnaHRzEhYKBndyb25ncxgCIAEoDVIGd3Jvbmdz');
-@$core.Deprecated('Use msgNewTeamDescriptor instead')
-const MsgNewTeam$json = const {
-  '1': 'MsgNewTeam',
-  '2': const [
-    const {'1': 'team', '3': 1, '4': 1, '5': 11, '6': '.game.service.v1.Team', '10': 'team'},
-  ],
-};
-
-/// Descriptor for `MsgNewTeam`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List msgNewTeamDescriptor = $convert.base64Decode('CgpNc2dOZXdUZWFtEikKBHRlYW0YASABKAsyFS5nYW1lLnNlcnZpY2UudjEuVGVhbVIEdGVhbQ==');
-@$core.Deprecated('Use msgEndGameDescriptor instead')
-const MsgEndGame$json = const {
-  '1': 'MsgEndGame',
-  '2': const [
-    const {'1': 'team_id_to_stats', '3': 1, '4': 3, '5': 11, '6': '.game.service.v1.MsgEndGame.TeamIdToStatsEntry', '10': 'teamIdToStats'},
-  ],
-  '3': const [MsgEndGame_TeamIdToStatsEntry$json],
-};
-
-@$core.Deprecated('Use msgEndGameDescriptor instead')
-const MsgEndGame_TeamIdToStatsEntry$json = const {
-  '1': 'TeamIdToStatsEntry',
-  '2': const [
-    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
-    const {'1': 'value', '3': 2, '4': 1, '5': 11, '6': '.game.service.v1.Statistics', '10': 'value'},
-  ],
-  '7': const {'7': true},
-};
-
-/// Descriptor for `MsgEndGame`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List msgEndGameDescriptor = $convert.base64Decode('CgpNc2dFbmRHYW1lElcKEHRlYW1faWRfdG9fc3RhdHMYASADKAsyLi5nYW1lLnNlcnZpY2UudjEuTXNnRW5kR2FtZS5UZWFtSWRUb1N0YXRzRW50cnlSDXRlYW1JZFRvU3RhdHMaXQoSVGVhbUlkVG9TdGF0c0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EjEKBXZhbHVlGAIgASgLMhsuZ2FtZS5zZXJ2aWNlLnYxLlN0YXRpc3RpY3NSBXZhbHVlOgI4AQ==');
-@$core.Deprecated('Use msgEndTurnDescriptor instead')
-const MsgEndTurn$json = const {
-  '1': 'MsgEndTurn',
-  '2': const [
-    const {'1': 'stats', '3': 1, '4': 1, '5': 11, '6': '.game.service.v1.Statistics', '10': 'stats'},
-  ],
-};
-
-/// Descriptor for `MsgEndTurn`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List msgEndTurnDescriptor = $convert.base64Decode('CgpNc2dFbmRUdXJuEjEKBXN0YXRzGAEgASgLMhsuZ2FtZS5zZXJ2aWNlLnYxLlN0YXRpc3RpY3NSBXN0YXRz');
-@$core.Deprecated('Use msgWordDescriptor instead')
-const MsgWord$json = const {
-  '1': 'MsgWord',
-  '2': const [
-    const {'1': 'word', '3': 1, '4': 1, '5': 9, '10': 'word'},
-  ],
-};
-
-/// Descriptor for `MsgWord`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List msgWordDescriptor = $convert.base64Decode('CgdNc2dXb3JkEhIKBHdvcmQYASABKAlSBHdvcmQ=');
 @$core.Deprecated('Use joinRoomRequestDescriptor instead')
 const JoinRoomRequest$json = const {
   '1': 'JoinRoomRequest',
@@ -323,18 +284,154 @@ final $typed_data.Uint8List joinRoomRequestDescriptor = $convert.base64Decode('C
 @$core.Deprecated('Use joinRoomResponseDescriptor instead')
 const JoinRoomResponse$json = const {
   '1': 'JoinRoomResponse',
+  '2': const [
+    const {'1': 'announcement', '3': 1, '4': 1, '5': 11, '6': '.game.service.v1.Announcement', '10': 'announcement'},
+  ],
 };
 
 /// Descriptor for `JoinRoomResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List joinRoomResponseDescriptor = $convert.base64Decode('ChBKb2luUm9vbVJlc3BvbnNl');
+final $typed_data.Uint8List joinRoomResponseDescriptor = $convert.base64Decode('ChBKb2luUm9vbVJlc3BvbnNlEkEKDGFubm91bmNlbWVudBgBIAEoCzIdLmdhbWUuc2VydmljZS52MS5Bbm5vdW5jZW1lbnRSDGFubm91bmNlbWVudA==');
+@$core.Deprecated('Use annNewTeamDescriptor instead')
+const AnnNewTeam$json = const {
+  '1': 'AnnNewTeam',
+  '2': const [
+    const {'1': 'team', '3': 1, '4': 1, '5': 11, '6': '.game.service.v1.Team', '10': 'team'},
+  ],
+};
+
+/// Descriptor for `AnnNewTeam`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List annNewTeamDescriptor = $convert.base64Decode('CgpBbm5OZXdUZWFtEikKBHRlYW0YASABKAsyFS5nYW1lLnNlcnZpY2UudjEuVGVhbVIEdGVhbQ==');
+@$core.Deprecated('Use annEndGameDescriptor instead')
+const AnnEndGame$json = const {
+  '1': 'AnnEndGame',
+  '2': const [
+    const {'1': 'team_id_to_stats', '3': 1, '4': 3, '5': 11, '6': '.game.service.v1.AnnEndGame.TeamIdToStatsEntry', '10': 'teamIdToStats'},
+  ],
+  '3': const [AnnEndGame_TeamIdToStatsEntry$json],
+};
+
+@$core.Deprecated('Use annEndGameDescriptor instead')
+const AnnEndGame_TeamIdToStatsEntry$json = const {
+  '1': 'TeamIdToStatsEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 11, '6': '.game.service.v1.Statistics', '10': 'value'},
+  ],
+  '7': const {'7': true},
+};
+
+/// Descriptor for `AnnEndGame`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List annEndGameDescriptor = $convert.base64Decode('CgpBbm5FbmRHYW1lElcKEHRlYW1faWRfdG9fc3RhdHMYASADKAsyLi5nYW1lLnNlcnZpY2UudjEuQW5uRW5kR2FtZS5UZWFtSWRUb1N0YXRzRW50cnlSDXRlYW1JZFRvU3RhdHMaXQoSVGVhbUlkVG9TdGF0c0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EjEKBXZhbHVlGAIgASgLMhsuZ2FtZS5zZXJ2aWNlLnYxLlN0YXRpc3RpY3NSBXZhbHVlOgI4AQ==');
+@$core.Deprecated('Use annEndTurnDescriptor instead')
+const AnnEndTurn$json = const {
+  '1': 'AnnEndTurn',
+  '2': const [
+    const {'1': 'stats', '3': 1, '4': 1, '5': 11, '6': '.game.service.v1.Statistics', '10': 'stats'},
+  ],
+};
+
+/// Descriptor for `AnnEndTurn`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List annEndTurnDescriptor = $convert.base64Decode('CgpBbm5FbmRUdXJuEjEKBXN0YXRzGAEgASgLMhsuZ2FtZS5zZXJ2aWNlLnYxLlN0YXRpc3RpY3NSBXN0YXRz');
+@$core.Deprecated('Use annWordDescriptor instead')
+const AnnWord$json = const {
+  '1': 'AnnWord',
+  '2': const [
+    const {'1': 'word', '3': 1, '4': 1, '5': 9, '10': 'word'},
+  ],
+};
+
+/// Descriptor for `AnnWord`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List annWordDescriptor = $convert.base64Decode('CgdBbm5Xb3JkEhIKBHdvcmQYASABKAlSBHdvcmQ=');
+@$core.Deprecated('Use annTransferLeadershipDescriptor instead')
+const AnnTransferLeadership$json = const {
+  '1': 'AnnTransferLeadership',
+  '2': const [
+    const {'1': 'new_leader', '3': 1, '4': 1, '5': 9, '10': 'newLeader'},
+  ],
+};
+
+/// Descriptor for `AnnTransferLeadership`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List annTransferLeadershipDescriptor = $convert.base64Decode('ChVBbm5UcmFuc2ZlckxlYWRlcnNoaXASHQoKbmV3X2xlYWRlchgBIAEoCVIJbmV3TGVhZGVy');
+@$core.Deprecated('Use annJoinTeamDescriptor instead')
+const AnnJoinTeam$json = const {
+  '1': 'AnnJoinTeam',
+  '2': const [
+    const {'1': 'player_id', '3': 1, '4': 1, '5': 9, '10': 'playerId'},
+    const {'1': 'team_id', '3': 2, '4': 1, '5': 9, '10': 'teamId'},
+    const {'1': 'slot', '3': 3, '4': 1, '5': 14, '6': '.game.service.v1.Slot', '10': 'slot'},
+  ],
+};
+
+/// Descriptor for `AnnJoinTeam`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List annJoinTeamDescriptor = $convert.base64Decode('CgtBbm5Kb2luVGVhbRIbCglwbGF5ZXJfaWQYASABKAlSCHBsYXllcklkEhcKB3RlYW1faWQYAiABKAlSBnRlYW1JZBIpCgRzbG90GAMgASgOMhUuZ2FtZS5zZXJ2aWNlLnYxLlNsb3RSBHNsb3Q=');
+@$core.Deprecated('Use annStartGameDescriptor instead')
+const AnnStartGame$json = const {
+  '1': 'AnnStartGame',
+  '2': const [
+    const {'1': 'player_turn', '3': 1, '4': 1, '5': 9, '10': 'playerTurn'},
+  ],
+};
+
+/// Descriptor for `AnnStartGame`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List annStartGameDescriptor = $convert.base64Decode('CgxBbm5TdGFydEdhbWUSHwoLcGxheWVyX3R1cm4YASABKAlSCnBsYXllclR1cm4=');
+@$core.Deprecated('Use annStartTurnDescriptor instead')
+const AnnStartTurn$json = const {
+  '1': 'AnnStartTurn',
+  '2': const [
+    const {'1': 'duration_ms', '3': 1, '4': 1, '5': 4, '10': 'durationMs'},
+  ],
+};
+
+/// Descriptor for `AnnStartTurn`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List annStartTurnDescriptor = $convert.base64Decode('CgxBbm5TdGFydFR1cm4SHwoLZHVyYXRpb25fbXMYASABKARSCmR1cmF0aW9uTXM=');
+@$core.Deprecated('Use annUpdateRoomInfoDescriptor instead')
+const AnnUpdateRoomInfo$json = const {
+  '1': 'AnnUpdateRoomInfo',
+  '2': const [
+    const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
+    const {'1': 'leader_id', '3': 2, '4': 1, '5': 9, '10': 'leaderId'},
+    const {'1': 'is_public', '3': 3, '4': 1, '5': 8, '10': 'isPublic'},
+    const {'1': 'langugage', '3': 4, '4': 1, '5': 9, '10': 'langugage'},
+  ],
+};
+
+/// Descriptor for `AnnUpdateRoomInfo`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List annUpdateRoomInfoDescriptor = $convert.base64Decode('ChFBbm5VcGRhdGVSb29tSW5mbxISCgRuYW1lGAEgASgJUgRuYW1lEhsKCWxlYWRlcl9pZBgCIAEoCVIIbGVhZGVySWQSGwoJaXNfcHVibGljGAMgASgIUghpc1B1YmxpYxIcCglsYW5ndWdhZ2UYBCABKAlSCWxhbmd1Z2FnZQ==');
+@$core.Deprecated('Use annAddPlayerDescriptor instead')
+const AnnAddPlayer$json = const {
+  '1': 'AnnAddPlayer',
+  '2': const [
+    const {'1': 'player', '3': 1, '4': 1, '5': 11, '6': '.game.service.v1.Player', '10': 'player'},
+  ],
+};
+
+/// Descriptor for `AnnAddPlayer`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List annAddPlayerDescriptor = $convert.base64Decode('CgxBbm5BZGRQbGF5ZXISLwoGcGxheWVyGAEgASgLMhcuZ2FtZS5zZXJ2aWNlLnYxLlBsYXllclIGcGxheWVy');
+@$core.Deprecated('Use annRemovePlayerDescriptor instead')
+const AnnRemovePlayer$json = const {
+  '1': 'AnnRemovePlayer',
+  '2': const [
+    const {'1': 'player_id', '3': 1, '4': 1, '5': 9, '10': 'playerId'},
+  ],
+};
+
+/// Descriptor for `AnnRemovePlayer`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List annRemovePlayerDescriptor = $convert.base64Decode('Cg9Bbm5SZW1vdmVQbGF5ZXISGwoJcGxheWVyX2lkGAEgASgJUghwbGF5ZXJJZA==');
 @$core.Deprecated('Use announcementDescriptor instead')
 const Announcement$json = const {
   '1': 'Announcement',
   '2': const [
-    const {'1': 'new_team', '3': 1, '4': 1, '5': 11, '6': '.game.service.v1.MsgNewTeam', '9': 0, '10': 'newTeam'},
-    const {'1': 'end_turn', '3': 2, '4': 1, '5': 11, '6': '.game.service.v1.MsgEndTurn', '9': 0, '10': 'endTurn'},
-    const {'1': 'end_game', '3': 3, '4': 1, '5': 11, '6': '.game.service.v1.MsgEndGame', '9': 0, '10': 'endGame'},
-    const {'1': 'word', '3': 4, '4': 1, '5': 11, '6': '.game.service.v1.MsgWord', '9': 0, '10': 'word'},
+    const {'1': 'new_team', '3': 1, '4': 1, '5': 11, '6': '.game.service.v1.AnnNewTeam', '9': 0, '10': 'newTeam'},
+    const {'1': 'join_team', '3': 2, '4': 1, '5': 11, '6': '.game.service.v1.AnnJoinTeam', '9': 0, '10': 'joinTeam'},
+    const {'1': 'start_turn', '3': 3, '4': 1, '5': 11, '6': '.game.service.v1.AnnStartTurn', '9': 0, '10': 'startTurn'},
+    const {'1': 'end_turn', '3': 4, '4': 1, '5': 11, '6': '.game.service.v1.AnnEndTurn', '9': 0, '10': 'endTurn'},
+    const {'1': 'start_game', '3': 5, '4': 1, '5': 11, '6': '.game.service.v1.AnnStartGame', '9': 0, '10': 'startGame'},
+    const {'1': 'end_game', '3': 6, '4': 1, '5': 11, '6': '.game.service.v1.AnnEndGame', '9': 0, '10': 'endGame'},
+    const {'1': 'word', '3': 7, '4': 1, '5': 11, '6': '.game.service.v1.AnnWord', '9': 0, '10': 'word'},
+    const {'1': 'transfer_leadership', '3': 8, '4': 1, '5': 11, '6': '.game.service.v1.AnnTransferLeadership', '9': 0, '10': 'transferLeadership'},
+    const {'1': 'update_room', '3': 9, '4': 1, '5': 11, '6': '.game.service.v1.AnnUpdateRoomInfo', '9': 0, '10': 'updateRoom'},
+    const {'1': 'add_player', '3': 10, '4': 1, '5': 11, '6': '.game.service.v1.AnnAddPlayer', '9': 0, '10': 'addPlayer'},
+    const {'1': 'remove_player', '3': 11, '4': 1, '5': 11, '6': '.game.service.v1.AnnRemovePlayer', '9': 0, '10': 'removePlayer'},
   ],
   '8': const [
     const {'1': 'announce'},
@@ -342,27 +439,7 @@ const Announcement$json = const {
 };
 
 /// Descriptor for `Announcement`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List announcementDescriptor = $convert.base64Decode('CgxBbm5vdW5jZW1lbnQSOAoIbmV3X3RlYW0YASABKAsyGy5nYW1lLnNlcnZpY2UudjEuTXNnTmV3VGVhbUgAUgduZXdUZWFtEjgKCGVuZF90dXJuGAIgASgLMhsuZ2FtZS5zZXJ2aWNlLnYxLk1zZ0VuZFR1cm5IAFIHZW5kVHVybhI4CghlbmRfZ2FtZRgDIAEoCzIbLmdhbWUuc2VydmljZS52MS5Nc2dFbmRHYW1lSABSB2VuZEdhbWUSLgoEd29yZBgEIAEoCzIYLmdhbWUuc2VydmljZS52MS5Nc2dXb3JkSABSBHdvcmRCCgoIYW5ub3VuY2U=');
-@$core.Deprecated('Use subscribeRequestDescriptor instead')
-const SubscribeRequest$json = const {
-  '1': 'SubscribeRequest',
-  '2': const [
-    const {'1': 'room_id', '3': 1, '4': 1, '5': 9, '10': 'roomId'},
-  ],
-};
-
-/// Descriptor for `SubscribeRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List subscribeRequestDescriptor = $convert.base64Decode('ChBTdWJzY3JpYmVSZXF1ZXN0EhcKB3Jvb21faWQYASABKAlSBnJvb21JZA==');
-@$core.Deprecated('Use subscribeResponseDescriptor instead')
-const SubscribeResponse$json = const {
-  '1': 'SubscribeResponse',
-  '2': const [
-    const {'1': 'announcement', '3': 1, '4': 1, '5': 11, '6': '.game.service.v1.Announcement', '10': 'announcement'},
-  ],
-};
-
-/// Descriptor for `SubscribeResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List subscribeResponseDescriptor = $convert.base64Decode('ChFTdWJzY3JpYmVSZXNwb25zZRJBCgxhbm5vdW5jZW1lbnQYASABKAsyHS5nYW1lLnNlcnZpY2UudjEuQW5ub3VuY2VtZW50Ugxhbm5vdW5jZW1lbnQ=');
+final $typed_data.Uint8List announcementDescriptor = $convert.base64Decode('CgxBbm5vdW5jZW1lbnQSOAoIbmV3X3RlYW0YASABKAsyGy5nYW1lLnNlcnZpY2UudjEuQW5uTmV3VGVhbUgAUgduZXdUZWFtEjsKCWpvaW5fdGVhbRgCIAEoCzIcLmdhbWUuc2VydmljZS52MS5Bbm5Kb2luVGVhbUgAUghqb2luVGVhbRI+CgpzdGFydF90dXJuGAMgASgLMh0uZ2FtZS5zZXJ2aWNlLnYxLkFublN0YXJ0VHVybkgAUglzdGFydFR1cm4SOAoIZW5kX3R1cm4YBCABKAsyGy5nYW1lLnNlcnZpY2UudjEuQW5uRW5kVHVybkgAUgdlbmRUdXJuEj4KCnN0YXJ0X2dhbWUYBSABKAsyHS5nYW1lLnNlcnZpY2UudjEuQW5uU3RhcnRHYW1lSABSCXN0YXJ0R2FtZRI4CghlbmRfZ2FtZRgGIAEoCzIbLmdhbWUuc2VydmljZS52MS5Bbm5FbmRHYW1lSABSB2VuZEdhbWUSLgoEd29yZBgHIAEoCzIYLmdhbWUuc2VydmljZS52MS5Bbm5Xb3JkSABSBHdvcmQSWQoTdHJhbnNmZXJfbGVhZGVyc2hpcBgIIAEoCzImLmdhbWUuc2VydmljZS52MS5Bbm5UcmFuc2ZlckxlYWRlcnNoaXBIAFISdHJhbnNmZXJMZWFkZXJzaGlwEkUKC3VwZGF0ZV9yb29tGAkgASgLMiIuZ2FtZS5zZXJ2aWNlLnYxLkFublVwZGF0ZVJvb21JbmZvSABSCnVwZGF0ZVJvb20SPgoKYWRkX3BsYXllchgKIAEoCzIdLmdhbWUuc2VydmljZS52MS5Bbm5BZGRQbGF5ZXJIAFIJYWRkUGxheWVyEkcKDXJlbW92ZV9wbGF5ZXIYCyABKAsyIC5nYW1lLnNlcnZpY2UudjEuQW5uUmVtb3ZlUGxheWVySABSDHJlbW92ZVBsYXllckIKCghhbm5vdW5jZQ==');
 @$core.Deprecated('Use scoreRequestDescriptor instead')
 const ScoreRequest$json = const {
   '1': 'ScoreRequest',

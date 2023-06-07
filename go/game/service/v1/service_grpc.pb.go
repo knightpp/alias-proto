@@ -32,7 +32,6 @@ const (
 	GameService_StartTurn_FullMethodName          = "/game.service.v1.GameService/StartTurn"
 	GameService_StopTurn_FullMethodName           = "/game.service.v1.GameService/StopTurn"
 	GameService_Score_FullMethodName              = "/game.service.v1.GameService/Score"
-	GameService_Subscribe_FullMethodName          = "/game.service.v1.GameService/Subscribe"
 )
 
 // GameServiceClient is the client API for GameService service.
@@ -42,7 +41,7 @@ type GameServiceClient interface {
 	ListRooms(ctx context.Context, in *ListRoomsRequest, opts ...grpc.CallOption) (*ListRoomsResponse, error)
 	CreateRoom(ctx context.Context, in *CreateRoomRequest, opts ...grpc.CallOption) (*CreateRoomResponse, error)
 	UpdateRoom(ctx context.Context, in *UpdateRoomRequest, opts ...grpc.CallOption) (*UpdateRoomResponse, error)
-	JoinRoom(ctx context.Context, in *JoinRoomRequest, opts ...grpc.CallOption) (*JoinRoomResponse, error)
+	JoinRoom(ctx context.Context, in *JoinRoomRequest, opts ...grpc.CallOption) (GameService_JoinRoomClient, error)
 	TransferLeadership(ctx context.Context, in *TransferLeadershipRequest, opts ...grpc.CallOption) (*TransferLeadershipResponse, error)
 	CreateTeam(ctx context.Context, in *CreateTeamRequest, opts ...grpc.CallOption) (*CreateTeamResponse, error)
 	UpdateTeam(ctx context.Context, in *UpdateTeamRequest, opts ...grpc.CallOption) (*UpdateTeamResponse, error)
@@ -52,7 +51,6 @@ type GameServiceClient interface {
 	StartTurn(ctx context.Context, in *StartTurnRequest, opts ...grpc.CallOption) (*StartTurnResponse, error)
 	StopTurn(ctx context.Context, in *StopTurnRequest, opts ...grpc.CallOption) (*StopTurnResponse, error)
 	Score(ctx context.Context, in *ScoreRequest, opts ...grpc.CallOption) (*ScoreResponse, error)
-	Subscribe(ctx context.Context, in *SubscribeRequest, opts ...grpc.CallOption) (GameService_SubscribeClient, error)
 }
 
 type gameServiceClient struct {
@@ -90,13 +88,36 @@ func (c *gameServiceClient) UpdateRoom(ctx context.Context, in *UpdateRoomReques
 	return out, nil
 }
 
-func (c *gameServiceClient) JoinRoom(ctx context.Context, in *JoinRoomRequest, opts ...grpc.CallOption) (*JoinRoomResponse, error) {
-	out := new(JoinRoomResponse)
-	err := c.cc.Invoke(ctx, GameService_JoinRoom_FullMethodName, in, out, opts...)
+func (c *gameServiceClient) JoinRoom(ctx context.Context, in *JoinRoomRequest, opts ...grpc.CallOption) (GameService_JoinRoomClient, error) {
+	stream, err := c.cc.NewStream(ctx, &GameService_ServiceDesc.Streams[0], GameService_JoinRoom_FullMethodName, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return out, nil
+	x := &gameServiceJoinRoomClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type GameService_JoinRoomClient interface {
+	Recv() (*JoinRoomResponse, error)
+	grpc.ClientStream
+}
+
+type gameServiceJoinRoomClient struct {
+	grpc.ClientStream
+}
+
+func (x *gameServiceJoinRoomClient) Recv() (*JoinRoomResponse, error) {
+	m := new(JoinRoomResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
 }
 
 func (c *gameServiceClient) TransferLeadership(ctx context.Context, in *TransferLeadershipRequest, opts ...grpc.CallOption) (*TransferLeadershipResponse, error) {
@@ -180,38 +201,6 @@ func (c *gameServiceClient) Score(ctx context.Context, in *ScoreRequest, opts ..
 	return out, nil
 }
 
-func (c *gameServiceClient) Subscribe(ctx context.Context, in *SubscribeRequest, opts ...grpc.CallOption) (GameService_SubscribeClient, error) {
-	stream, err := c.cc.NewStream(ctx, &GameService_ServiceDesc.Streams[0], GameService_Subscribe_FullMethodName, opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &gameServiceSubscribeClient{stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	return x, nil
-}
-
-type GameService_SubscribeClient interface {
-	Recv() (*SubscribeResponse, error)
-	grpc.ClientStream
-}
-
-type gameServiceSubscribeClient struct {
-	grpc.ClientStream
-}
-
-func (x *gameServiceSubscribeClient) Recv() (*SubscribeResponse, error) {
-	m := new(SubscribeResponse)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
 // GameServiceServer is the server API for GameService service.
 // All implementations must embed UnimplementedGameServiceServer
 // for forward compatibility
@@ -219,7 +208,7 @@ type GameServiceServer interface {
 	ListRooms(context.Context, *ListRoomsRequest) (*ListRoomsResponse, error)
 	CreateRoom(context.Context, *CreateRoomRequest) (*CreateRoomResponse, error)
 	UpdateRoom(context.Context, *UpdateRoomRequest) (*UpdateRoomResponse, error)
-	JoinRoom(context.Context, *JoinRoomRequest) (*JoinRoomResponse, error)
+	JoinRoom(*JoinRoomRequest, GameService_JoinRoomServer) error
 	TransferLeadership(context.Context, *TransferLeadershipRequest) (*TransferLeadershipResponse, error)
 	CreateTeam(context.Context, *CreateTeamRequest) (*CreateTeamResponse, error)
 	UpdateTeam(context.Context, *UpdateTeamRequest) (*UpdateTeamResponse, error)
@@ -229,7 +218,6 @@ type GameServiceServer interface {
 	StartTurn(context.Context, *StartTurnRequest) (*StartTurnResponse, error)
 	StopTurn(context.Context, *StopTurnRequest) (*StopTurnResponse, error)
 	Score(context.Context, *ScoreRequest) (*ScoreResponse, error)
-	Subscribe(*SubscribeRequest, GameService_SubscribeServer) error
 	mustEmbedUnimplementedGameServiceServer()
 }
 
@@ -246,8 +234,8 @@ func (UnimplementedGameServiceServer) CreateRoom(context.Context, *CreateRoomReq
 func (UnimplementedGameServiceServer) UpdateRoom(context.Context, *UpdateRoomRequest) (*UpdateRoomResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateRoom not implemented")
 }
-func (UnimplementedGameServiceServer) JoinRoom(context.Context, *JoinRoomRequest) (*JoinRoomResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method JoinRoom not implemented")
+func (UnimplementedGameServiceServer) JoinRoom(*JoinRoomRequest, GameService_JoinRoomServer) error {
+	return status.Errorf(codes.Unimplemented, "method JoinRoom not implemented")
 }
 func (UnimplementedGameServiceServer) TransferLeadership(context.Context, *TransferLeadershipRequest) (*TransferLeadershipResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method TransferLeadership not implemented")
@@ -275,9 +263,6 @@ func (UnimplementedGameServiceServer) StopTurn(context.Context, *StopTurnRequest
 }
 func (UnimplementedGameServiceServer) Score(context.Context, *ScoreRequest) (*ScoreResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Score not implemented")
-}
-func (UnimplementedGameServiceServer) Subscribe(*SubscribeRequest, GameService_SubscribeServer) error {
-	return status.Errorf(codes.Unimplemented, "method Subscribe not implemented")
 }
 func (UnimplementedGameServiceServer) mustEmbedUnimplementedGameServiceServer() {}
 
@@ -346,22 +331,25 @@ func _GameService_UpdateRoom_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
-func _GameService_JoinRoom_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(JoinRoomRequest)
-	if err := dec(in); err != nil {
-		return nil, err
+func _GameService_JoinRoom_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(JoinRoomRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
 	}
-	if interceptor == nil {
-		return srv.(GameServiceServer).JoinRoom(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: GameService_JoinRoom_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GameServiceServer).JoinRoom(ctx, req.(*JoinRoomRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	return srv.(GameServiceServer).JoinRoom(m, &gameServiceJoinRoomServer{stream})
+}
+
+type GameService_JoinRoomServer interface {
+	Send(*JoinRoomResponse) error
+	grpc.ServerStream
+}
+
+type gameServiceJoinRoomServer struct {
+	grpc.ServerStream
+}
+
+func (x *gameServiceJoinRoomServer) Send(m *JoinRoomResponse) error {
+	return x.ServerStream.SendMsg(m)
 }
 
 func _GameService_TransferLeadership_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -526,27 +514,6 @@ func _GameService_Score_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
-func _GameService_Subscribe_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(SubscribeRequest)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(GameServiceServer).Subscribe(m, &gameServiceSubscribeServer{stream})
-}
-
-type GameService_SubscribeServer interface {
-	Send(*SubscribeResponse) error
-	grpc.ServerStream
-}
-
-type gameServiceSubscribeServer struct {
-	grpc.ServerStream
-}
-
-func (x *gameServiceSubscribeServer) Send(m *SubscribeResponse) error {
-	return x.ServerStream.SendMsg(m)
-}
-
 // GameService_ServiceDesc is the grpc.ServiceDesc for GameService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -565,10 +532,6 @@ var GameService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateRoom",
 			Handler:    _GameService_UpdateRoom_Handler,
-		},
-		{
-			MethodName: "JoinRoom",
-			Handler:    _GameService_JoinRoom_Handler,
 		},
 		{
 			MethodName: "TransferLeadership",
@@ -609,8 +572,8 @@ var GameService_ServiceDesc = grpc.ServiceDesc{
 	},
 	Streams: []grpc.StreamDesc{
 		{
-			StreamName:    "Subscribe",
-			Handler:       _GameService_Subscribe_Handler,
+			StreamName:    "JoinRoom",
+			Handler:       _GameService_JoinRoom_Handler,
 			ServerStreams: true,
 		},
 	},
