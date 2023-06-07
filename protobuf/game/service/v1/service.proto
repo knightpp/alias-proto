@@ -8,7 +8,7 @@ service GameService {
   rpc ListRooms(ListRoomsRequest) returns (ListRoomsResponse);
   rpc CreateRoom(CreateRoomRequest) returns (CreateRoomResponse);
   rpc UpdateRoom(UpdateRoomRequest) returns (UpdateRoomResponse);
-  rpc JoinRoom(JoinRoomRequest) returns (JoinRoomResponse);
+  rpc JoinRoom(JoinRoomRequest) returns (stream JoinRoomResponse);
 
   rpc TransferLeadership(TransferLeadershipRequest) returns (TransferLeadershipResponse);
 
@@ -22,8 +22,6 @@ service GameService {
   rpc StopTurn(StopTurnRequest) returns (StopTurnResponse);
 
   rpc Score(ScoreRequest) returns (ScoreResponse);
-
-  rpc Subscribe(SubscribeRequest) returns (stream SubscribeResponse);
 }
 
 message Room {
@@ -111,42 +109,89 @@ message Statistics {
   uint32 wrongs = 2;
 }
 
-message MsgNewTeam {
-  Team team = 1;
-}
-
-message MsgEndGame {
-  map<string, Statistics> team_id_to_stats = 1;
-}
-
-message MsgEndTurn {
-  Statistics stats = 1;
-}
-
-message MsgWord {
-  string word = 1;
-}
-
 message JoinRoomRequest {
   string room_id = 1;
   optional string password = 2;
 }
-message JoinRoomResponse {}
+message JoinRoomResponse {
+  Announcement announcement = 1;
+}
+
+enum Slot {
+  SLOT_UNSPECIFIED = 0;
+  SLOT_A = 1;
+  SLOT_B = 2;
+}
+
+message AnnNewTeam {
+  Team team = 1;
+}
+
+message AnnEndGame {
+  map<string, Statistics> team_id_to_stats = 1;
+}
+
+message AnnEndTurn {
+  Statistics stats = 1;
+}
+
+message AnnWord {
+  string word = 1;
+}
+
+message AnnTransferLeadership {
+  string new_leader = 1;
+}
+
+message AnnJoinTeam {
+  string player_id = 1;
+  string team_id = 2;
+  Slot slot = 3;
+}
+
+message AnnStartGame {
+  string player_turn = 1;
+}
+
+message AnnStartTurn {
+  uint64 duration_ms = 1;
+}
+
+message AnnUpdateRoomInfo {
+  string name = 1;
+  string leader_id = 2;
+  bool is_public = 3;
+  string langugage = 4;
+}
+
+message AnnAddPlayer {
+  Player player = 1;
+}
+
+message AnnRemovePlayer {
+  string player_id = 1;
+}
 
 message Announcement {
   oneof announce {
-    MsgNewTeam new_team = 1;
-    MsgEndTurn end_turn = 2;
-    MsgEndGame end_game = 3;
-    MsgWord word = 4;
-  }
-}
+    AnnNewTeam new_team = 1;
+    AnnJoinTeam join_team = 2;
 
-message SubscribeRequest {
-  string room_id = 1;
-}
-message SubscribeResponse {
-  Announcement announcement = 1;
+    AnnStartTurn start_turn = 3;
+    AnnEndTurn end_turn = 4;
+
+    AnnStartGame start_game = 5;
+    AnnEndGame end_game = 6;
+
+    AnnWord word = 7;
+
+    AnnTransferLeadership transfer_leadership = 8;
+
+    AnnUpdateRoomInfo update_room = 9;
+
+    AnnAddPlayer add_player = 10;
+    AnnRemovePlayer remove_player = 11;
+  }
 }
 
 message ScoreRequest {
